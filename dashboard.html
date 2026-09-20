@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Sponsor Portal</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    .topbar {
+      height: 65px;
+      background: #0d6efd;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar h2 {
+      font-size: 20px;
+    }
+
+    .logout {
+      border: none;
+      background: white;
+      color: #0d6efd;
+      padding: 9px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    .welcome h1 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .welcome p {
+      color: #777;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .card-title {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .card-value {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .section {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+      font-size: 19px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .menu button {
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #eef4ff;
+      color: #0d6efd;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .menu button:hover {
+      background: #dce9ff;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      color: #777;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .menu {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .menu {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .welcome h1 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <h2>SPONSOR PORTAL</h2>
+    <button class="logout" id="logoutBtn">Logout</button>
+  </div>
+
+
+  <main class="container">
+
+    <div class="welcome">
+      <h1>Admin Dashboard</h1>
+      <p id="adminEmail">Loading...</p>
+    </div>
+
+
+    <!-- Dashboard Summary -->
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-title">TOTAL SPONSORS</div>
+        <div class="card-value" id="totalSponsors">0</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">TOTAL SPONSORSHIP</div>
+        <div class="card-value" id="totalSponsorship">₹0</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">TOTAL RECEIVED</div>
+        <div class="card-value" id="totalReceived">₹0</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">TOTAL PENDING</div>
+        <div class="card-value" id="totalPending">₹0</div>
+      </div>
+
+    </div>
+
+
+    <!-- Management -->
+
+    <div class="section">
+
+      <h2>Management</h2>
+
+      <div class="menu">
+
+        <button onclick="showMessage('Sponsors')">
+          👥 Sponsors
+        </button>
+
+        <button onclick="showMessage('Payments')">
+          💰 Payments
+        </button>
+
+        <button onclick="showMessage('Pending Payments')">
+          ⏳ Pending
+        </button>
+
+        <button onclick="showMessage('Messages')">
+          💬 Messages
+        </button>
+
+        <button onclick="showMessage('Reminders')">
+          🔔 Reminders
+        </button>
+
+        <button onclick="showMessage('Reports')">
+          📊 Reports
+        </button>
+
+        <button onclick="showMessage('Notifications')">
+          🔔 Notifications
+        </button>
+
+        <button onclick="showMessage('Settings')">
+          ⚙️ Settings
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Current Status -->
+
+    <div class="section">
+
+      <h2>System Status</h2>
+
+      <div class="status" id="systemStatus">
+        Firebase connection will be added next.
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script type="module">
+
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
+      authDomain: "sponsors-management-port-2300e.firebaseapp.com",
+      projectId: "sponsors-management-port-2300e",
+      storageBucket: "sponsors-management-port-2300e.firebasestorage.app",
+      messagingSenderId: "302644033627",
+      appId: "1:302644033627:web:bfb03201ee44bcf616677e"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+
+    // Check login
+
+    onAuthStateChanged(auth, (user) => {
+
+      if (!user) {
+
+        window.location.href = "index.html";
+
+        return;
+      }
+
+      document.getElementById("adminEmail").textContent =
+        "Logged in as: " + user.email;
+
+      document.getElementById("systemStatus").textContent =
+        "Firebase Authentication connected ✓";
+
+    });
+
+
+    // Logout
+
+    document
+      .getElementById("logoutBtn")
+      .addEventListener("click", async () => {
+
+        try {
+
+          await signOut(auth);
+
+          window.location.href = "index.html";
+
+        } catch (error) {
+
+          console.error(error);
+
+          alert("Logout failed.");
+
+        }
+
+      });
+
+
+    // Temporary buttons
+
+    window.showMessage = function(section) {
+
+      alert(
+        section +
+        " section will be connected to Firebase in the next step."
+      );
+
+    };
+
+  </script>
+
+</body>
+</html>
