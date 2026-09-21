@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Admin Dashboard - Sponsor Portal</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,10 +24,13 @@
       min-height: 65px;
       background: #0d6efd;
       color: white;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 0 20px;
+
       position: sticky;
       top: 0;
       z-index: 100;
@@ -39,9 +44,13 @@
       border: none;
       background: white;
       color: #0d6efd;
+
       padding: 10px 16px;
+
       border-radius: 8px;
+
       font-weight: bold;
+
       cursor: pointer;
     }
 
@@ -64,58 +73,91 @@
       color: #777;
     }
 
+    /* CARDS */
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+      repeat(4, 1fr);
+
       gap: 15px;
+
       margin-bottom: 25px;
     }
 
     .card {
       background: white;
+
       padding: 20px;
+
       border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+
+      box-shadow:
+      0 3px 12px rgba(0,0,0,0.06);
     }
 
     .card-title {
       color: #777;
+
       font-size: 13px;
+
       margin-bottom: 10px;
     }
 
     .card-value {
       font-size: 24px;
+
       font-weight: bold;
     }
 
+    /* SECTION */
+
     .section {
       background: white;
+
       border-radius: 14px;
+
       padding: 20px;
+
       margin-bottom: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+
+      box-shadow:
+      0 3px 12px rgba(0,0,0,0.05);
     }
 
     .section h2 {
       margin-bottom: 15px;
+
       font-size: 19px;
     }
 
+    /* MENU */
+
     .menu {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+      repeat(4, 1fr);
+
       gap: 12px;
     }
 
     .menu button {
       padding: 16px;
+
       border: none;
+
       border-radius: 10px;
+
       background: #eef4ff;
+
       color: #0d6efd;
+
       font-weight: bold;
+
       cursor: pointer;
+
       font-size: 14px;
     }
 
@@ -123,78 +165,134 @@
       background: #dce9ff;
     }
 
+    /* TABLE */
+
     .table-wrapper {
       width: 100%;
+
       overflow-x: auto;
     }
 
     .sponsor-table {
       width: 100%;
+
       border-collapse: collapse;
-      min-width: 650px;
+
+      min-width: 700px;
     }
 
     .sponsor-table th,
     .sponsor-table td {
       padding: 12px 10px;
-      border-bottom: 1px solid #eee;
+
+      border-bottom:
+      1px solid #eee;
+
       text-align: left;
+
       font-size: 14px;
     }
 
     .sponsor-table th {
       background: #f8f9fa;
+
       color: #555;
     }
 
     .paid {
       color: #198754;
+
       font-weight: bold;
     }
 
     .pending {
       color: #dc3545;
+
       font-weight: bold;
     }
 
+    /* STATUS */
+
     .status {
       padding: 12px;
+
       border-radius: 8px;
+
       background: #f8f9fa;
+
       color: #777;
+
       text-align: center;
     }
 
-    .loading,
+    .loading {
+      text-align: center;
+
+      padding: 25px;
+
+      color: #777;
+    }
+
     .empty {
       text-align: center;
-      padding: 25px;
+
+      padding: 30px;
+
       color: #777;
+
+      font-size: 16px;
     }
 
     .error {
       color: #dc3545;
+
       text-align: center;
+
       padding: 20px;
     }
 
+    .debug {
+      margin-top: 15px;
+
+      padding: 12px;
+
+      background: #f1f3f5;
+
+      border-radius: 8px;
+
+      font-size: 12px;
+
+      color: #555;
+
+      word-break: break-word;
+    }
+
+    /* MOBILE */
+
     @media (max-width: 850px) {
+
       .cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+        repeat(2, 1fr);
       }
 
       .menu {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+        repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       .container {
         padding: 12px;
       }
 
       .cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+        repeat(2, 1fr);
+
         gap: 10px;
       }
 
@@ -207,36 +305,55 @@
       }
 
       .menu {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+        1fr 1fr;
       }
 
       .topbar h2 {
         font-size: 16px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- TOP BAR -->
+
   <div class="topbar">
 
-    <h2>SPONSOR PORTAL</h2>
+    <h2>
+      SPONSOR PORTAL
+    </h2>
 
     <button
       class="logout"
       id="logoutBtn">
+
       Logout
+
     </button>
 
   </div>
 
 
+  <!-- MAIN -->
+
   <main class="container">
+
+
+    <!-- WELCOME -->
 
     <div class="welcome">
 
-      <h1>Admin Dashboard</h1>
+      <h1>
+        Admin Dashboard
+      </h1>
 
       <p id="adminEmail">
         Loading...
@@ -245,11 +362,13 @@
     </div>
 
 
-    <!-- SUMMARY -->
+    <!-- SUMMARY CARDS -->
 
     <div class="cards">
 
+
       <div class="card">
+
         <div class="card-title">
           TOTAL SPONSORS
         </div>
@@ -257,12 +376,16 @@
         <div
           class="card-value"
           id="totalSponsors">
+
           0
+
         </div>
+
       </div>
 
 
       <div class="card">
+
         <div class="card-title">
           TOTAL SPONSORSHIP
         </div>
@@ -270,12 +393,16 @@
         <div
           class="card-value"
           id="totalSponsorship">
+
           ₹0
+
         </div>
+
       </div>
 
 
       <div class="card">
+
         <div class="card-title">
           TOTAL RECEIVED
         </div>
@@ -283,12 +410,16 @@
         <div
           class="card-value"
           id="totalReceived">
+
           ₹0
+
         </div>
+
       </div>
 
 
       <div class="card">
+
         <div class="card-title">
           TOTAL PENDING
         </div>
@@ -296,9 +427,13 @@
         <div
           class="card-value"
           id="totalPending">
+
           ₹0
+
         </div>
+
       </div>
+
 
     </div>
 
@@ -307,41 +442,53 @@
 
     <div class="section">
 
-      <h2>Management</h2>
+      <h2>
+        Management
+      </h2>
+
 
       <div class="menu">
+
 
         <button onclick="goSponsors()">
           👥 Sponsors
         </button>
 
+
         <button onclick="comingSoon('Payments')">
           💰 Payments
         </button>
+
 
         <button onclick="comingSoon('Pending Payments')">
           ⏳ Pending
         </button>
 
+
         <button onclick="comingSoon('Messages')">
           💬 Messages
         </button>
+
 
         <button onclick="comingSoon('Reminders')">
           🔔 Reminders
         </button>
 
+
         <button onclick="comingSoon('Reports')">
           📊 Reports
         </button>
+
 
         <button onclick="comingSoon('Notifications')">
           🔔 Notifications
         </button>
 
+
         <button onclick="comingSoon('Settings')">
           ⚙️ Settings
         </button>
+
 
       </div>
 
@@ -354,7 +501,11 @@
       class="section"
       id="sponsorsSection">
 
-      <h2>👥 Sponsors</h2>
+
+      <h2>
+        👥 Sponsors
+      </h2>
+
 
       <div
         id="loading"
@@ -364,18 +515,24 @@
 
       </div>
 
+
       <div
         id="sponsorContainer">
+
       </div>
+
 
     </div>
 
 
-    <!-- STATUS -->
+    <!-- SYSTEM STATUS -->
 
     <div class="section">
 
-      <h2>System Status</h2>
+      <h2>
+        System Status
+      </h2>
+
 
       <div
         class="status"
@@ -385,16 +542,24 @@
 
       </div>
 
+
     </div>
+
 
   </main>
 
 
+
+  <!-- FIREBASE -->
+
   <script type="module">
+
 
     import {
       initializeApp
-    } from
+    }
+
+    from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
@@ -402,7 +567,9 @@
       getAuth,
       onAuthStateChanged,
       signOut
-    } from
+    }
+
+    from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
@@ -410,36 +577,57 @@
       getFirestore,
       collection,
       getDocs
-    } from
+    }
+
+    from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-    /* FIREBASE */
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
+
 
     const firebaseConfig = {
+
 
       apiKey:
         "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
 
+
       authDomain:
         "sponsors-management-port-2300e.firebaseapp.com",
+
 
       projectId:
         "sponsors-management-port-2300e",
 
+
       storageBucket:
         "sponsors-management-port-2300e.firebasestorage.app",
+
 
       messagingSenderId:
         "302644033627",
 
+
       appId:
         "1:302644033627:web:bfb03201ee44bcf616677e"
+
     };
 
 
+
+    /* =========================
+       INITIALIZE FIREBASE
+    ========================= */
+
+
     const app =
-      initializeApp(firebaseConfig);
+      initializeApp(
+        firebaseConfig
+      );
 
 
     const auth =
@@ -450,7 +638,11 @@
       getFirestore(app);
 
 
-    /* MONEY */
+
+    /* =========================
+       MONEY FORMAT
+    ========================= */
+
 
     function money(value) {
 
@@ -458,7 +650,9 @@
         "en-IN",
         {
           style: "currency",
+
           currency: "INR",
+
           maximumFractionDigits: 0
         }
       ).format(
@@ -468,26 +662,60 @@
     }
 
 
-    /* HTML SAFE */
+
+    /* =========================
+       SAFE HTML
+    ========================= */
+
 
     function safe(value) {
 
-      return String(value ?? "-")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      return String(
+        value ?? "-"
+      )
+
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
 
     }
 
 
-    /* LOAD SPONSORS */
+
+    /* =========================
+       LOAD SPONSORS
+    ========================= */
+
 
     async function loadSponsors() {
 
+
       const loading =
-        document.getElementById("loading");
+        document.getElementById(
+          "loading"
+        );
+
 
       const container =
         document.getElementById(
@@ -497,24 +725,48 @@
 
       try {
 
+
         /*
-          EXACT FIRESTORE COLLECTION
+          IMPORTANT
+
+          Collection ID:
 
           Sponsors
         */
 
-        const ref =
-          collection(db, "Sponsors");
+
+        const sponsorCollection =
+          collection(
+            db,
+            "Sponsors"
+          );
 
 
         const snapshot =
-          await getDocs(ref);
+          await getDocs(
+            sponsorCollection
+          );
 
 
         console.log(
-          "Sponsors found:",
+          "Firebase Project:",
+          firebaseConfig.projectId
+        );
+
+
+        console.log(
+          "Collection:",
+          "Sponsors"
+        );
+
+
+        console.log(
+          "Documents found:",
           snapshot.size
         );
+
+
+        /* TOTALS */
 
 
         let count = 0;
@@ -529,11 +781,25 @@
         let rows = "";
 
 
+
+        /* =========================
+           READ DOCUMENTS
+        ========================= */
+
+
         snapshot.forEach(
           (doc) => {
 
+
             const data =
               doc.data();
+
+
+            console.log(
+              "Document:",
+              doc.id,
+              data
+            );
 
 
             const name =
@@ -542,6 +808,10 @@
 
             const phone =
               data.phone || "-";
+
+
+            const email =
+              data.email || "-";
 
 
             const totalAmount =
@@ -559,16 +829,23 @@
             let balanceAmount;
 
 
+
             if (
-              data.balanceAmount !== undefined
+              data.balanceAmount !==
+              undefined
             ) {
+
 
               balanceAmount =
                 Number(
                   data.balanceAmount
                 );
 
-            } else {
+
+            }
+
+            else {
+
 
               balanceAmount =
                 Math.max(
@@ -578,6 +855,7 @@
                 );
 
             }
+
 
 
             count++;
@@ -590,6 +868,7 @@
 
             pending +=
               balanceAmount;
+
 
 
             rows += `
@@ -607,6 +886,10 @@
                 </td>
 
                 <td>
+                  ${safe(email)}
+                </td>
+
+                <td>
                   ${money(totalAmount)}
                 </td>
 
@@ -619,69 +902,148 @@
                     ? "pending"
                     : "paid"
                 }">
+
                   ${money(balanceAmount)}
+
                 </td>
 
               </tr>
 
             `;
 
+
           }
         );
+
+
+
+        /* HIDE LOADING */
 
 
         loading.style.display =
           "none";
 
 
-        if (count === 0) {
+
+        /* =========================
+           NO DATA
+        ========================= */
+
+
+        if (
+          count === 0
+        ) {
+
 
           container.innerHTML = `
 
             <div class="empty">
 
-              No sponsors found.
+              <strong>
+                No sponsors found.
+              </strong>
 
               <br><br>
 
-              Firestore collection:
-              <strong>Sponsors</strong>
+              Firestore Collection:
+              <strong>
+                Sponsors
+              </strong>
+
+              <div class="debug">
+
+                Firebase Project:
+                <strong>
+                  ${safe(
+                    firebaseConfig.projectId
+                  )}
+                </strong>
+
+                <br><br>
+
+                Collection:
+                <strong>
+                  Sponsors
+                </strong>
+
+                <br><br>
+
+                Documents found:
+                <strong>
+                  0
+                </strong>
+
+                <br><br>
+
+                If Firebase Console shows
+                a document inside Sponsors,
+                check that this website is
+                using the same Firebase project.
+
+              </div>
 
             </div>
 
           `;
 
-        } else {
+        }
+
+
+        /* =========================
+           SHOW DATA
+        ========================= */
+
+
+        else {
+
 
           container.innerHTML = `
 
             <div class="table-wrapper">
 
-              <table class="sponsor-table">
+              <table
+                class="sponsor-table">
+
 
                 <thead>
 
                   <tr>
 
-                    <th>Name</th>
+                    <th>
+                      Name
+                    </th>
 
-                    <th>Phone</th>
+                    <th>
+                      Phone
+                    </th>
 
-                    <th>Total</th>
+                    <th>
+                      Email
+                    </th>
 
-                    <th>Paid</th>
+                    <th>
+                      Total
+                    </th>
 
-                    <th>Balance</th>
+                    <th>
+                      Paid
+                    </th>
+
+                    <th>
+                      Balance
+                    </th>
 
                   </tr>
 
                 </thead>
+
 
                 <tbody>
 
                   ${rows}
 
                 </tbody>
+
 
               </table>
 
@@ -692,7 +1054,11 @@
         }
 
 
-        /* SUMMARY */
+
+        /* =========================
+           UPDATE CARDS
+        ========================= */
+
 
         document.getElementById(
           "totalSponsors"
@@ -718,15 +1084,47 @@
           money(pending);
 
 
+
+        /* =========================
+           STATUS
+        ========================= */
+
+
         document.getElementById(
           "systemStatus"
-        ).textContent =
-          "Firebase Authentication + Firestore connected ✓";
+        ).innerHTML = `
+
+          Firebase connected ✓
+
+          <br>
+
+          Project:
+          <strong>
+            ${safe(firebaseConfig.projectId)}
+          </strong>
+
+          <br>
+
+          Collection:
+          <strong>
+            Sponsors
+          </strong>
+
+          <br>
+
+          Documents:
+          <strong>
+            ${count}
+          </strong>
+
+        `;
 
 
       }
 
+
       catch (error) {
+
 
         console.error(
           "Firestore error:",
@@ -742,11 +1140,15 @@
 
           <div class="error">
 
-            Firestore data load failed.
+            <strong>
+              Firestore data load failed.
+            </strong>
 
             <br><br>
 
-            ${safe(error.message)}
+            ${safe(
+              error.message
+            )}
 
           </div>
 
@@ -755,24 +1157,41 @@
 
         document.getElementById(
           "systemStatus"
-        ).textContent =
-          "Firestore error. Check Rules and collection name.";
+        ).innerHTML = `
+
+          Firestore Error
+
+          <br><br>
+
+          ${safe(
+            error.message
+          )}
+
+        `;
 
       }
 
     }
 
 
-    /* LOGIN */
+
+    /* =========================
+       LOGIN CHECK
+    ========================= */
+
 
     onAuthStateChanged(
       auth,
+
       async (user) => {
+
 
         if (!user) {
 
+
           window.location.href =
             "index.html";
+
 
           return;
 
@@ -782,6 +1201,7 @@
         document.getElementById(
           "adminEmail"
         ).textContent =
+
           "Logged in as: " +
           user.email;
 
@@ -789,35 +1209,71 @@
         await loadSponsors();
 
       }
+
     );
 
 
-    /* LOGOUT */
+
+    /* =========================
+       LOGOUT
+    ========================= */
+
 
     document
-      .getElementById("logoutBtn")
+      .getElementById(
+        "logoutBtn"
+      )
+
       .addEventListener(
         "click",
+
         async () => {
 
-          await signOut(auth);
 
-          window.location.href =
-            "index.html";
+          try {
+
+
+            await signOut(
+              auth
+            );
+
+
+            window.location.href =
+              "index.html";
+
+
+          }
+
+          catch (error) {
+
+
+            alert(
+              "Logout failed: " +
+              error.message
+            );
+
+          }
 
         }
+
       );
 
 
-    /* SPONSOR BUTTON */
+
+    /* =========================
+       SPONSORS BUTTON
+    ========================= */
+
 
     window.goSponsors =
       function() {
+
 
         document
           .getElementById(
             "sponsorsSection"
           )
+
           .scrollIntoView({
             behavior: "smooth"
           });
@@ -825,10 +1281,15 @@
       };
 
 
-    /* TEMP BUTTONS */
+
+    /* =========================
+       COMING SOON
+    ========================= */
+
 
     window.comingSoon =
       function(section) {
+
 
         alert(
           section +
@@ -839,6 +1300,7 @@
 
 
   </script>
+
 
 </body>
 </html>
