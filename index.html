@@ -3,80 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sponsor Management Portal</title>
+
+  <title>Sponsor Management</title>
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
       min-height: 100vh;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #f3f6f9;
       padding: 20px;
     }
 
     .login-box {
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
       background: white;
+      border-radius: 20px;
       padding: 35px 28px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.20);
     }
 
     .logo {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 15px;
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 18px;
       border-radius: 50%;
-      background: #0d6efd;
+      background: #0f766e;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
     }
 
     h1 {
       text-align: center;
-      font-size: 23px;
-      margin-bottom: 6px;
+      color: #123;
+      font-size: 25px;
+      margin-bottom: 7px;
     }
 
     .subtitle {
       text-align: center;
       color: #777;
-      margin-bottom: 28px;
       font-size: 14px;
+      margin-bottom: 28px;
     }
 
     label {
       display: block;
       margin-bottom: 7px;
-      font-weight: bold;
+      color: #333;
       font-size: 14px;
+      font-weight: bold;
     }
 
     input {
       width: 100%;
-      padding: 13px;
+      padding: 13px 14px;
       border: 1px solid #ddd;
       border-radius: 10px;
-      margin-bottom: 18px;
-      font-size: 15px;
       outline: none;
+      font-size: 15px;
+      margin-bottom: 18px;
     }
 
     input:focus {
-      border-color: #0d6efd;
+      border-color: #0f766e;
+      box-shadow: 0 0 0 2px rgba(15,118,110,0.10);
     }
 
     button {
@@ -84,7 +88,7 @@
       padding: 14px;
       border: none;
       border-radius: 10px;
-      background: #0d6efd;
+      background: #0f766e;
       color: white;
       font-size: 16px;
       font-weight: bold;
@@ -92,13 +96,14 @@
     }
 
     button:hover {
-      background: #0b5ed7;
+      background: #0b5f59;
     }
 
-    #message {
+    .message {
       margin-top: 15px;
       text-align: center;
       font-size: 14px;
+      color: #d32f2f;
       min-height: 20px;
     }
 
@@ -115,148 +120,68 @@
 
   <div class="login-box">
 
-    <div class="logo">SP</div>
+    <div class="logo">
+      SP
+    </div>
 
     <h1>Sponsor Management</h1>
-    <p class="subtitle">Secure Portal Login</p>
+
+    <p class="subtitle">
+      Login to continue
+    </p>
 
     <form id="loginForm">
 
-      <label for="email">Email</label>
+      <label for="email">Email / Sponsor ID</label>
+
       <input
-        type="email"
+        type="text"
         id="email"
-        placeholder="Enter your email"
+        placeholder="Enter Email or Sponsor ID"
         required
       >
 
       <label for="password">Password</label>
+
       <input
         type="password"
         id="password"
-        placeholder="Enter your password"
+        placeholder="Enter Password"
         required
       >
 
-      <button type="submit" id="loginButton">
-        LOGIN
+      <button type="submit">
+        Login
       </button>
+
+      <div class="message" id="message"></div>
 
     </form>
 
-    <div id="message"></div>
-
     <div class="footer">
-      Sponsor Management Portal
+      Sponsor Management System
     </div>
 
   </div>
 
 
-  <script type="module">
+  <script>
 
-    import { initializeApp } from
-      "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
 
-    import {
-      getAuth,
-      signInWithEmailAndPassword
-    } from
-      "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+      event.preventDefault();
 
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
 
-    // Firebase Configuration
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
-      authDomain: "sponsors-management-port-2300e.firebaseapp.com",
-      projectId: "sponsors-management-port-2300e",
-      storageBucket: "sponsors-management-port-2300e.firebasestorage.app",
-      messagingSenderId: "302644033627",
-      appId: "1:302644033627:web:bfb03201ee44bcf616677e"
-    };
-
-
-    // Initialize Firebase
-
-    const app = initializeApp(firebaseConfig);
-
-    const auth = getAuth(app);
-
-
-    // Login
-
-    const loginForm = document.getElementById("loginForm");
-    const message = document.getElementById("message");
-    const loginButton = document.getElementById("loginButton");
-
-
-    loginForm.addEventListener("submit", async (e) => {
-
-      e.preventDefault();
-
-      const email =
-        document.getElementById("email").value.trim();
-
-      const password =
-        document.getElementById("password").value;
-
-
-      message.textContent = "";
-      loginButton.disabled = true;
-      loginButton.textContent = "Logging in...";
-
-
-      try {
-
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-        message.style.color = "green";
-        message.textContent = "Login successful!";
-
-
-        // Temporary dashboard redirect
-
-        window.location.href = "dashboard.html";
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        message.style.color = "red";
-
-        if (error.code === "auth/invalid-credential") {
-
-          message.textContent =
-            "Email or password is incorrect.";
-
-        } else if (error.code === "auth/invalid-email") {
-
-          message.textContent =
-            "Please enter a valid email.";
-
-        } else if (error.code === "auth/too-many-requests") {
-
-          message.textContent =
-            "Too many attempts. Please try again later.";
-
-        } else {
-
-          message.textContent =
-            "Login failed. Please try again.";
-
-        }
-
+      if (!email || !password) {
+        message.textContent = "Please enter your login details.";
+        return;
       }
 
-
-      loginButton.disabled = false;
-      loginButton.textContent = "LOGIN";
+      message.style.color = "#0f766e";
+      message.textContent = "Login system will be connected in the next step.";
 
     });
 
