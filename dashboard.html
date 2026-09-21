@@ -1,1278 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>Admin Dashboard - Sponsor Portal</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
-    }
-
-    .topbar {
-      min-height: 65px;
-      background: #0d6efd;
-      color: white;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 20px;
-
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .topbar h2 {
-      font-size: 20px;
-    }
-
-    .logout {
-      border: none;
-      background: white;
-      color: #0d6efd;
-
-      padding: 10px 16px;
-
-      border-radius: 8px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .welcome {
-      margin-bottom: 20px;
-    }
-
-    .welcome h1 {
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
-
-    .welcome p {
-      color: #777;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-
-      box-shadow:
-        0 3px 12px rgba(0,0,0,0.06);
-    }
-
-    .card-title {
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .card-value {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .section {
-      background: white;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 20px;
-
-      box-shadow:
-        0 3px 12px rgba(0,0,0,0.05);
-    }
-
-    .section h2 {
-      margin-bottom: 15px;
-      font-size: 19px;
-    }
-
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .menu button {
-      padding: 16px;
-
-      border: none;
-      border-radius: 10px;
-
-      background: #eef4ff;
-      color: #0d6efd;
-
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .menu button:hover {
-      background: #dce9ff;
-    }
-
-    .table-wrapper {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    .sponsor-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 700px;
-    }
-
-    .sponsor-table th,
-    .sponsor-table td {
-      padding: 12px 10px;
-
-      border-bottom: 1px solid #eee;
-
-      text-align: left;
-
-      font-size: 14px;
-    }
-
-    .sponsor-table th {
-      background: #f8f9fa;
-      color: #555;
-    }
-
-    .paid {
-      color: #198754;
-      font-weight: bold;
-    }
-
-    .pending {
-      color: #dc3545;
-      font-weight: bold;
-    }
-
-    .status {
-      padding: 15px;
-
-      border-radius: 8px;
-
-      background: #f8f9fa;
-
-      color: #555;
-
-      text-align: center;
-
-      line-height: 1.7;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 30px;
-      color: #777;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 30px;
-      color: #777;
-    }
-
-    .error {
-      color: #dc3545;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .debug {
-      margin-top: 20px;
-
-      padding: 15px;
-
-      background: #f1f3f5;
-
-      border-radius: 10px;
-
-      font-size: 13px;
-
-      line-height: 1.8;
-
-      word-break: break-word;
-    }
-
-    .success {
-      color: #198754;
-      font-weight: bold;
-    }
-
-    @media (max-width: 850px) {
-
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .menu {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-    }
-
-    @media (max-width: 600px) {
-
-      .container {
-        padding: 12px;
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .card {
-        padding: 15px;
-      }
-
-      .card-value {
-        font-size: 19px;
-      }
-
-      .menu {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .topbar h2 {
-        font-size: 16px;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sponsor Portal</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f6f8;
+  color:#222;
+}
+
+.topbar{
+  height:65px;
+  background:#1473f9;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+}
+
+.topbar h2{
+  font-size:22px;
+}
+
+.logout{
+  background:white;
+  color:#1473f9;
+  border:0;
+  border-radius:10px;
+  padding:12px 20px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 20px;
+}
+
+.section{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:22px;
+  box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.section h2{
+  font-size:25px;
+  margin-bottom:25px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.card-title{
+  color:#777;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.card-value{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.menu button{
+  border:0;
+  background:#edf4ff;
+  color:#1473f9;
+  padding:18px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.status{
+  background:#f5f6f8;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  line-height:2;
+}
+
+.loading{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+.error{
+  color:#d6334c;
+  background:#fff0f2;
+  padding:20px;
+  border-radius:12px;
+  line-height:1.8;
+}
+
+.success{
+  color:#198754;
+  background:#eaf8f0;
+  padding:20px;
+  border-radius:12px;
+  line-height:1.8;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:13px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+}
+
+th{
+  background:#f8f9fa;
+}
+
+@media(max-width:800px){
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:500px){
+
+  .topbar{
+    padding:0 20px;
+  }
+
+  .topbar h2{
+    font-size:18px;
+  }
+
+  .container{
+    padding:15px;
+  }
+
+  .section{
+    padding:20px;
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .card{
+    padding:15px;
+  }
+
+  .card-value{
+    font-size:19px;
+  }
+
+}
+
+</style>
 </head>
-
 
 <body>
 
+<div class="topbar">
 
-  <!-- TOP BAR -->
+  <h2>SPONSOR PORTAL</h2>
 
-  <div class="topbar">
+  <button class="logout" id="logoutBtn">
+    Logout
+  </button>
 
-    <h2>
-      SPONSOR PORTAL
-    </h2>
+</div>
 
-    <button
-      class="logout"
-      id="logoutBtn">
 
-      Logout
+<div class="container">
 
-    </button>
+
+  <!-- DASHBOARD -->
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-title">TOTAL SPONSORS</div>
+      <div class="card-value" id="totalSponsors">
+        0
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">TOTAL SPONSORSHIP</div>
+      <div class="card-value" id="totalAmount">
+        ₹0
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">TOTAL RECEIVED</div>
+      <div class="card-value" id="totalPaid">
+        ₹0
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">TOTAL PENDING</div>
+      <div class="card-value" id="totalPending">
+        ₹0
+      </div>
+    </div>
 
   </div>
 
 
-  <main class="container">
+  <!-- MANAGEMENT -->
 
+  <div class="section">
 
-    <!-- WELCOME -->
+    <h2>Management</h2>
 
-    <div class="welcome">
+    <div class="menu">
 
-      <h1>
-        Admin Dashboard
-      </h1>
+      <button>👥 Sponsors</button>
 
-      <p id="adminEmail">
-        Loading...
-      </p>
+      <button>💰 Payments</button>
 
-    </div>
+      <button>⏳ Pending</button>
 
+      <button>💬 Messages</button>
 
-    <!-- CARDS -->
+      <button>🔔 Reminders</button>
 
-    <div class="cards">
+      <button>📊 Reports</button>
 
+      <button>🔔 Notifications</button>
 
-      <div class="card">
-
-        <div class="card-title">
-          TOTAL SPONSORS
-        </div>
-
-        <div
-          class="card-value"
-          id="totalSponsors">
-
-          0
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-title">
-          TOTAL SPONSORSHIP
-        </div>
-
-        <div
-          class="card-value"
-          id="totalSponsorship">
-
-          ₹0
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-title">
-          TOTAL RECEIVED
-        </div>
-
-        <div
-          class="card-value"
-          id="totalReceived">
-
-          ₹0
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-title">
-          TOTAL PENDING
-        </div>
-
-        <div
-          class="card-value"
-          id="totalPending">
-
-          ₹0
-
-        </div>
-
-      </div>
-
+      <button>⚙️ Settings</button>
 
     </div>
 
-
-    <!-- MANAGEMENT -->
-
-    <div class="section">
-
-      <h2>
-        Management
-      </h2>
-
-      <div class="menu">
+  </div>
 
 
-        <button onclick="goSponsors()">
-          👥 Sponsors
-        </button>
+  <!-- SPONSORS -->
 
+  <div class="section">
 
-        <button onclick="comingSoon('Payments')">
-          💰 Payments
-        </button>
+    <h2>👥 Sponsors</h2>
 
+    <div id="result" class="loading">
 
-        <button onclick="comingSoon('Pending Payments')">
-          ⏳ Pending
-        </button>
-
-
-        <button onclick="comingSoon('Messages')">
-          💬 Messages
-        </button>
-
-
-        <button onclick="comingSoon('Reminders')">
-          🔔 Reminders
-        </button>
-
-
-        <button onclick="comingSoon('Reports')">
-          📊 Reports
-        </button>
-
-
-        <button onclick="comingSoon('Notifications')">
-          🔔 Notifications
-        </button>
-
-
-        <button onclick="comingSoon('Settings')">
-          ⚙️ Settings
-        </button>
-
-
-      </div>
+      Checking Firebase...
 
     </div>
 
-
-    <!-- SPONSORS -->
-
-    <div
-      class="section"
-      id="sponsorsSection">
-
-      <h2>
-        👥 Sponsors
-      </h2>
+  </div>
 
 
-      <div
-        id="loading"
-        class="loading">
+  <!-- SYSTEM -->
 
-        Checking Firebase...
+  <div class="section">
 
-      </div>
+    <h2>System Status</h2>
 
+    <div id="systemStatus" class="status">
 
-      <div
-        id="sponsorContainer">
-
-      </div>
-
+      Connecting...
 
     </div>
 
-
-    <!-- SYSTEM STATUS -->
-
-    <div class="section">
-
-      <h2>
-        System Status
-      </h2>
+  </div>
 
 
-      <div
-        class="status"
-        id="systemStatus">
-
-        Connecting...
-
-      </div>
+</div>
 
 
-    </div>
+<script type="module">
 
 
-  </main>
+/* ================================
+   FIREBASE IMPORTS
+================================ */
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
-  <!-- FIREBASE -->
 
-  <script type="module">
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-    import {
-      initializeApp
+/* ================================
+   FIREBASE CONFIG
+================================ */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
+
+  authDomain:
+  "sponsors-management-port-2300e.firebaseapp.com",
+
+  projectId:
+  "sponsors-management-port-2300e",
+
+  storageBucket:
+  "sponsors-management-port-2300e.firebasestorage.app",
+
+  messagingSenderId:
+  "302644033627",
+
+  appId:
+  "1:302644033627:web:bfb03201ee44bcf616677e"
+
+};
+
+
+/* ================================
+   INITIALIZE
+================================ */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+
+/* ================================
+   IMPORTANT VALUES
+================================ */
+
+const COLLECTION_NAME =
+"Sponsors";
+
+const DOCUMENT_ID =
+"OjBhUgDNyY5ry63Ajxd8";
+
+
+/* ================================
+   MONEY
+================================ */
+
+function money(value){
+
+  return new Intl.NumberFormat(
+    "en-IN",
+    {
+      style:"currency",
+      currency:"INR",
+      maximumFractionDigits:0
     }
-    from
-      "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  ).format(
+    Number(value) || 0
+  );
 
+}
 
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signOut
-    }
-    from
-      "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
+/* ================================
+   LOAD DATA
+================================ */
 
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-      doc,
-      getDoc
-    }
-    from
-      "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+async function loadData(){
 
+  const result =
+  document.getElementById("result");
 
+  const status =
+  document.getElementById("systemStatus");
 
-    /* =========================
-       FIREBASE CONFIG
-    ========================= */
 
+  try{
 
-    const firebaseConfig = {
+    /* -----------------------------
+       TEST 1
+       DIRECT DOCUMENT
+    ----------------------------- */
 
-      apiKey:
-        "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
-
-      authDomain:
-        "sponsors-management-port-2300e.firebaseapp.com",
-
-      projectId:
-        "sponsors-management-port-2300e",
-
-      storageBucket:
-        "sponsors-management-port-2300e.firebasestorage.app",
-
-      messagingSenderId:
-        "302644033627",
-
-      appId:
-        "1:302644033627:web:bfb03201ee44bcf616677e"
-
-    };
-
-
-
-    /* =========================
-       INITIALIZE
-    ========================= */
-
-
-    const app =
-      initializeApp(firebaseConfig);
-
-
-    const auth =
-      getAuth(app);
-
-
-    const db =
-      getFirestore(app);
-
-
-
-    /* =========================
-       MONEY
-    ========================= */
-
-
-    function money(value) {
-
-      return new Intl.NumberFormat(
-        "en-IN",
-        {
-          style: "currency",
-          currency: "INR",
-          maximumFractionDigits: 0
-        }
-      ).format(
-        Number(value) || 0
-      );
-
-    }
-
-
-
-    /* =========================
-       SAFE TEXT
-    ========================= */
-
-
-    function safe(value) {
-
-      return String(value ?? "-")
-
-        .replaceAll(
-          "&",
-          "&amp;"
-        )
-
-        .replaceAll(
-          "<",
-          "&lt;"
-        )
-
-        .replaceAll(
-          ">",
-          "&gt;"
-        )
-
-        .replaceAll(
-          '"',
-          "&quot;"
-        )
-
-        .replaceAll(
-          "'",
-          "&#039;"
-        );
-
-    }
-
-
-
-    /* =========================
-       LOAD SPONSORS
-    ========================= */
-
-
-    async function loadSponsors() {
-
-
-      const loading =
-        document.getElementById(
-          "loading"
-        );
-
-
-      const container =
-        document.getElementById(
-          "sponsorContainer"
-        );
-
-
-      try {
-
-
-        /* ==================================
-           STEP 1
-           TEST EXACT DOCUMENT
-        ================================== */
-
-
-        const exactDocument =
-          doc(
-            db,
-            "Sponsors",
-            "OjBhUgDNyY5ry63Ajxd8"
-          );
-
-
-        const exactSnapshot =
-          await getDoc(
-            exactDocument
-          );
-
-
-        console.log(
-          "EXACT DOCUMENT EXISTS:",
-          exactSnapshot.exists()
-        );
-
-
-        if (
-          exactSnapshot.exists()
-        ) {
-
-          console.log(
-            "EXACT DOCUMENT DATA:",
-            exactSnapshot.data()
-          );
-
-        }
-
-
-
-        /* ==================================
-           STEP 2
-           GET WHOLE COLLECTION
-        ================================== */
-
-
-        const sponsorCollection =
-          collection(
-            db,
-            "Sponsors"
-          );
-
-
-        const snapshot =
-          await getDocs(
-            sponsorCollection
-          );
-
-
-        console.log(
-          "PROJECT:",
-          firebaseConfig.projectId
-        );
-
-
-        console.log(
-          "COLLECTION:",
-          "Sponsors"
-        );
-
-
-        console.log(
-          "DOCUMENT COUNT:",
-          snapshot.size
-        );
-
-
-
-        /* ==================================
-           TOTALS
-        ================================== */
-
-
-        let count = 0;
-
-        let total = 0;
-
-        let received = 0;
-
-        let pending = 0;
-
-        let rows = "";
-
-
-
-        /* ==================================
-           READ ALL DOCUMENTS
-        ================================== */
-
-
-        snapshot.forEach(
-          (docItem) => {
-
-
-            const data =
-              docItem.data();
-
-
-            console.log(
-              "DOCUMENT:",
-              docItem.id,
-              data
-            );
-
-
-            const name =
-              data.name || "-";
-
-
-            const phone =
-              data.phone || "-";
-
-
-            const email =
-              data.email || "-";
-
-
-            const totalAmount =
-              Number(
-                data.totalAmount || 0
-              );
-
-
-            const paidAmount =
-              Number(
-                data.paidAmount || 0
-              );
-
-
-            let balanceAmount;
-
-
-            if (
-              data.balanceAmount !==
-              undefined
-            ) {
-
-              balanceAmount =
-                Number(
-                  data.balanceAmount
-                );
-
-            }
-
-            else {
-
-              balanceAmount =
-                Math.max(
-                  totalAmount -
-                  paidAmount,
-                  0
-                );
-
-            }
-
-
-            count++;
-
-            total +=
-              totalAmount;
-
-            received +=
-              paidAmount;
-
-            pending +=
-              balanceAmount;
-
-
-
-            rows += `
-
-              <tr>
-
-                <td>
-                  <strong>
-                    ${safe(name)}
-                  </strong>
-                </td>
-
-                <td>
-                  ${safe(phone)}
-                </td>
-
-                <td>
-                  ${safe(email)}
-                </td>
-
-                <td>
-                  ${money(totalAmount)}
-                </td>
-
-                <td class="paid">
-                  ${money(paidAmount)}
-                </td>
-
-                <td class="${
-                  balanceAmount > 0
-                    ? "pending"
-                    : "paid"
-                }">
-
-                  ${money(balanceAmount)}
-
-                </td>
-
-              </tr>
-
-            `;
-
-
-          }
-        );
-
-
-
-        /* ==================================
-           HIDE LOADING
-        ================================== */
-
-
-        loading.style.display =
-          "none";
-
-
-
-        /* ==================================
-           SHOW DATA
-        ================================== */
-
-
-        if (
-          count > 0
-        ) {
-
-
-          container.innerHTML = `
-
-            <div class="table-wrapper">
-
-              <table class="sponsor-table">
-
-                <thead>
-
-                  <tr>
-
-                    <th>Name</th>
-
-                    <th>Phone</th>
-
-                    <th>Email</th>
-
-                    <th>Total</th>
-
-                    <th>Paid</th>
-
-                    <th>Balance</th>
-
-                  </tr>
-
-                </thead>
-
-                <tbody>
-
-                  ${rows}
-
-                </tbody>
-
-              </table>
-
-            </div>
-
-          `;
-
-        }
-
-
-        else {
-
-
-          container.innerHTML = `
-
-            <div class="empty">
-
-              <strong>
-                No sponsors found.
-              </strong>
-
-
-              <div class="debug">
-
-                <strong>Firebase Project</strong>
-                <br>
-
-                ${safe(
-                  firebaseConfig.projectId
-                )}
-
-                <br><br>
-
-
-                <strong>Collection</strong>
-                <br>
-
-                Sponsors
-
-                <br><br>
-
-
-                <strong>Documents found</strong>
-                <br>
-
-                0
-
-                <br><br>
-
-
-                <strong>Exact Document Test</strong>
-                <br>
-
-                Document ID:
-                <br>
-
-                OjBhUgDNyY5ry63Ajxd8
-
-                <br><br>
-
-                Result:
-
-                ${
-                  exactSnapshot.exists()
-
-                  ? `<span class="success">
-                       DOCUMENT EXISTS ✓
-                     </span>`
-
-                  : `<span style="color:#dc3545">
-                       DOCUMENT NOT FOUND ✗
-                     </span>`
-                }
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-
-
-
-        /* ==================================
-           UPDATE CARDS
-        ================================== */
-
-
-        document.getElementById(
-          "totalSponsors"
-        ).textContent =
-          count;
-
-
-        document.getElementById(
-          "totalSponsorship"
-        ).textContent =
-          money(total);
-
-
-        document.getElementById(
-          "totalReceived"
-        ).textContent =
-          money(received);
-
-
-        document.getElementById(
-          "totalPending"
-        ).textContent =
-          money(pending);
-
-
-
-        /* ==================================
-           SYSTEM STATUS
-        ================================== */
-
-
-        document.getElementById(
-          "systemStatus"
-        ).innerHTML = `
-
-          <span class="success">
-            Firebase connected ✓
-          </span>
-
-          <br>
-
-          Project:
-          <strong>
-            ${safe(firebaseConfig.projectId)}
-          </strong>
-
-          <br>
-
-          Collection:
-          <strong>
-            Sponsors
-          </strong>
-
-          <br>
-
-          Collection Documents:
-          <strong>
-            ${count}
-          </strong>
-
-          <br>
-
-          Exact Document:
-          <strong>
-            ${
-              exactSnapshot.exists()
-                ? "FOUND ✓"
-                : "NOT FOUND ✗"
-            }
-          </strong>
-
-        `;
-
-
-      }
-
-
-      catch (error) {
-
-
-        console.error(
-          "FIRESTORE ERROR:",
-          error
-        );
-
-
-        loading.style.display =
-          "none";
-
-
-        container.innerHTML = `
-
-          <div class="error">
-
-            <strong>
-              Firestore error
-            </strong>
-
-            <br><br>
-
-            ${safe(
-              error.message
-            )}
-
-          </div>
-
-        `;
-
-
-        document.getElementById(
-          "systemStatus"
-        ).innerHTML = `
-
-          <strong>
-            Firestore Error
-          </strong>
-
-          <br><br>
-
-          ${safe(
-            error.message
-          )}
-
-        `;
-
-      }
-
-    }
-
-
-
-    /* =========================
-       AUTH CHECK
-    ========================= */
-
-
-    onAuthStateChanged(
-      auth,
-
-      async (user) => {
-
-
-        if (!user) {
-
-
-          window.location.href =
-            "index.html";
-
-
-          return;
-
-        }
-
-
-        document.getElementById(
-          "adminEmail"
-        ).textContent =
-
-          "Logged in as: " +
-          user.email;
-
-
-        await loadSponsors();
-
-      }
-
+    const documentReference =
+    doc(
+      db,
+      COLLECTION_NAME,
+      DOCUMENT_ID
     );
 
 
-
-    /* =========================
-       LOGOUT
-    ========================= */
-
-
-    document
-      .getElementById(
-        "logoutBtn"
-      )
-
-      .addEventListener(
-        "click",
-
-        async () => {
+    const documentSnapshot =
+    await getDoc(
+      documentReference
+    );
 
 
-          await signOut(
-            auth
-          );
+    /* -----------------------------
+       TEST 2
+       COLLECTION
+    ----------------------------- */
+
+    const collectionReference =
+    collection(
+      db,
+      COLLECTION_NAME
+    );
 
 
-          window.location.href =
-            "index.html";
+    const collectionSnapshot =
+    await getDocs(
+      collectionReference
+    );
 
-        }
 
+    /* -----------------------------
+       SHOW RESULT
+    ----------------------------- */
+
+    console.log(
+      "Project:",
+      "sponsors-management-port-2300e"
+    );
+
+    console.log(
+      "Collection:",
+      COLLECTION_NAME
+    );
+
+    console.log(
+      "Document:",
+      DOCUMENT_ID
+    );
+
+    console.log(
+      "Direct document exists:",
+      documentSnapshot.exists()
+    );
+
+    console.log(
+      "Collection documents:",
+      collectionSnapshot.size
+    );
+
+
+    /* -----------------------------
+       IF DOCUMENT FOUND
+    ----------------------------- */
+
+    if(documentSnapshot.exists()){
+
+      const data =
+      documentSnapshot.data();
+
+
+      const name =
+      data.name || "-";
+
+      const phone =
+      data.phone || "-";
+
+      const total =
+      Number(
+        data.totalAmount || 0
+      );
+
+      const paid =
+      Number(
+        data.paidAmount || 0
+      );
+
+      const balance =
+      data.balanceAmount !== undefined
+      ?
+      Number(data.balanceAmount)
+      :
+      Math.max(
+        total-paid,
+        0
       );
 
 
-
-    /* =========================
-       SPONSORS BUTTON
-    ========================= */
-
-
-    window.goSponsors =
-      function() {
+      document.getElementById(
+        "totalSponsors"
+      ).textContent =
+      collectionSnapshot.size;
 
 
-        document
-          .getElementById(
-            "sponsorsSection"
-          )
-
-          .scrollIntoView({
-            behavior: "smooth"
-          });
-
-      };
+      document.getElementById(
+        "totalAmount"
+      ).textContent =
+      money(total);
 
 
-
-    /* =========================
-       COMING SOON
-    ========================= */
-
-
-    window.comingSoon =
-      function(section) {
+      document.getElementById(
+        "totalPaid"
+      ).textContent =
+      money(paid);
 
 
-        alert(
-          section +
-          " will be added next."
-        );
-
-      };
+      document.getElementById(
+        "totalPending"
+      ).textContent =
+      money(balance);
 
 
-  </script>
+      result.className =
+      "success";
 
+
+      result.innerHTML = `
+
+        <h3>✅ DOCUMENT FOUND</h3>
+
+        <br>
+
+        <strong>Name:</strong>
+        ${name}
+
+        <br>
+
+        <strong>Phone:</strong>
+        ${phone}
+
+        <br>
+
+        <strong>Total:</strong>
+        ${money(total)}
+
+        <br>
+
+        <strong>Paid:</strong>
+        ${money(paid)}
+
+        <br>
+
+        <strong>Balance:</strong>
+        ${money(balance)}
+
+        <br><br>
+
+        <strong>Document ID:</strong>
+        ${DOCUMENT_ID}
+
+        <br>
+
+        <strong>Collection documents:</strong>
+        ${collectionSnapshot.size}
+
+      `;
+
+
+      status.innerHTML = `
+
+        <strong style="color:#198754">
+        Firebase connected ✓
+        </strong>
+
+        <br>
+
+        Project:
+        <strong>
+        sponsors-management-port-2300e
+        </strong>
+
+        <br>
+
+        Collection:
+        <strong>
+        Sponsors
+        </strong>
+
+        <br>
+
+        Document:
+        <strong>
+        FOUND ✓
+        </strong>
+
+      `;
+
+      return;
+
+    }
+
+
+    /* -----------------------------
+       DOCUMENT NOT FOUND
+    ----------------------------- */
+
+    result.className =
+    "error";
+
+
+    result.innerHTML = `
+
+      <strong>
+      ❌ DIRECT DOCUMENT NOT FOUND
+      </strong>
+
+      <br><br>
+
+      Project:
+      sponsors-management-port-2300e
+
+      <br><br>
+
+      Collection:
+      Sponsors
+
+      <br><br>
+
+      Document ID:
+
+      <br>
+
+      <strong>
+      ${DOCUMENT_ID}
+      </strong>
+
+      <br><br>
+
+      Collection documents:
+
+      <strong>
+      ${collectionSnapshot.size}
+      </strong>
+
+      <br><br>
+
+      This means Firebase is connected,
+      but this exact path is not being
+      returned by Firestore.
+
+    `;
+
+
+    status.innerHTML = `
+
+      Firebase connected ✓
+
+      <br>
+
+      Project:
+      <strong>
+      sponsors-management-port-2300e
+      </strong>
+
+      <br>
+
+      Collection:
+      <strong>
+      Sponsors
+      </strong>
+
+      <br>
+
+      Collection documents:
+      <strong>
+      ${collectionSnapshot.size}
+      </strong>
+
+      <br>
+
+      Direct document:
+      <strong>
+      NOT FOUND
+      </strong>
+
+    `;
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      "FIREBASE ERROR:",
+      error
+    );
+
+
+    result.className =
+    "error";
+
+
+    result.innerHTML = `
+
+      <strong>
+      ❌ FIREBASE ERROR
+      </strong>
+
+      <br><br>
+
+      Error code:
+
+      <strong>
+      ${error.code || "unknown"}
+      </strong>
+
+      <br><br>
+
+      Error message:
+
+      <strong>
+      ${error.message}
+      </strong>
+
+    `;
+
+
+    status.innerHTML = `
+
+      <strong style="color:#dc3545">
+      Firebase Error ✕
+      </strong>
+
+      <br>
+
+      ${error.code || ""}
+
+    `;
+
+  }
+
+}
+
+
+/* ================================
+   LOGIN CHECK
+================================ */
+
+onAuthStateChanged(
+  auth,
+  async(user)=>{
+
+    if(!user){
+
+      window.location.href =
+      "index.html";
+
+      return;
+
+    }
+
+
+    console.log(
+      "Logged in:",
+      user.email
+    );
+
+
+    await loadData();
+
+  }
+);
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+  "click",
+  async()=>{
+
+    await signOut(auth);
+
+    window.location.href =
+    "index.html";
+
+  }
+);
+
+
+</script>
 
 </body>
-
 </html>
