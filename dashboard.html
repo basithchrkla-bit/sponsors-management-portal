@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Admin Dashboard - Sponsor Portal</title>
 
@@ -73,73 +77,51 @@
       color: #777;
     }
 
-    /* CARDS */
-
     .cards {
       display: grid;
-
-      grid-template-columns:
-      repeat(4, 1fr);
-
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
-
       margin-bottom: 25px;
     }
 
     .card {
       background: white;
-
       padding: 20px;
-
       border-radius: 14px;
 
       box-shadow:
-      0 3px 12px rgba(0,0,0,0.06);
+        0 3px 12px rgba(0,0,0,0.06);
     }
 
     .card-title {
       color: #777;
-
       font-size: 13px;
-
       margin-bottom: 10px;
     }
 
     .card-value {
       font-size: 24px;
-
       font-weight: bold;
     }
 
-    /* SECTION */
-
     .section {
       background: white;
-
       border-radius: 14px;
-
       padding: 20px;
-
       margin-bottom: 20px;
 
       box-shadow:
-      0 3px 12px rgba(0,0,0,0.05);
+        0 3px 12px rgba(0,0,0,0.05);
     }
 
     .section h2 {
       margin-bottom: 15px;
-
       font-size: 19px;
     }
 
-    /* MENU */
-
     .menu {
       display: grid;
-
-      grid-template-columns:
-      repeat(4, 1fr);
-
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
 
@@ -147,17 +129,13 @@
       padding: 16px;
 
       border: none;
-
       border-radius: 10px;
 
       background: #eef4ff;
-
       color: #0d6efd;
 
       font-weight: bold;
-
       cursor: pointer;
-
       font-size: 14px;
     }
 
@@ -165,19 +143,14 @@
       background: #dce9ff;
     }
 
-    /* TABLE */
-
     .table-wrapper {
       width: 100%;
-
       overflow-x: auto;
     }
 
     .sponsor-table {
       width: 100%;
-
       border-collapse: collapse;
-
       min-width: 700px;
     }
 
@@ -185,8 +158,7 @@
     .sponsor-table td {
       padding: 12px 10px;
 
-      border-bottom:
-      1px solid #eee;
+      border-bottom: 1px solid #eee;
 
       text-align: left;
 
@@ -195,90 +167,80 @@
 
     .sponsor-table th {
       background: #f8f9fa;
-
       color: #555;
     }
 
     .paid {
       color: #198754;
-
       font-weight: bold;
     }
 
     .pending {
       color: #dc3545;
-
       font-weight: bold;
     }
 
-    /* STATUS */
-
     .status {
-      padding: 12px;
+      padding: 15px;
 
       border-radius: 8px;
 
       background: #f8f9fa;
 
-      color: #777;
+      color: #555;
 
       text-align: center;
+
+      line-height: 1.7;
     }
 
     .loading {
       text-align: center;
-
-      padding: 25px;
-
+      padding: 30px;
       color: #777;
     }
 
     .empty {
       text-align: center;
-
       padding: 30px;
-
       color: #777;
-
-      font-size: 16px;
     }
 
     .error {
       color: #dc3545;
-
       text-align: center;
-
       padding: 20px;
     }
 
     .debug {
-      margin-top: 15px;
+      margin-top: 20px;
 
-      padding: 12px;
+      padding: 15px;
 
       background: #f1f3f5;
 
-      border-radius: 8px;
+      border-radius: 10px;
 
-      font-size: 12px;
+      font-size: 13px;
 
-      color: #555;
+      line-height: 1.8;
 
       word-break: break-word;
     }
 
-    /* MOBILE */
+    .success {
+      color: #198754;
+      font-weight: bold;
+    }
 
     @media (max-width: 850px) {
 
       .cards {
-        grid-template-columns:
-        repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .menu {
-        grid-template-columns:
-        repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
     }
@@ -290,9 +252,7 @@
       }
 
       .cards {
-        grid-template-columns:
-        repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
 
@@ -305,8 +265,7 @@
       }
 
       .menu {
-        grid-template-columns:
-        1fr 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       .topbar h2 {
@@ -342,8 +301,6 @@
   </div>
 
 
-  <!-- MAIN -->
-
   <main class="container">
 
 
@@ -362,7 +319,7 @@
     </div>
 
 
-    <!-- SUMMARY CARDS -->
+    <!-- CARDS -->
 
     <div class="cards">
 
@@ -446,7 +403,6 @@
         Management
       </h2>
 
-
       <div class="menu">
 
 
@@ -501,7 +457,6 @@
       class="section"
       id="sponsorsSection">
 
-
       <h2>
         👥 Sponsors
       </h2>
@@ -511,7 +466,7 @@
         id="loading"
         class="loading">
 
-        Loading sponsors...
+        Checking Firebase...
 
       </div>
 
@@ -538,7 +493,7 @@
         class="status"
         id="systemStatus">
 
-        Connecting to Firebase...
+        Connecting...
 
       </div>
 
@@ -558,7 +513,6 @@
     import {
       initializeApp
     }
-
     from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
@@ -568,7 +522,6 @@
       onAuthStateChanged,
       signOut
     }
-
     from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
@@ -576,9 +529,10 @@
     import {
       getFirestore,
       collection,
-      getDocs
+      getDocs,
+      doc,
+      getDoc
     }
-
     from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
@@ -591,26 +545,20 @@
 
     const firebaseConfig = {
 
-
       apiKey:
         "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
-
 
       authDomain:
         "sponsors-management-port-2300e.firebaseapp.com",
 
-
       projectId:
         "sponsors-management-port-2300e",
-
 
       storageBucket:
         "sponsors-management-port-2300e.firebasestorage.app",
 
-
       messagingSenderId:
         "302644033627",
-
 
       appId:
         "1:302644033627:web:bfb03201ee44bcf616677e"
@@ -620,14 +568,12 @@
 
 
     /* =========================
-       INITIALIZE FIREBASE
+       INITIALIZE
     ========================= */
 
 
     const app =
-      initializeApp(
-        firebaseConfig
-      );
+      initializeApp(firebaseConfig);
 
 
     const auth =
@@ -640,7 +586,7 @@
 
 
     /* =========================
-       MONEY FORMAT
+       MONEY
     ========================= */
 
 
@@ -650,9 +596,7 @@
         "en-IN",
         {
           style: "currency",
-
           currency: "INR",
-
           maximumFractionDigits: 0
         }
       ).format(
@@ -664,40 +608,38 @@
 
 
     /* =========================
-       SAFE HTML
+       SAFE TEXT
     ========================= */
 
 
     function safe(value) {
 
-      return String(
-        value ?? "-"
-      )
+      return String(value ?? "-")
 
-      .replaceAll(
-        "&",
-        "&amp;"
-      )
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
 
-      .replaceAll(
-        "<",
-        "&lt;"
-      )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
 
-      .replaceAll(
-        ">",
-        "&gt;"
-      )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
 
-      .replaceAll(
-        '"',
-        "&quot;"
-      )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
 
-      .replaceAll(
-        "'",
-        "&#039;"
-      );
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
 
     }
 
@@ -726,13 +668,49 @@
       try {
 
 
-        /*
-          IMPORTANT
+        /* ==================================
+           STEP 1
+           TEST EXACT DOCUMENT
+        ================================== */
 
-          Collection ID:
 
-          Sponsors
-        */
+        const exactDocument =
+          doc(
+            db,
+            "Sponsors",
+            "OjBhUgDNyY5ry63Ajxd8"
+          );
+
+
+        const exactSnapshot =
+          await getDoc(
+            exactDocument
+          );
+
+
+        console.log(
+          "EXACT DOCUMENT EXISTS:",
+          exactSnapshot.exists()
+        );
+
+
+        if (
+          exactSnapshot.exists()
+        ) {
+
+          console.log(
+            "EXACT DOCUMENT DATA:",
+            exactSnapshot.data()
+          );
+
+        }
+
+
+
+        /* ==================================
+           STEP 2
+           GET WHOLE COLLECTION
+        ================================== */
 
 
         const sponsorCollection =
@@ -749,24 +727,27 @@
 
 
         console.log(
-          "Firebase Project:",
+          "PROJECT:",
           firebaseConfig.projectId
         );
 
 
         console.log(
-          "Collection:",
+          "COLLECTION:",
           "Sponsors"
         );
 
 
         console.log(
-          "Documents found:",
+          "DOCUMENT COUNT:",
           snapshot.size
         );
 
 
-        /* TOTALS */
+
+        /* ==================================
+           TOTALS
+        ================================== */
 
 
         let count = 0;
@@ -777,27 +758,26 @@
 
         let pending = 0;
 
-
         let rows = "";
 
 
 
-        /* =========================
-           READ DOCUMENTS
-        ========================= */
+        /* ==================================
+           READ ALL DOCUMENTS
+        ================================== */
 
 
         snapshot.forEach(
-          (doc) => {
+          (docItem) => {
 
 
             const data =
-              doc.data();
+              docItem.data();
 
 
             console.log(
-              "Document:",
-              doc.id,
+              "DOCUMENT:",
+              docItem.id,
               data
             );
 
@@ -829,23 +809,19 @@
             let balanceAmount;
 
 
-
             if (
               data.balanceAmount !==
               undefined
             ) {
-
 
               balanceAmount =
                 Number(
                   data.balanceAmount
                 );
 
-
             }
 
             else {
-
 
               balanceAmount =
                 Math.max(
@@ -855,7 +831,6 @@
                 );
 
             }
-
 
 
             count++;
@@ -917,7 +892,9 @@
 
 
 
-        /* HIDE LOADING */
+        /* ==================================
+           HIDE LOADING
+        ================================== */
 
 
         loading.style.display =
@@ -925,125 +902,47 @@
 
 
 
-        /* =========================
-           NO DATA
-        ========================= */
+        /* ==================================
+           SHOW DATA
+        ================================== */
 
 
         if (
-          count === 0
+          count > 0
         ) {
-
-
-          container.innerHTML = `
-
-            <div class="empty">
-
-              <strong>
-                No sponsors found.
-              </strong>
-
-              <br><br>
-
-              Firestore Collection:
-              <strong>
-                Sponsors
-              </strong>
-
-              <div class="debug">
-
-                Firebase Project:
-                <strong>
-                  ${safe(
-                    firebaseConfig.projectId
-                  )}
-                </strong>
-
-                <br><br>
-
-                Collection:
-                <strong>
-                  Sponsors
-                </strong>
-
-                <br><br>
-
-                Documents found:
-                <strong>
-                  0
-                </strong>
-
-                <br><br>
-
-                If Firebase Console shows
-                a document inside Sponsors,
-                check that this website is
-                using the same Firebase project.
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-
-
-        /* =========================
-           SHOW DATA
-        ========================= */
-
-
-        else {
 
 
           container.innerHTML = `
 
             <div class="table-wrapper">
 
-              <table
-                class="sponsor-table">
-
+              <table class="sponsor-table">
 
                 <thead>
 
                   <tr>
 
-                    <th>
-                      Name
-                    </th>
+                    <th>Name</th>
 
-                    <th>
-                      Phone
-                    </th>
+                    <th>Phone</th>
 
-                    <th>
-                      Email
-                    </th>
+                    <th>Email</th>
 
-                    <th>
-                      Total
-                    </th>
+                    <th>Total</th>
 
-                    <th>
-                      Paid
-                    </th>
+                    <th>Paid</th>
 
-                    <th>
-                      Balance
-                    </th>
+                    <th>Balance</th>
 
                   </tr>
 
                 </thead>
-
 
                 <tbody>
 
                   ${rows}
 
                 </tbody>
-
 
               </table>
 
@@ -1054,10 +953,83 @@
         }
 
 
+        else {
 
-        /* =========================
+
+          container.innerHTML = `
+
+            <div class="empty">
+
+              <strong>
+                No sponsors found.
+              </strong>
+
+
+              <div class="debug">
+
+                <strong>Firebase Project</strong>
+                <br>
+
+                ${safe(
+                  firebaseConfig.projectId
+                )}
+
+                <br><br>
+
+
+                <strong>Collection</strong>
+                <br>
+
+                Sponsors
+
+                <br><br>
+
+
+                <strong>Documents found</strong>
+                <br>
+
+                0
+
+                <br><br>
+
+
+                <strong>Exact Document Test</strong>
+                <br>
+
+                Document ID:
+                <br>
+
+                OjBhUgDNyY5ry63Ajxd8
+
+                <br><br>
+
+                Result:
+
+                ${
+                  exactSnapshot.exists()
+
+                  ? `<span class="success">
+                       DOCUMENT EXISTS ✓
+                     </span>`
+
+                  : `<span style="color:#dc3545">
+                       DOCUMENT NOT FOUND ✗
+                     </span>`
+                }
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+
+
+
+        /* ==================================
            UPDATE CARDS
-        ========================= */
+        ================================== */
 
 
         document.getElementById(
@@ -1085,16 +1057,18 @@
 
 
 
-        /* =========================
-           STATUS
-        ========================= */
+        /* ==================================
+           SYSTEM STATUS
+        ================================== */
 
 
         document.getElementById(
           "systemStatus"
         ).innerHTML = `
 
-          Firebase connected ✓
+          <span class="success">
+            Firebase connected ✓
+          </span>
 
           <br>
 
@@ -1112,9 +1086,20 @@
 
           <br>
 
-          Documents:
+          Collection Documents:
           <strong>
             ${count}
+          </strong>
+
+          <br>
+
+          Exact Document:
+          <strong>
+            ${
+              exactSnapshot.exists()
+                ? "FOUND ✓"
+                : "NOT FOUND ✗"
+            }
           </strong>
 
         `;
@@ -1127,7 +1112,7 @@
 
 
         console.error(
-          "Firestore error:",
+          "FIRESTORE ERROR:",
           error
         );
 
@@ -1141,7 +1126,7 @@
           <div class="error">
 
             <strong>
-              Firestore data load failed.
+              Firestore error
             </strong>
 
             <br><br>
@@ -1159,7 +1144,9 @@
           "systemStatus"
         ).innerHTML = `
 
-          Firestore Error
+          <strong>
+            Firestore Error
+          </strong>
 
           <br><br>
 
@@ -1176,7 +1163,7 @@
 
 
     /* =========================
-       LOGIN CHECK
+       AUTH CHECK
     ========================= */
 
 
@@ -1230,29 +1217,13 @@
         async () => {
 
 
-          try {
+          await signOut(
+            auth
+          );
 
 
-            await signOut(
-              auth
-            );
-
-
-            window.location.href =
-              "index.html";
-
-
-          }
-
-          catch (error) {
-
-
-            alert(
-              "Logout failed: " +
-              error.message
-            );
-
-          }
+          window.location.href =
+            "index.html";
 
         }
 
@@ -1303,4 +1274,5 @@
 
 
 </body>
+
 </html>
