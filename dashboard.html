@@ -1,1239 +1,1769 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Dashboard - Sponsor Management</title>
+  <meta charset="UTF-8">
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-body{
-  background:#f4f7f9;
-  color:#1f2937;
-}
+  <title>Admin Dashboard - Sponsor Management</title>
 
-.header{
-  background:#0f766e;
-  color:white;
-  padding:18px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
 
-.header h1{
-  font-size:21px;
-}
+  <style>
 
-.header p{
-  font-size:12px;
-  opacity:.85;
-  margin-top:4px;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-.logout-btn{
-  background:white;
-  color:#0f766e;
-  border:none;
-  padding:9px 14px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
 
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:22px;
-}
+    body {
+      background: #f4f7f9;
+      color: #1f2937;
+    }
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:25px;
-}
 
-.card{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
+    /* HEADER */
 
-.card-title{
-  color:#6b7280;
-  font-size:13px;
-  margin-bottom:10px;
-}
+    .header {
+      background: #0f766e;
+      color: white;
+      padding: 18px 22px;
 
-.card-value{
-  font-size:25px;
-  font-weight:bold;
-  color:#111827;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.section{
-  background:white;
-  border-radius:14px;
-  padding:22px;
-  margin-bottom:22px;
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
-}
 
-.section-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
+    .header h1 {
+      font-size: 21px;
+    }
 
-.section-header h2{
-  font-size:19px;
-}
 
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
+    .header p {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
 
-.form-group label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
 
-.form-group input{
-  width:100%;
-  padding:11px;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  outline:none;
-}
+    .logout-btn {
+      background: white;
+      color: #0f766e;
 
-.form-group input:focus{
-  border-color:#0f766e;
-}
+      border: none;
 
-.save-btn{
-  margin-top:18px;
-  background:#0f766e;
-  color:white;
-  border:none;
-  padding:12px 20px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
-}
+      padding: 9px 14px;
 
-.save-btn:disabled{
-  opacity:.6;
-  cursor:not-allowed;
-}
+      border-radius: 8px;
 
-.table-wrapper{
-  overflow-x:auto;
-}
+      font-weight: bold;
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:850px;
-}
+      cursor: pointer;
+    }
 
-th,td{
-  padding:12px;
-  border-bottom:1px solid #e5e7eb;
-  text-align:left;
-  font-size:13px;
-}
 
-th{
-  background:#f8fafc;
-  color:#374151;
-}
+    /* MAIN */
 
-.sponsor-id{
-  color:#0f766e;
-  font-weight:bold;
-}
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px;
+    }
 
-.status-paid{
-  color:#15803d;
-  font-weight:bold;
-}
 
-.status-pending{
-  color:#dc2626;
-  font-weight:bold;
-}
+    /* CARDS */
 
-.delete-btn{
-  background:#fee2e2;
-  color:#dc2626;
-  border:none;
-  padding:7px 10px;
-  border-radius:6px;
-  cursor:pointer;
-}
+    .cards {
+      display: grid;
 
-.empty{
-  text-align:center;
-  padding:30px;
-  color:#9ca3af;
-}
+      grid-template-columns:
+        repeat(4, 1fr);
 
-.message{
-  margin-top:15px;
-  font-size:14px;
-}
+      gap: 16px;
 
-.info-box{
-  background:#ecfdf5;
-  border:1px solid #a7f3d0;
-  color:#065f46;
-  padding:12px;
-  border-radius:8px;
-  margin-bottom:18px;
-  font-size:13px;
-}
+      margin-bottom: 25px;
+    }
 
-@media(max-width:800px){
 
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .card {
+      background: white;
 
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-}
+      padding: 20px;
 
-@media(max-width:500px){
+      border-radius: 14px;
 
-  .container{
-    padding:14px;
-  }
+      box-shadow:
+        0 3px 12px rgba(0,0,0,0.06);
+    }
 
-  .cards{
-    grid-template-columns:1fr;
-  }
 
-  .header h1{
-    font-size:17px;
-  }
+    .card-title {
+      color: #6b7280;
 
-  .header{
-    padding:15px;
-  }
-}
-</style>
+      font-size: 13px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .card-value {
+      font-size: 25px;
+
+      font-weight: bold;
+
+      color: #111827;
+    }
+
+
+    /* SECTION */
+
+    .section {
+      background: white;
+
+      border-radius: 14px;
+
+      padding: 22px;
+
+      margin-bottom: 22px;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,0.06);
+    }
+
+
+    .section-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 18px;
+    }
+
+
+    .section-header h2 {
+      font-size: 19px;
+    }
+
+
+    /* INFO */
+
+    .info-box {
+      background: #ecfdf5;
+
+      border: 1px solid #a7f3d0;
+
+      color: #065f46;
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      margin-bottom: 18px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    /* FORM */
+
+    .form-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 15px;
+    }
+
+
+    .form-group label {
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+      margin-bottom: 6px;
+    }
+
+
+    .form-group input {
+      width: 100%;
+
+      padding: 11px;
+
+      border:
+        1px solid #d1d5db;
+
+      border-radius: 8px;
+
+      outline: none;
+
+      font-size: 15px;
+    }
+
+
+    .form-group input:focus {
+      border-color: #0f766e;
+    }
+
+
+    /* BUTTON */
+
+    .save-btn {
+      margin-top: 18px;
+
+      background: #0f766e;
+
+      color: white;
+
+      border: none;
+
+      padding: 12px 20px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      font-size: 14px;
+    }
+
+
+    .save-btn:hover {
+      background: #0b5f59;
+    }
+
+
+    .save-btn:disabled {
+      opacity: 0.6;
+
+      cursor: not-allowed;
+    }
+
+
+    /* MESSAGE */
+
+    .message {
+      margin-top: 15px;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+
+    /* TABLE */
+
+    .table-wrapper {
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 900px;
+    }
+
+
+    th,
+    td {
+      padding: 12px;
+
+      border-bottom:
+        1px solid #e5e7eb;
+
+      text-align: left;
+
+      font-size: 13px;
+    }
+
+
+    th {
+      background: #f8fafc;
+
+      color: #374151;
+
+      white-space: nowrap;
+    }
+
+
+    td {
+      white-space: nowrap;
+    }
+
+
+    .sponsor-id {
+      color: #0f766e;
+
+      font-weight: bold;
+    }
+
+
+    .status-paid {
+      color: #15803d;
+
+      font-weight: bold;
+    }
+
+
+    .status-pending {
+      color: #dc2626;
+
+      font-weight: bold;
+    }
+
+
+    /* DELETE */
+
+    .delete-btn {
+      background: #fee2e2;
+
+      color: #dc2626;
+
+      border: none;
+
+      padding: 7px 10px;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-size: 12px;
+    }
+
+
+    .delete-btn:hover {
+      background: #fecaca;
+    }
+
+
+    /* EMPTY */
+
+    .empty {
+      text-align: center;
+
+      padding: 30px;
+
+      color: #9ca3af;
+    }
+
+
+    /* LOADING */
+
+    .loading {
+      text-align: center;
+
+      padding: 30px;
+
+      color: #6b7280;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .cards {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      .container {
+        padding: 14px;
+      }
+
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+
+      .header {
+        padding: 15px;
+      }
+
+
+      .header h1 {
+        font-size: 17px;
+      }
+
+
+      .section {
+        padding: 18px;
+      }
+
+
+      .card-value {
+        font-size: 22px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
 
-<div class="header">
+  <!-- HEADER -->
 
-  <div>
-    <h1>Admin Dashboard</h1>
-    <p>Sponsor Management System</p>
-  </div>
+  <div class="header">
 
-  <button class="logout-btn" id="logoutBtn">
-    Logout
-  </button>
+    <div>
 
-</div>
+      <h1>
+        Admin Dashboard
+      </h1>
 
-
-<main class="container">
-
-<!-- DASHBOARD CARDS -->
-
-<div class="cards">
-
-  <div class="card">
-    <div class="card-title">
-      Total Sponsors
-    </div>
-
-    <div class="card-value" id="totalSponsors">
-      0
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="card-title">
-      Total Sponsorship
-    </div>
-
-    <div class="card-value" id="totalAmount">
-      ₹0
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="card-title">
-      Paid Amount
-    </div>
-
-    <div class="card-value" id="paidAmount">
-      ₹0
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="card-title">
-      Pending Amount
-    </div>
-
-    <div class="card-value" id="pendingAmount">
-      ₹0
-    </div>
-  </div>
-
-</div>
-
-
-<!-- ADD SPONSOR -->
-
-<div class="section">
-
-  <div class="section-header">
-    <h2>Add Sponsor</h2>
-  </div>
-
-
-  <div class="info-box">
-    Sponsor ID will be generated automatically
-    (Example: SP-1001, SP-1002...)
-  </div>
-
-
-  <form id="sponsorForm">
-
-    <div class="form-grid">
-
-      <div class="form-group">
-
-        <label>Sponsor Name</label>
-
-        <input
-          type="text"
-          id="name"
-          placeholder="Enter sponsor name"
-          required
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Phone</label>
-
-        <input
-          type="tel"
-          id="phone"
-          placeholder="Enter phone number"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Email</label>
-
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter email"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Total Sponsorship Amount</label>
-
-        <input
-          type="number"
-          id="totalAmountInput"
-          placeholder="Enter amount"
-          min="0"
-          required
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>Initial Paid Amount</label>
-
-        <input
-          type="number"
-          id="paidAmountInput"
-          placeholder="Enter paid amount"
-          min="0"
-          value="0"
-          required
-        >
-
-      </div>
+      <p>
+        Sponsor Management System
+      </p>
 
     </div>
 
 
     <button
-      type="submit"
-      class="save-btn"
-      id="saveBtn"
+      class="logout-btn"
+      id="logoutBtn"
     >
-      Add Sponsor
+      Logout
     </button>
 
-
-    <div
-      class="message"
-      id="message"
-    ></div>
-
-  </form>
-
-</div>
-
-
-<!-- SPONSOR LIST -->
-
-<div class="section">
-
-  <div class="section-header">
-
-    <h2>Sponsors</h2>
-
   </div>
 
 
-  <div class="table-wrapper">
+  <main class="container">
 
-    <table>
 
-      <thead>
+    <!-- DASHBOARD CARDS -->
 
-        <tr>
+    <div class="cards">
 
-          <th>
-            Sponsor ID
-          </th>
 
-          <th>
-            Sponsor
-          </th>
+      <div class="card">
 
-          <th>
-            Phone
-          </th>
+        <div class="card-title">
+          Total Sponsors
+        </div>
 
-          <th>
-            Total
-          </th>
-
-          <th>
-            Paid
-          </th>
-
-          <th>
-            Pending
-          </th>
-
-          <th>
-            Status
-          </th>
-
-          <th>
-            Action
-          </th>
-
-        </tr>
-
-      </thead>
-
-
-      <tbody id="sponsorTable">
-
-        <tr>
-
-          <td
-            colspan="8"
-            class="empty"
-          >
-            No sponsors yet
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
-
-</main>
-
-
-<script type="module">
-
-import {
-  initializeApp
-}
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-
-import {
-  getAuth,
-  onAuthStateChanged,
-  signOut
-}
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-  getDoc,
-  serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-
-
-/* FIREBASE CONFIG */
-
-const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
-
-  authDomain:
-    "sponsors-management-port-2300e.firebaseapp.com",
-
-  projectId:
-    "sponsors-management-port-2300e",
-
-  storageBucket:
-    "sponsors-management-port-2300e.firebasestorage.app",
-
-  messagingSenderId:
-    "302644033627",
-
-  appId:
-    "1:302644033627:web:bfb03201ee44bcf616677e"
-
-};
-
-
-/* INITIALIZE */
-
-const app =
-  initializeApp(firebaseConfig);
-
-const auth =
-  getAuth(app);
-
-const db =
-  getFirestore(app);
-
-
-/* ADMIN AUTH CHECK */
-
-onAuthStateChanged(auth, async (user) => {
-
-  if (!user) {
-
-    window.location.href =
-      "index.html";
-
-    return;
-
-  }
-
-
-  try {
-
-    const userRef =
-      doc(
-        db,
-        "users",
-        user.uid
-      );
-
-
-    const userSnap =
-      await getDoc(userRef);
-
-
-    if (
-      !userSnap.exists() ||
-      userSnap.data().role !== "admin"
-    ) {
-
-      await signOut(auth);
-
-      alert(
-        "Admin access required."
-      );
-
-      window.location.href =
-        "index.html";
-
-      return;
-
-    }
-
-
-    console.log(
-      "Admin verified:",
-      user.uid
-    );
-
-
-    await loadSponsors();
-
-  } catch (error) {
-
-    console.error(error);
-
-    alert(
-      "Unable to verify admin account."
-    );
-
-  }
-
-});
-
-
-/* GENERATE SPONSOR ID */
-
-async function generateSponsorId() {
-
-  const snapshot =
-    await getDocs(
-      collection(db, "Sponsors")
-    );
-
-
-  let highestNumber = 1000;
-
-
-  snapshot.forEach((document) => {
-
-    const data =
-      document.data();
-
-
-    const sponsorId =
-      data.sponsorId;
-
-
-    if (!sponsorId) {
-      return;
-    }
-
-
-    const number =
-      parseInt(
-        String(sponsorId)
-          .replace("SP-", ""),
-        10
-      );
-
-
-    if (
-      !isNaN(number) &&
-      number > highestNumber
-    ) {
-
-      highestNumber =
-        number;
-
-    }
-
-  });
-
-
-  return "SP-" + (highestNumber + 1);
-
-}
-
-
-/* LOAD SPONSORS */
-
-async function loadSponsors() {
-
-  try {
-
-    const querySnapshot =
-      await getDocs(
-        collection(db, "Sponsors")
-      );
-
-
-    const table =
-      document.getElementById(
-        "sponsorTable"
-      );
-
-
-    table.innerHTML = "";
-
-
-    let totalSponsors = 0;
-
-    let totalAmount = 0;
-
-    let paidAmount = 0;
-
-    let pendingAmount = 0;
-
-
-    if (querySnapshot.empty) {
-
-      table.innerHTML = `
-
-        <tr>
-
-          <td
-            colspan="8"
-            class="empty"
-          >
-            No sponsors yet
-          </td>
-
-        </tr>
-
-      `;
-
-    }
-
-
-    querySnapshot.forEach((document) => {
-
-      const data =
-        document.data();
-
-
-      const total =
-        Number(
-          data.totalAmount || 0
-        );
-
-
-      const paid =
-        Number(
-          data.paidAmount || 0
-        );
-
-
-      const balance =
-        Math.max(
-          total - paid,
+        <div
+          class="card-value"
+          id="totalSponsors"
+        >
           0
-        );
+        </div>
+
+      </div>
 
 
-      totalSponsors++;
+      <div class="card">
 
-      totalAmount += total;
+        <div class="card-title">
+          Total Sponsorship
+        </div>
 
-      paidAmount += paid;
+        <div
+          class="card-value"
+          id="totalAmount"
+        >
+          ₹0
+        </div>
 
-      pendingAmount += balance;
-
-
-      const status =
-        balance > 0
-          ? "Pending"
-          : "Paid";
-
-
-      const statusClass =
-        balance > 0
-          ? "status-pending"
-          : "status-paid";
+      </div>
 
 
-      const row =
-        document.createElement("tr");
+      <div class="card">
+
+        <div class="card-title">
+          Paid Amount
+        </div>
+
+        <div
+          class="card-value"
+          id="paidAmount"
+        >
+          ₹0
+        </div>
+
+      </div>
 
 
-      row.innerHTML = `
+      <div class="card">
 
-        <td class="sponsor-id">
+        <div class="card-title">
+          Pending Amount
+        </div>
 
-          ${escapeHTML(
-            data.sponsorId || "-"
-          )}
+        <div
+          class="card-value"
+          id="pendingAmount"
+        >
+          ₹0
+        </div>
 
-        </td>
-
-
-        <td>
-
-          ${escapeHTML(
-            data.name || "-"
-          )}
-
-        </td>
+      </div>
 
 
-        <td>
-
-          ${escapeHTML(
-            data.phone || "-"
-          )}
-
-        </td>
+    </div>
 
 
-        <td>
+    <!-- ADD SPONSOR -->
 
-          ₹${total.toLocaleString("en-IN")}
-
-        </td>
+    <div class="section">
 
 
-        <td>
+      <div class="section-header">
 
-          ₹${paid.toLocaleString("en-IN")}
+        <h2>
+          Add Sponsor
+        </h2>
 
-        </td>
-
-
-        <td>
-
-          ₹${balance.toLocaleString("en-IN")}
-
-        </td>
+      </div>
 
 
-        <td class="${statusClass}">
+      <div class="info-box">
 
-          ${status}
+        Sponsor ID will be generated automatically.
 
-        </td>
+        <br>
+
+        Example:
+        <strong>SP-1001</strong>,
+        <strong>SP-1002</strong>,
+        <strong>SP-1003</strong>
+
+      </div>
 
 
-        <td>
+      <form id="sponsorForm">
 
-          <button
-            class="delete-btn"
-            data-id="${document.id}"
+
+        <div class="form-grid">
+
+
+          <!-- NAME -->
+
+          <div class="form-group">
+
+            <label>
+              Sponsor Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter sponsor name"
+              required
+            >
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="form-group">
+
+            <label>
+              Phone
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Enter phone number"
+            >
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="form-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter email"
+            >
+
+          </div>
+
+
+          <!-- TOTAL -->
+
+          <div class="form-group">
+
+            <label>
+              Total Sponsorship Amount
+            </label>
+
+            <input
+              type="number"
+              id="totalAmountInput"
+              placeholder="Enter amount"
+              min="0"
+              required
+            >
+
+          </div>
+
+
+          <!-- PAID -->
+
+          <div class="form-group">
+
+            <label>
+              Initial Paid Amount
+            </label>
+
+            <input
+              type="number"
+              id="paidAmountInput"
+              placeholder="Enter paid amount"
+              min="0"
+              value="0"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="save-btn"
+          id="saveBtn"
+        >
+          Add Sponsor
+        </button>
+
+
+        <div
+          class="message"
+          id="message"
+        ></div>
+
+
+      </form>
+
+
+    </div>
+
+
+    <!-- SPONSOR LIST -->
+
+    <div class="section">
+
+
+      <div class="section-header">
+
+        <h2>
+          Sponsors
+        </h2>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+
+        <table>
+
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Sponsor ID
+              </th>
+
+              <th>
+                Sponsor
+              </th>
+
+              <th>
+                Phone
+              </th>
+
+              <th>
+                Total
+              </th>
+
+              <th>
+                Paid
+              </th>
+
+              <th>
+                Pending
+              </th>
+
+              <th>
+                Status
+              </th>
+
+              <th>
+                Action
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody
+            id="sponsorTable"
           >
-            Delete
-          </button>
 
-        </td>
+            <tr>
 
-      `;
+              <td
+                colspan="8"
+                class="loading"
+              >
+                Loading sponsors...
+              </td>
 
+            </tr>
 
-      table.appendChild(row);
-
-    });
-
-
-    document.getElementById(
-      "totalSponsors"
-    ).textContent =
-      totalSponsors;
+          </tbody>
 
 
-    document.getElementById(
-      "totalAmount"
-    ).textContent =
-      "₹" +
-      totalAmount.toLocaleString(
-        "en-IN"
+        </table>
+
+
+      </div>
+
+
+    </div>
+
+
+  </main>
+
+
+
+  <!-- FIREBASE -->
+
+  <script type="module">
+
+
+    /* FIREBASE APP */
+
+    import {
+      initializeApp
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+
+    /* FIREBASE AUTH */
+
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+    /* FIRESTORE */
+
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs,
+      deleteDoc,
+      doc,
+      getDoc,
+      serverTimestamp
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+
+    /* FIREBASE CONFIG */
+
+    const firebaseConfig = {
+
+      apiKey:
+        "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
+
+      authDomain:
+        "sponsors-management-port-2300e.firebaseapp.com",
+
+      projectId:
+        "sponsors-management-port-2300e",
+
+      storageBucket:
+        "sponsors-management-port-2300e.firebasestorage.app",
+
+      messagingSenderId:
+        "302644033627",
+
+      appId:
+        "1:302644033627:web:bfb03201ee44bcf616677e"
+
+    };
+
+
+
+    /* INITIALIZE FIREBASE */
+
+    const app =
+      initializeApp(
+        firebaseConfig
       );
 
 
-    document.getElementById(
-      "paidAmount"
-    ).textContent =
-      "₹" +
-      paidAmount.toLocaleString(
-        "en-IN"
-      );
+    const auth =
+      getAuth(app);
 
 
-    document.getElementById(
-      "pendingAmount"
-    ).textContent =
-      "₹" +
-      pendingAmount.toLocaleString(
-        "en-IN"
-      );
+    const db =
+      getFirestore(app);
 
 
-    /* DELETE BUTTONS */
 
-    document
-      .querySelectorAll(".delete-btn")
-      .forEach((button) => {
+    /* ============================
+       ADMIN AUTH CHECK
+    ============================ */
 
-        button.addEventListener(
-          "click",
-          async () => {
+    onAuthStateChanged(
+      auth,
+      async (user) => {
 
-            const id =
-              button.dataset.id;
+        if (!user) {
 
+          window.location.href =
+            "index.html";
 
-            const confirmDelete =
-              confirm(
-                "Delete this sponsor?"
-              );
+          return;
 
-
-            if (!confirmDelete) {
-              return;
-            }
+        }
 
 
-            try {
-
-              await deleteDoc(
-                doc(
-                  db,
-                  "Sponsors",
-                  id
-                )
-              );
+        try {
 
 
-              await loadSponsors();
+          /* GET USER PROFILE */
+
+          const userRef =
+            doc(
+              db,
+              "users",
+              user.uid
+            );
 
 
-            } catch (error) {
+          const userSnap =
+            await getDoc(
+              userRef
+            );
 
-              console.error(error);
 
-              alert(
-                "Delete failed: " +
-                error.message
-              );
+          /* CHECK ADMIN ROLE */
 
-            }
+          if (
+            !userSnap.exists() ||
+            userSnap.data().role !== "admin"
+          ) {
+
+
+            await signOut(auth);
+
+
+            alert(
+              "Admin access required."
+            );
+
+
+            window.location.href =
+              "index.html";
+
+
+            return;
 
           }
-        );
-
-      });
 
 
-  } catch (error) {
-
-    console.error(error);
-
-
-    document.getElementById(
-      "sponsorTable"
-    ).innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="8"
-          class="empty"
-        >
-          Unable to load sponsors.
-        </td>
-
-      </tr>
-
-    `;
-
-  }
-
-}
+          console.log(
+            "Admin verified:",
+            user.uid
+          );
 
 
-/* ADD SPONSOR */
+          /* LOAD SPONSORS */
 
-document
-  .getElementById("sponsorForm")
-  .addEventListener(
-    "submit",
-    async (event) => {
-
-      event.preventDefault();
+          await loadSponsors();
 
 
-      const name =
-        document.getElementById(
-          "name"
-        ).value.trim();
+        } catch (error) {
 
 
-      const phone =
-        document.getElementById(
-          "phone"
-        ).value.trim();
+          console.error(
+            "Admin verification error:",
+            error
+          );
 
 
-      const email =
-        document.getElementById(
-          "email"
-        ).value.trim();
-
-
-      const total =
-        Number(
           document.getElementById(
-            "totalAmountInput"
-          ).value
-        );
+            "sponsorTable"
+          ).innerHTML = `
 
+            <tr>
 
-      const paid =
-        Number(
-          document.getElementById(
-            "paidAmountInput"
-          ).value
-        );
+              <td
+                colspan="8"
+                class="empty"
+              >
 
+                Unable to verify admin account.
 
-      const message =
-        document.getElementById(
-          "message"
-        );
+              </td>
 
+            </tr>
 
-      const saveBtn =
-        document.getElementById(
-          "saveBtn"
-        );
+          `;
 
-
-      /* VALIDATION */
-
-      if (total < 0 || paid < 0) {
-
-        message.style.color =
-          "#dc2626";
-
-        message.textContent =
-          "Amount cannot be negative.";
-
-        return;
+        }
 
       }
+    );
 
 
-      if (paid > total) {
 
-        message.style.color =
-          "#dc2626";
+    /* ============================
+       GENERATE SPONSOR ID
+    ============================ */
 
-        message.textContent =
-          "Paid amount cannot be greater than total amount.";
-
-        return;
-
-      }
+    async function generateSponsorId() {
 
 
-      saveBtn.disabled = true;
+      const snapshot =
+        await getDocs(
+          collection(
+            db,
+            "Sponsors"
+          )
+        );
 
-      saveBtn.textContent =
-        "Saving...";
+
+      let highestNumber =
+        1000;
 
 
-      message.textContent = "";
+      snapshot.forEach(
+        (docSnap) => {
+
+
+          const data =
+            docSnap.data();
+
+
+          const sponsorId =
+            data.sponsorId;
+
+
+          if (!sponsorId) {
+
+            return;
+
+          }
+
+
+          const number =
+            parseInt(
+              String(sponsorId)
+                .replace("SP-", ""),
+              10
+            );
+
+
+          if (
+            !isNaN(number) &&
+            number > highestNumber
+          ) {
+
+            highestNumber =
+              number;
+
+          }
+
+
+        }
+      );
+
+
+      return (
+        "SP-" +
+        (highestNumber + 1)
+      );
+
+    }
+
+
+
+    /* ============================
+       LOAD SPONSORS
+    ============================ */
+
+    async function loadSponsors() {
 
 
       try {
 
-        /* CREATE SPONSOR ID */
 
-        const sponsorId =
-          await generateSponsorId();
-
-
-        /* CALCULATE BALANCE */
-
-        const balance =
-          total - paid;
+        const querySnapshot =
+          await getDocs(
+            collection(
+              db,
+              "Sponsors"
+            )
+          );
 
 
-        const status =
-          balance > 0
-            ? "pending"
-            : "paid";
+        const table =
+          document.getElementById(
+            "sponsorTable"
+          );
 
 
-        /* SAVE TO FIRESTORE */
+        table.innerHTML = "";
 
-        await addDoc(
-          collection(
-            db,
-            "Sponsors"
-          ),
-          {
 
-            sponsorId:
-              sponsorId,
+        let totalSponsors = 0;
 
-            name:
-              name,
+        let totalAmount = 0;
 
-            phone:
-              phone,
+        let paidAmount = 0;
 
-            email:
-              email,
+        let pendingAmount = 0;
 
-            totalAmount:
-              total,
 
-            paidAmount:
-              paid,
 
-            balanceAmount:
-              balance,
+        /* NO DATA */
 
-            status:
-              status,
+        if (
+          querySnapshot.empty
+        ) {
 
-            createdAt:
-              serverTimestamp()
+
+          table.innerHTML = `
+
+            <tr>
+
+              <td
+                colspan="8"
+                class="empty"
+              >
+
+                No sponsors yet
+
+              </td>
+
+            </tr>
+
+          `;
+
+
+        }
+
+
+
+        /* LOOP SPONSORS */
+
+        querySnapshot.forEach(
+          (docSnap) => {
+
+
+            /* IMPORTANT:
+               docSnap is Firebase document.
+               document is browser object.
+            */
+
+            const data =
+              docSnap.data();
+
+
+            const total =
+              Number(
+                data.totalAmount || 0
+              );
+
+
+            const paid =
+              Number(
+                data.paidAmount || 0
+              );
+
+
+            const balance =
+              Math.max(
+                total - paid,
+                0
+              );
+
+
+            totalSponsors++;
+
+            totalAmount += total;
+
+            paidAmount += paid;
+
+            pendingAmount += balance;
+
+
+
+            const status =
+              balance > 0
+                ? "Pending"
+                : "Paid";
+
+
+            const statusClass =
+              balance > 0
+                ? "status-pending"
+                : "status-paid";
+
+
+
+            /* CREATE TABLE ROW */
+
+            const row =
+              document.createElement(
+                "tr"
+              );
+
+
+
+            row.innerHTML = `
+
+              <td
+                class="sponsor-id"
+              >
+
+                ${escapeHTML(
+                  data.sponsorId || "-"
+                )}
+
+              </td>
+
+
+              <td>
+
+                ${escapeHTML(
+                  data.name || "-"
+                )}
+
+              </td>
+
+
+              <td>
+
+                ${escapeHTML(
+                  data.phone || "-"
+                )}
+
+              </td>
+
+
+              <td>
+
+                ₹${total.toLocaleString(
+                  "en-IN"
+                )}
+
+              </td>
+
+
+              <td>
+
+                ₹${paid.toLocaleString(
+                  "en-IN"
+                )}
+
+              </td>
+
+
+              <td>
+
+                ₹${balance.toLocaleString(
+                  "en-IN"
+                )}
+
+              </td>
+
+
+              <td
+                class="${statusClass}"
+              >
+
+                ${status}
+
+              </td>
+
+
+              <td>
+
+                <button
+                  class="delete-btn"
+                  data-id="${docSnap.id}"
+                >
+
+                  Delete
+
+                </button>
+
+              </td>
+
+            `;
+
+
+            table.appendChild(
+              row
+            );
+
 
           }
         );
 
 
-        message.style.color =
-          "#0f766e";
 
+        /* UPDATE CARDS */
 
-        message.textContent =
-          "Sponsor added successfully. Sponsor ID: " +
-          sponsorId;
-
-
-        document
-          .getElementById(
-            "sponsorForm"
-          )
-          .reset();
+        document.getElementById(
+          "totalSponsors"
+        ).textContent =
+          totalSponsors;
 
 
         document.getElementById(
-          "paidAmountInput"
-        ).value = "0";
+          "totalAmount"
+        ).textContent =
+          "₹" +
+          totalAmount.toLocaleString(
+            "en-IN"
+          );
 
 
-        await loadSponsors();
+        document.getElementById(
+          "paidAmount"
+        ).textContent =
+          "₹" +
+          paidAmount.toLocaleString(
+            "en-IN"
+          );
+
+
+        document.getElementById(
+          "pendingAmount"
+        ).textContent =
+          "₹" +
+          pendingAmount.toLocaleString(
+            "en-IN"
+          );
+
+
+
+        /* DELETE BUTTONS */
+
+        document
+          .querySelectorAll(
+            ".delete-btn"
+          )
+          .forEach(
+            (button) => {
+
+
+              button.addEventListener(
+                "click",
+                async () => {
+
+
+                  const id =
+                    button.dataset.id;
+
+
+                  const confirmDelete =
+                    confirm(
+                      "Delete this sponsor?"
+                    );
+
+
+                  if (
+                    !confirmDelete
+                  ) {
+
+                    return;
+
+                  }
+
+
+
+                  try {
+
+
+                    button.disabled =
+                      true;
+
+
+                    button.textContent =
+                      "Deleting...";
+
+
+                    await deleteDoc(
+                      doc(
+                        db,
+                        "Sponsors",
+                        id
+                      )
+                    );
+
+
+                    await loadSponsors();
+
+
+                  } catch (error) {
+
+
+                    console.error(
+                      error
+                    );
+
+
+                    alert(
+                      "Delete failed: " +
+                      error.message
+                    );
+
+
+                    button.disabled =
+                      false;
+
+
+                    button.textContent =
+                      "Delete";
+
+                  }
+
+
+                }
+              );
+
+
+            }
+          );
 
 
       } catch (error) {
 
-        console.error(error);
+
+        console.error(
+          "Load sponsors error:",
+          error
+        );
 
 
-        message.style.color =
-          "#dc2626";
+        document.getElementById(
+          "sponsorTable"
+        ).innerHTML = `
 
+          <tr>
 
-        message.textContent =
-          "Error: " +
-          error.message;
+            <td
+              colspan="8"
+              class="empty"
+            >
+
+              Unable to load sponsors.
+
+              <br><br>
+
+              ${escapeHTML(
+                error.message
+              )}
+
+            </td>
+
+          </tr>
+
+        `;
+
 
       }
 
+    }
 
-      saveBtn.disabled = false;
 
-      saveBtn.textContent =
-        "Add Sponsor";
+
+    /* ============================
+       ADD SPONSOR
+    ============================ */
+
+    document
+      .getElementById(
+        "sponsorForm"
+      )
+      .addEventListener(
+        "submit",
+        async (event) => {
+
+
+          event.preventDefault();
+
+
+
+          /* GET VALUES */
+
+          const name =
+            document.getElementById(
+              "name"
+            ).value.trim();
+
+
+          const phone =
+            document.getElementById(
+              "phone"
+            ).value.trim();
+
+
+          const email =
+            document.getElementById(
+              "email"
+            ).value.trim();
+
+
+          const total =
+            Number(
+              document.getElementById(
+                "totalAmountInput"
+              ).value
+            );
+
+
+          const paid =
+            Number(
+              document.getElementById(
+                "paidAmountInput"
+              ).value
+            );
+
+
+          const message =
+            document.getElementById(
+              "message"
+            );
+
+
+          const saveBtn =
+            document.getElementById(
+              "saveBtn"
+            );
+
+
+
+          /* VALIDATION */
+
+          if (
+            total < 0 ||
+            paid < 0
+          ) {
+
+
+            message.style.color =
+              "#dc2626";
+
+
+            message.textContent =
+              "Amount cannot be negative.";
+
+
+            return;
+
+          }
+
+
+
+          if (
+            paid > total
+          ) {
+
+
+            message.style.color =
+              "#dc2626";
+
+
+            message.textContent =
+              "Paid amount cannot be greater than total amount.";
+
+
+            return;
+
+          }
+
+
+
+          /* BUTTON */
+
+          saveBtn.disabled =
+            true;
+
+
+          saveBtn.textContent =
+            "Saving...";
+
+
+          message.textContent =
+            "";
+
+
+
+          try {
+
+
+            /* GENERATE ID */
+
+            const sponsorId =
+              await generateSponsorId();
+
+
+
+            /* BALANCE */
+
+            const balance =
+              total - paid;
+
+
+
+            /* STATUS */
+
+            const status =
+              balance > 0
+                ? "pending"
+                : "paid";
+
+
+
+            /* SAVE */
+
+            await addDoc(
+              collection(
+                db,
+                "Sponsors"
+              ),
+              {
+
+                sponsorId:
+                  sponsorId,
+
+                name:
+                  name,
+
+                phone:
+                  phone,
+
+                email:
+                  email,
+
+                totalAmount:
+                  total,
+
+                paidAmount:
+                  paid,
+
+                balanceAmount:
+                  balance,
+
+                status:
+                  status,
+
+                createdAt:
+                  serverTimestamp()
+
+              }
+            );
+
+
+
+            /* SUCCESS */
+
+            message.style.color =
+              "#0f766e";
+
+
+            message.textContent =
+              "Sponsor added successfully. Sponsor ID: " +
+              sponsorId;
+
+
+
+            /* RESET */
+
+            document
+              .getElementById(
+                "sponsorForm"
+              )
+              .reset();
+
+
+            document.getElementById(
+              "paidAmountInput"
+            ).value =
+              "0";
+
+
+
+            /* RELOAD */
+
+            await loadSponsors();
+
+
+          } catch (error) {
+
+
+            console.error(
+              "Add sponsor error:",
+              error
+            );
+
+
+            message.style.color =
+              "#dc2626";
+
+
+            message.textContent =
+              "Error: " +
+              error.message;
+
+
+          }
+
+
+
+          /* RESTORE BUTTON */
+
+          saveBtn.disabled =
+            false;
+
+
+          saveBtn.textContent =
+            "Add Sponsor";
+
+
+        }
+      );
+
+
+
+    /* ============================
+       LOGOUT
+    ============================ */
+
+    document
+      .getElementById(
+        "logoutBtn"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+
+          await signOut(
+            auth
+          );
+
+
+          window.location.href =
+            "index.html";
+
+
+        }
+      );
+
+
+
+    /* ============================
+       ESCAPE HTML
+    ============================ */
+
+    function escapeHTML(
+      value
+    ) {
+
+
+      return String(value)
+
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
 
     }
-  );
 
 
-/* LOGOUT */
+  </script>
 
-document
-  .getElementById("logoutBtn")
-  .addEventListener(
-    "click",
-    async () => {
-
-      await signOut(auth);
-
-      window.location.href =
-        "index.html";
-
-    }
-  );
-
-
-/* ESCAPE HTML */
-
-function escapeHTML(value) {
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-</script>
 
 </body>
+
 </html>
