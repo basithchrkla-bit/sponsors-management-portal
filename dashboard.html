@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,7 +9,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 
@@ -186,7 +189,7 @@ body{
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:15px;
     margin-bottom:28px;
 }
@@ -197,6 +200,10 @@ body{
     border-radius:17px;
     box-shadow:0 6px 22px rgba(0,0,0,.06);
     border-left:5px solid #08796e;
+}
+
+.stat.pending-review{
+    border-left-color:#e09b24;
 }
 
 .stat-title{
@@ -277,6 +284,12 @@ body{
     margin-bottom:20px;
     font-size:14px;
     line-height:1.5;
+}
+
+.notice.warning{
+    background:#fff8e8;
+    border-color:#f0d99a;
+    color:#856316;
 }
 
 
@@ -373,6 +386,7 @@ td{
     border-radius:20px;
     font-size:11px;
     font-weight:700;
+    display:inline-block;
 }
 
 .status.paid{
@@ -385,6 +399,16 @@ td{
     color:#9b6815;
 }
 
+.status.review{
+    background:#fff1d6;
+    color:#a56700;
+}
+
+.status.rejected{
+    background:#fde9e9;
+    color:#a83232;
+}
+
 .action-btn{
     border:0;
     padding:7px 10px;
@@ -392,6 +416,7 @@ td{
     cursor:pointer;
     font-weight:600;
     margin-right:4px;
+    margin-bottom:4px;
 }
 
 .edit{
@@ -404,10 +429,85 @@ td{
     color:#a83232;
 }
 
+.approve{
+    background:#e4f7ed;
+    color:#147047;
+}
+
+.reject{
+    background:#fde9e9;
+    color:#a83232;
+}
+
 .empty{
     text-align:center;
     padding:35px;
     color:#8b979c;
+}
+
+
+/* ================= PAYMENT REQUEST ================= */
+
+.payment-request-card{
+    border:1px solid #e5ecea;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+    background:#fcfefd;
+}
+
+.payment-request-card:last-child{
+    margin-bottom:0;
+}
+
+.payment-request-header{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.payment-request-title{
+    font-size:16px;
+    font-weight:800;
+}
+
+.payment-request-amount{
+    font-size:20px;
+    font-weight:800;
+    color:#08796e;
+}
+
+.payment-details{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.payment-detail{
+    background:#f5f8f7;
+    padding:11px;
+    border-radius:10px;
+}
+
+.payment-detail-label{
+    font-size:11px;
+    color:#7a878b;
+    margin-bottom:5px;
+}
+
+.payment-detail-value{
+    font-size:13px;
+    font-weight:700;
+    word-break:break-word;
+}
+
+.payment-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 
@@ -430,6 +530,18 @@ td{
 
 
 /* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .payment-details{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
 
 @media(max-width:850px){
 
@@ -507,6 +619,15 @@ td{
         padding:20px;
     }
 
+    .payment-details{
+        grid-template-columns:1fr;
+    }
+
+    .payment-request-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
 }
 
 </style>
@@ -520,8 +641,6 @@ td{
 
 <header class="header">
 
-    <!-- COLLEGE PHOTO -->
-
     <img
         src="1000892841.jpg"
         class="header-image"
@@ -530,33 +649,27 @@ td{
 
     <div class="header-overlay"></div>
 
-
     <div class="header-content">
 
         <div class="logo-circle">
             ☪
         </div>
 
-
         <div class="greeting">
             السلام عليكم ورحمة الله وبركاته
         </div>
-
 
         <h1>
             SAFA HIFZUL QUR'AN COLLEGE
         </h1>
 
-
         <div class="header-sub">
             SPONSOR MANAGEMENT PORTAL
         </div>
 
-
         <div class="quote">
             خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
         </div>
-
 
         <div class="quote-meaning">
             The best among you are those who learn the Qur'an and teach it.
@@ -588,7 +701,6 @@ td{
 
         </div>
 
-
         <button
             class="logout"
             id="logoutBtn"
@@ -611,7 +723,6 @@ td{
 
     <section class="stats">
 
-
         <div class="stat">
 
             <div class="stat-title">
@@ -626,7 +737,6 @@ td{
             </div>
 
         </div>
-
 
 
         <div class="stat">
@@ -645,7 +755,6 @@ td{
         </div>
 
 
-
         <div class="stat">
 
             <div class="stat-title">
@@ -660,7 +769,6 @@ td{
             </div>
 
         </div>
-
 
 
         <div class="stat">
@@ -678,6 +786,22 @@ td{
 
         </div>
 
+
+        <div class="stat pending-review">
+
+            <div class="stat-title">
+                PAYMENT VERIFICATION
+            </div>
+
+            <div
+                class="stat-value"
+                id="pendingVerification"
+            >
+                0
+            </div>
+
+        </div>
+
     </section>
 
 
@@ -685,7 +809,6 @@ td{
     <!-- ================= ISLAMIC HELPING CARDS ================= -->
 
     <section class="help-grid">
-
 
         <div class="help-card">
 
@@ -702,7 +825,6 @@ td{
             </p>
 
         </div>
-
 
 
         <div class="help-card">
@@ -722,7 +844,6 @@ td{
         </div>
 
 
-
         <div class="help-card">
 
             <div class="help-icon">
@@ -738,7 +859,6 @@ td{
             </p>
 
         </div>
-
 
 
         <div class="help-card">
@@ -765,11 +885,9 @@ td{
 
     <section class="card">
 
-
         <h2>
             ➕ Add New Sponsor
         </h2>
-
 
         <div class="notice">
 
@@ -787,12 +905,9 @@ td{
         </div>
 
 
-
         <form id="sponsorForm">
 
-
             <div class="form-grid">
-
 
                 <div class="field">
 
@@ -808,7 +923,6 @@ td{
                     >
 
                 </div>
-
 
 
                 <div class="field">
@@ -827,7 +941,6 @@ td{
                 </div>
 
 
-
                 <div class="field">
 
                     <label>
@@ -841,7 +954,6 @@ td{
                     >
 
                 </div>
-
 
 
                 <div class="field">
@@ -861,7 +973,6 @@ td{
                 </div>
 
 
-
                 <div class="field">
 
                     <label>
@@ -878,7 +989,6 @@ td{
                 </div>
 
 
-
                 <div class="field full">
 
                     <button
@@ -890,7 +1000,6 @@ td{
 
                 </div>
 
-
             </div>
 
         </form>
@@ -901,6 +1010,40 @@ td{
             class="message"
         ></div>
 
+    </section>
+
+
+
+    <!-- ================= PAYMENT VERIFICATION ================= -->
+
+    <section class="card">
+
+        <h2>
+            💳 Payment Verification
+        </h2>
+
+
+        <div class="notice warning">
+
+            <strong>
+                Manual Payment Verification
+            </strong>
+
+            <br>
+
+            Sponsors who submit UPI / Bank Transfer payments will appear here.
+            Verify the UTR and amount before approving the payment.
+
+        </div>
+
+
+        <div id="paymentRequestsContainer">
+
+            <div class="empty">
+                Loading payment requests...
+            </div>
+
+        </div>
 
     </section>
 
@@ -910,7 +1053,6 @@ td{
 
     <section class="card">
 
-
         <h2>
             👥 Sponsors
         </h2>
@@ -918,9 +1060,7 @@ td{
 
         <div class="table-wrapper">
 
-
             <table>
-
 
                 <thead>
 
@@ -963,7 +1103,6 @@ td{
                 </thead>
 
 
-
                 <tbody id="sponsorTable">
 
                     <tr>
@@ -979,11 +1118,9 @@ td{
 
                 </tbody>
 
-
             </table>
 
         </div>
-
 
     </section>
 
@@ -1041,14 +1178,14 @@ import {
     deleteDoc,
     updateDoc,
     onSnapshot,
-    serverTimestamp
+    serverTimestamp,
+    runTransaction
 }
 from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
 
 /* ================= FIREBASE CONFIG ================= */
-
 
 const firebaseConfig = {
 
@@ -1076,14 +1213,11 @@ const firebaseConfig = {
 
 /* ================= INITIALIZE ================= */
 
-
 const app =
     initializeApp(firebaseConfig);
 
-
 const auth =
     getAuth(app);
-
 
 const db =
     getFirestore(app);
@@ -1092,48 +1226,50 @@ const db =
 
 /* ================= ELEMENTS ================= */
 
-
 const form =
     document.getElementById(
         "sponsorForm"
     );
-
 
 const table =
     document.getElementById(
         "sponsorTable"
     );
 
-
 const message =
     document.getElementById(
         "message"
     );
-
 
 const searchInput =
     document.getElementById(
         "searchInput"
     );
 
-
 const logoutBtn =
     document.getElementById(
         "logoutBtn"
     );
 
+const paymentRequestsContainer =
+    document.getElementById(
+        "paymentRequestsContainer"
+    );
+
 
 let allSponsors = [];
+
+let allPaymentRequests = [];
+
+let currentAdmin = null;
 
 
 
 /* ================= ADMIN CHECK ================= */
 
-
 onAuthStateChanged(
     auth,
     async (user) => {
-
 
         if (!user) {
 
@@ -1146,7 +1282,6 @@ onAuthStateChanged(
 
 
         try {
-
 
             const userRef =
                 doc(
@@ -1167,28 +1302,28 @@ onAuthStateChanged(
                 userSnap.data().role !== "admin"
             ) {
 
-
                 await signOut(auth);
-
 
                 window.location.href =
                     "index.html";
-
 
                 return;
 
             }
 
 
+            currentAdmin = user;
+
+
             startSponsorListener();
+
+            startPaymentRequestListener();
 
 
         }
         catch(error) {
 
-
             console.error(error);
-
 
             table.innerHTML = `
 
@@ -1214,9 +1349,7 @@ onAuthStateChanged(
 
 /* ================= GENERATE SPONSOR ID ================= */
 
-
 async function generateSponsorId(){
-
 
     const snapshot =
         await getDocs(
@@ -1233,10 +1366,8 @@ async function generateSponsorId(){
     snapshot.forEach(
         (item) => {
 
-
             const data =
                 item.data();
-
 
             const id =
                 String(
@@ -1247,7 +1378,6 @@ async function generateSponsorId(){
             if (
                 id.startsWith("SP-")
             ){
-
 
                 const number =
                     parseInt(
@@ -1286,14 +1416,11 @@ async function generateSponsorId(){
 
 /* ================= ADD SPONSOR ================= */
 
-
 form.addEventListener(
     "submit",
     async (event) => {
 
-
         event.preventDefault();
-
 
         message.textContent = "";
 
@@ -1363,7 +1490,6 @@ form.addEventListener(
 
         try{
 
-
             const sponsorId =
                 await generateSponsorId();
 
@@ -1432,18 +1558,14 @@ form.addEventListener(
                 "paidAmountInput"
             ).value = "0";
 
-
         }
         catch(error){
 
-
             console.error(error);
-
 
             message.textContent =
                 "Unable to add sponsor: " +
                 error.message;
-
 
             message.style.color =
                 "#a83232";
@@ -1455,11 +1577,9 @@ form.addEventListener(
 
 
 
-/* ================= REAL TIME LISTENER ================= */
-
+/* ================= SPONSOR REAL TIME LISTENER ================= */
 
 function startSponsorListener(){
-
 
     const sponsorsRef =
         collection(
@@ -1472,13 +1592,11 @@ function startSponsorListener(){
         sponsorsRef,
         (snapshot) => {
 
-
             allSponsors = [];
 
 
             snapshot.forEach(
                 (item) => {
-
 
                     allSponsors.push({
 
@@ -1495,14 +1613,12 @@ function startSponsorListener(){
 
             updateStatistics();
 
-
             renderSponsors(
                 allSponsors
             );
 
         },
         (error) => {
-
 
             console.error(error);
 
@@ -1529,11 +1645,73 @@ function startSponsorListener(){
 
 
 
+/* ================= PAYMENT REQUEST LISTENER ================= */
+
+function startPaymentRequestListener(){
+
+    const requestsRef =
+        collection(
+            db,
+            "PaymentRequests"
+        );
+
+
+    onSnapshot(
+        requestsRef,
+        (snapshot) => {
+
+            allPaymentRequests = [];
+
+
+            snapshot.forEach(
+                (item) => {
+
+                    allPaymentRequests.push({
+
+                        id:
+                            item.id,
+
+                        ...item.data()
+
+                    });
+
+                }
+            );
+
+
+            updateVerificationCount();
+
+            renderPaymentRequests();
+
+        },
+        (error) => {
+
+            console.error(
+                "Payment request error:",
+                error
+            );
+
+
+            paymentRequestsContainer.innerHTML = `
+
+                <div class="empty">
+
+                    Unable to load payment requests.
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
 /* ================= STATISTICS ================= */
 
-
 function updateStatistics(){
-
 
     let total = 0;
 
@@ -1544,7 +1722,6 @@ function updateStatistics(){
 
     allSponsors.forEach(
         (sponsor) => {
-
 
             total +=
                 Number(
@@ -1599,12 +1776,38 @@ function updateStatistics(){
     ).textContent =
         formatMoney(pending);
 
+
+    updateVerificationCount();
+
+}
+
+
+
+/* ================= VERIFICATION COUNT ================= */
+
+function updateVerificationCount(){
+
+    const pendingCount =
+        allPaymentRequests.filter(
+            request =>
+                String(
+                    request.status || ""
+                ).toLowerCase()
+                ===
+                "pending verification"
+        ).length;
+
+
+    document.getElementById(
+        "pendingVerification"
+    ).textContent =
+        pendingCount;
+
 }
 
 
 
 /* ================= MONEY ================= */
-
 
 function formatMoney(amount){
 
@@ -1621,8 +1824,61 @@ function formatMoney(amount){
 
 
 
-/* ================= ESCAPE HTML ================= */
+/* ================= DATE ================= */
 
+function formatDate(value){
+
+    if(!value)
+        return "-";
+
+
+    try{
+
+        if(
+            typeof value.toDate ===
+            "function"
+        ){
+
+            return value
+                .toDate()
+                .toLocaleDateString(
+                    "en-IN"
+                );
+
+        }
+
+
+        const date =
+            new Date(value);
+
+
+        if(
+            isNaN(
+                date.getTime()
+            )
+        ){
+
+            return String(value);
+
+        }
+
+
+        return date.toLocaleDateString(
+            "en-IN"
+        );
+
+    }
+    catch(error){
+
+        return "-";
+
+    }
+
+}
+
+
+
+/* ================= ESCAPE HTML ================= */
 
 function escapeHTML(value){
 
@@ -1654,11 +1910,673 @@ function escapeHTML(value){
 
 
 
-/* ================= RENDER ================= */
+/* ================= PAYMENT REQUEST RENDER ================= */
 
+function renderPaymentRequests(){
+
+    const pendingRequests =
+        allPaymentRequests
+        .filter(
+            request =>
+                String(
+                    request.status || ""
+                ).toLowerCase()
+                ===
+                "pending verification"
+        )
+        .sort(
+            (a,b) => {
+
+                const aTime =
+                    a.createdAt?.seconds || 0;
+
+                const bTime =
+                    b.createdAt?.seconds || 0;
+
+                return bTime - aTime;
+
+            }
+        );
+
+
+    if(
+        !pendingRequests.length
+    ){
+
+        paymentRequestsContainer.innerHTML = `
+
+            <div class="empty">
+
+                🎉 No pending payment verification.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    paymentRequestsContainer.innerHTML =
+        pendingRequests
+        .map(
+            (request) => {
+
+                const amount =
+                    Number(
+                        request.amount || 0
+                    );
+
+
+                return `
+
+                    <div
+                        class="payment-request-card"
+                    >
+
+                        <div
+                            class="payment-request-header"
+                        >
+
+                            <div>
+
+                                <div
+                                    class="payment-request-title"
+                                >
+
+                                    ${escapeHTML(
+                                        request.sponsorName ||
+                                        "Sponsor"
+                                    )}
+
+                                </div>
+
+                                <small>
+
+                                    Sponsor ID:
+                                    <strong>
+                                        ${escapeHTML(
+                                            request.sponsorId ||
+                                            "-"
+                                        )}
+                                    </strong>
+
+                                </small>
+
+                            </div>
+
+
+                            <div
+                                class="payment-request-amount"
+                            >
+
+                                ${formatMoney(
+                                    amount
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="payment-details"
+                        >
+
+                            <div
+                                class="payment-detail"
+                            >
+
+                                <div
+                                    class="payment-detail-label"
+                                >
+                                    Payment Date
+                                </div>
+
+                                <div
+                                    class="payment-detail-value"
+                                >
+                                    ${escapeHTML(
+                                        request.paymentDate ||
+                                        "-"
+                                    )}
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="payment-detail"
+                            >
+
+                                <div
+                                    class="payment-detail-label"
+                                >
+                                    Method
+                                </div>
+
+                                <div
+                                    class="payment-detail-value"
+                                >
+                                    ${escapeHTML(
+                                        request.paymentMethod ||
+                                        "-"
+                                    )}
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="payment-detail"
+                            >
+
+                                <div
+                                    class="payment-detail-label"
+                                >
+                                    UTR / Transaction ID
+                                </div>
+
+                                <div
+                                    class="payment-detail-value"
+                                >
+                                    ${escapeHTML(
+                                        request.utr ||
+                                        "-"
+                                    )}
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="payment-detail"
+                            >
+
+                                <div
+                                    class="payment-detail-label"
+                                >
+                                    Screenshot
+                                </div>
+
+                                <div
+                                    class="payment-detail-value"
+                                >
+                                    ${escapeHTML(
+                                        request.screenshotName ||
+                                        "Not provided"
+                                    )}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="payment-actions"
+                        >
+
+                            <button
+                                class="action-btn approve"
+                                onclick="approvePayment('${request.id}')"
+                            >
+                                ✅ Approve
+                            </button>
+
+
+                            <button
+                                class="action-btn reject"
+                                onclick="rejectPayment('${request.id}')"
+                            >
+                                ❌ Reject
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+
+/* ================= APPROVE PAYMENT ================= */
+
+window.approvePayment =
+    async function(requestId){
+
+        const request =
+            allPaymentRequests.find(
+                item =>
+                    item.id === requestId
+            );
+
+
+        if(!request)
+            return;
+
+
+        if(
+            String(
+                request.status || ""
+            ).toLowerCase()
+            !==
+            "pending verification"
+        ){
+
+            alert(
+                "This payment request has already been processed."
+            );
+
+            return;
+
+        }
+
+
+        const amount =
+            Number(
+                request.amount || 0
+            );
+
+
+        if(
+            amount <= 0
+        ){
+
+            alert(
+                "Invalid payment amount."
+            );
+
+            return;
+
+        }
+
+
+        const confirmApprove =
+            confirm(
+                "Approve payment of " +
+                formatMoney(amount) +
+                " for " +
+                (
+                    request.sponsorName ||
+                    request.sponsorId ||
+                    "this sponsor"
+                ) +
+                "?"
+            );
+
+
+        if(!confirmApprove)
+            return;
+
+
+        try{
+
+            const requestRef =
+                doc(
+                    db,
+                    "PaymentRequests",
+                    requestId
+                );
+
+
+            const sponsorQuery =
+                allSponsors.find(
+                    sponsor =>
+                        sponsor.sponsorId ===
+                        request.sponsorId
+                );
+
+
+            if(!sponsorQuery){
+
+                alert(
+                    "Sponsor record not found for Sponsor ID: " +
+                    request.sponsorId
+                );
+
+                return;
+
+            }
+
+
+            const sponsorRef =
+                doc(
+                    db,
+                    "Sponsors",
+                    sponsorQuery.id
+                );
+
+
+            /*
+             * Transaction:
+             * 1. Check request is still pending
+             * 2. Update sponsor paid amount
+             * 3. Update sponsor balance
+             * 4. Mark request approved
+             */
+
+            await runTransaction(
+                db,
+                async (transaction) => {
+
+                    const requestSnap =
+                        await transaction.get(
+                            requestRef
+                        );
+
+
+                    if(
+                        !requestSnap.exists()
+                    ){
+
+                        throw new Error(
+                            "Payment request no longer exists."
+                        );
+
+                    }
+
+
+                    const requestData =
+                        requestSnap.data();
+
+
+                    if(
+                        String(
+                            requestData.status || ""
+                        ).toLowerCase()
+                        !==
+                        "pending verification"
+                    ){
+
+                        throw new Error(
+                            "This payment request has already been processed."
+                        );
+
+                    }
+
+
+                    const sponsorSnap =
+                        await transaction.get(
+                            sponsorRef
+                        );
+
+
+                    if(
+                        !sponsorSnap.exists()
+                    ){
+
+                        throw new Error(
+                            "Sponsor record not found."
+                        );
+
+                    }
+
+
+                    const sponsorData =
+                        sponsorSnap.data();
+
+
+                    const total =
+                        Number(
+                            sponsorData.totalAmount || 0
+                        );
+
+
+                    const oldPaid =
+                        Number(
+                            sponsorData.paidAmount || 0
+                        );
+
+
+                    const newPaid =
+                        oldPaid + amount;
+
+
+                    if(
+                        newPaid > total
+                    ){
+
+                        throw new Error(
+                            "This payment would make paid amount greater than sponsorship total."
+                        );
+
+                    }
+
+
+                    const newBalance =
+                        total - newPaid;
+
+
+                    transaction.update(
+                        sponsorRef,
+                        {
+
+                            paidAmount:
+                                newPaid,
+
+                            balanceAmount:
+                                newBalance,
+
+                            status:
+                                newBalance <= 0
+                                    ? "paid"
+                                    : "pending",
+
+                            lastPaymentAt:
+                                serverTimestamp()
+
+                        }
+                    );
+
+
+                    transaction.update(
+                        requestRef,
+                        {
+
+                            status:
+                                "Approved",
+
+                            reviewedAt:
+                                serverTimestamp(),
+
+                            reviewedBy:
+                                currentAdmin?.uid || "",
+
+                            reviewedByEmail:
+                                currentAdmin?.email || ""
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /*
+             * Create permanent payment record
+             */
+
+            await addDoc(
+                collection(
+                    db,
+                    "Payments"
+                ),
+                {
+
+                    sponsorId:
+                        request.sponsorId || "",
+
+                    uid:
+                        request.uid || "",
+
+                    sponsorName:
+                        request.sponsorName || "",
+
+                    amount:
+                        amount,
+
+                    type:
+                        request.type ||
+                        "sponsorship",
+
+                    paymentMethod:
+                        request.paymentMethod ||
+                        "",
+
+                    utr:
+                        request.utr ||
+                        "",
+
+                    paymentDate:
+                        request.paymentDate ||
+                        "",
+
+                    paymentRequestId:
+                        requestId,
+
+                    status:
+                        "Paid",
+
+                    approvedBy:
+                        currentAdmin?.uid || "",
+
+                    approvedByEmail:
+                        currentAdmin?.email || "",
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+
+            alert(
+                "Payment approved successfully."
+            );
+
+        }
+        catch(error){
+
+            console.error(
+                "Approve payment error:",
+                error
+            );
+
+
+            alert(
+                "Unable to approve payment:\n" +
+                error.message
+            );
+
+        }
+
+    };
+
+
+
+/* ================= REJECT PAYMENT ================= */
+
+window.rejectPayment =
+    async function(requestId){
+
+        const request =
+            allPaymentRequests.find(
+                item =>
+                    item.id === requestId
+            );
+
+
+        if(!request)
+            return;
+
+
+        if(
+            String(
+                request.status || ""
+            ).toLowerCase()
+            !==
+            "pending verification"
+        ){
+
+            alert(
+                "This payment request has already been processed."
+            );
+
+            return;
+
+        }
+
+
+        const confirmReject =
+            confirm(
+                "Reject this payment request?"
+            );
+
+
+        if(!confirmReject)
+            return;
+
+
+        try{
+
+            await updateDoc(
+                doc(
+                    db,
+                    "PaymentRequests",
+                    requestId
+                ),
+                {
+
+                    status:
+                        "Rejected",
+
+                    reviewedAt:
+                        serverTimestamp(),
+
+                    reviewedBy:
+                        currentAdmin?.uid || "",
+
+                    reviewedByEmail:
+                        currentAdmin?.email || ""
+
+                }
+            );
+
+
+            alert(
+                "Payment request rejected."
+            );
+
+        }
+        catch(error){
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                "Unable to reject payment: " +
+                error.message
+            );
+
+        }
+
+    };
+
+
+
+/* ================= RENDER SPONSORS ================= */
 
 function renderSponsors(list){
-
 
     if(!list.length){
 
@@ -1686,7 +2604,6 @@ function renderSponsors(list){
         list.map(
             (sponsor) => {
 
-
                 const total =
                     Number(
                         sponsor.totalAmount || 0
@@ -1702,7 +2619,9 @@ function renderSponsors(list){
                 const balance =
                     Number(
                         sponsor.balanceAmount ??
-                        (total - paid)
+                        (
+                            total - paid
+                        )
                     );
 
 
@@ -1721,9 +2640,12 @@ function renderSponsors(list){
                             <span
                                 class="sponsor-id"
                             >
+
                                 ${escapeHTML(
-                                    sponsor.sponsorId || "-"
+                                    sponsor.sponsorId ||
+                                    "-"
                                 )}
+
                             </span>
 
                         </td>
@@ -1732,41 +2654,62 @@ function renderSponsors(list){
                         <td>
 
                             <strong>
+
                                 ${escapeHTML(
-                                    sponsor.name || "-"
+                                    sponsor.name ||
+                                    "-"
                                 )}
+
                             </strong>
 
                             <br>
 
                             <small>
+
                                 ${escapeHTML(
-                                    sponsor.email || ""
+                                    sponsor.email ||
+                                    ""
                                 )}
+
                             </small>
 
                         </td>
 
 
                         <td>
+
                             ${escapeHTML(
-                                sponsor.phone || "-"
+                                sponsor.phone ||
+                                "-"
                             )}
+
                         </td>
 
 
                         <td>
-                            ${formatMoney(total)}
+
+                            ${formatMoney(
+                                total
+                            )}
+
                         </td>
 
 
                         <td>
-                            ${formatMoney(paid)}
+
+                            ${formatMoney(
+                                paid
+                            )}
+
                         </td>
 
 
                         <td>
-                            ${formatMoney(balance)}
+
+                            ${formatMoney(
+                                balance
+                            )}
+
                         </td>
 
 
@@ -1811,7 +2754,8 @@ function renderSponsors(list){
                 `;
 
             }
-        ).join("");
+        )
+        .join("");
 
 }
 
@@ -1819,11 +2763,9 @@ function renderSponsors(list){
 
 /* ================= SEARCH ================= */
 
-
 searchInput.addEventListener(
     "input",
     () => {
-
 
         const query =
             searchInput.value
@@ -1846,41 +2788,38 @@ searchInput.addEventListener(
             allSponsors.filter(
                 (sponsor) => {
 
-
                     return (
 
                         String(
-                            sponsor.sponsorId || ""
+                            sponsor.sponsorId ||
+                            ""
                         )
                         .toLowerCase()
                         .includes(query)
 
-
                         ||
 
-
                         String(
-                            sponsor.name || ""
+                            sponsor.name ||
+                            ""
                         )
                         .toLowerCase()
                         .includes(query)
 
-
                         ||
 
-
                         String(
-                            sponsor.phone || ""
+                            sponsor.phone ||
+                            ""
                         )
                         .toLowerCase()
                         .includes(query)
 
-
                         ||
 
-
                         String(
-                            sponsor.email || ""
+                            sponsor.email ||
+                            ""
                         )
                         .toLowerCase()
                         .includes(query)
@@ -1902,10 +2841,8 @@ searchInput.addEventListener(
 
 /* ================= DELETE ================= */
 
-
 window.deleteSponsor =
     async function(id){
-
 
         const sponsor =
             allSponsors.find(
@@ -1922,11 +2859,13 @@ window.deleteSponsor =
             confirm(
                 "Delete sponsor " +
                 (
-                    sponsor.name || ""
+                    sponsor.name ||
+                    ""
                 ) +
                 " (" +
                 (
-                    sponsor.sponsorId || ""
+                    sponsor.sponsorId ||
+                    ""
                 ) +
                 ")?"
             );
@@ -1938,7 +2877,6 @@ window.deleteSponsor =
 
         try{
 
-
             await deleteDoc(
                 doc(
                     db,
@@ -1947,10 +2885,8 @@ window.deleteSponsor =
                 )
             );
 
-
         }
         catch(error){
-
 
             alert(
                 "Unable to delete sponsor: " +
@@ -1965,10 +2901,8 @@ window.deleteSponsor =
 
 /* ================= EDIT ================= */
 
-
 window.editSponsor =
     async function(id){
-
 
         const sponsor =
             allSponsors.find(
@@ -2026,11 +2960,15 @@ window.editSponsor =
 
 
         const total =
-            Number(newTotal);
+            Number(
+                newTotal
+            );
 
 
         const paid =
-            Number(newPaid);
+            Number(
+                newPaid
+            );
 
 
         if(
@@ -2049,7 +2987,6 @@ window.editSponsor =
 
 
         try{
-
 
             const balance =
                 total - paid;
@@ -2091,12 +3028,12 @@ window.editSponsor =
                 "Sponsor updated successfully."
             );
 
-
         }
         catch(error){
 
-
-            console.error(error);
+            console.error(
+                error
+            );
 
 
             alert(
@@ -2112,14 +3049,11 @@ window.editSponsor =
 
 /* ================= LOGOUT ================= */
 
-
 logoutBtn.addEventListener(
     "click",
     async () => {
 
-
         try{
-
 
             await signOut(
                 auth
@@ -2129,10 +3063,8 @@ logoutBtn.addEventListener(
             window.location.href =
                 "index.html";
 
-
         }
         catch(error){
-
 
             alert(
                 "Logout failed."
