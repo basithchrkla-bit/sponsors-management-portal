@@ -235,6 +235,7 @@
       <p id="adminEmail">Loading...</p>
     </div>
 
+
     <!-- Dashboard Summary -->
 
     <div class="cards">
@@ -403,8 +404,14 @@
 
       try {
 
+        /*
+          IMPORTANT:
+          Firestore collection name is "Sponsors"
+          with capital S.
+        */
+
         const snapshot =
-          await getDocs(collection(db, "sponsors"));
+          await getDocs(collection(db, "Sponsors"));
 
 
         let totalSponsors = 0;
