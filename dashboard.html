@@ -19,7 +19,7 @@
     }
 
     .topbar {
-      height: 65px;
+      min-height: 65px;
       background: #0d6efd;
       color: white;
       display: flex;
@@ -123,12 +123,53 @@
       background: #dce9ff;
     }
 
+    .sponsor-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .sponsor-table th,
+    .sponsor-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .sponsor-table th {
+      background: #f8f9fa;
+      color: #555;
+    }
+
+    .pending {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .paid {
+      color: #198754;
+      font-weight: bold;
+    }
+
     .status {
       padding: 12px;
       border-radius: 8px;
       background: #f8f9fa;
       color: #777;
       text-align: center;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: #777;
     }
 
     @media (max-width: 850px) {
@@ -139,19 +180,42 @@
       .menu {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .sponsor-table {
+        font-size: 13px;
+      }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+      .container {
+        padding: 12px;
+      }
+
       .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      .card-value {
+        font-size: 20px;
       }
 
       .menu {
         grid-template-columns: 1fr 1fr;
       }
 
-      .welcome h1 {
-        font-size: 21px;
+      .sponsor-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .topbar h2 {
+        font-size: 16px;
       }
     }
   </style>
@@ -164,14 +228,12 @@
     <button class="logout" id="logoutBtn">Logout</button>
   </div>
 
-
   <main class="container">
 
     <div class="welcome">
       <h1>Admin Dashboard</h1>
       <p id="adminEmail">Loading...</p>
     </div>
-
 
     <!-- Dashboard Summary -->
 
@@ -208,35 +270,35 @@
 
       <div class="menu">
 
-        <button onclick="showMessage('Sponsors')">
+        <button onclick="scrollToSponsors()">
           👥 Sponsors
         </button>
 
-        <button onclick="showMessage('Payments')">
+        <button onclick="comingSoon('Payments')">
           💰 Payments
         </button>
 
-        <button onclick="showMessage('Pending Payments')">
+        <button onclick="comingSoon('Pending Payments')">
           ⏳ Pending
         </button>
 
-        <button onclick="showMessage('Messages')">
+        <button onclick="comingSoon('Messages')">
           💬 Messages
         </button>
 
-        <button onclick="showMessage('Reminders')">
+        <button onclick="comingSoon('Reminders')">
           🔔 Reminders
         </button>
 
-        <button onclick="showMessage('Reports')">
+        <button onclick="comingSoon('Reports')">
           📊 Reports
         </button>
 
-        <button onclick="showMessage('Notifications')">
+        <button onclick="comingSoon('Notifications')">
           🔔 Notifications
         </button>
 
-        <button onclick="showMessage('Settings')">
+        <button onclick="comingSoon('Settings')">
           ⚙️ Settings
         </button>
 
@@ -245,14 +307,29 @@
     </div>
 
 
-    <!-- Current Status -->
+    <!-- Sponsors -->
+
+    <div class="section" id="sponsorsSection">
+
+      <h2>👥 Sponsors</h2>
+
+      <div id="sponsorLoading" class="loading">
+        Loading sponsors...
+      </div>
+
+      <div id="sponsorTableContainer"></div>
+
+    </div>
+
+
+    <!-- System Status -->
 
     <div class="section">
 
       <h2>System Status</h2>
 
       <div class="status" id="systemStatus">
-        Firebase connection will be added next.
+        Connecting to Firebase...
       </div>
 
     </div>
@@ -272,6 +349,15 @@
     } from
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
+    import {
+      getFirestore,
+      collection,
+      getDocs
+    } from
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+    // Firebase Configuration
 
     const firebaseConfig = {
       apiKey: "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
@@ -283,27 +369,222 @@
     };
 
 
+    // Initialize Firebase
+
     const app = initializeApp(firebaseConfig);
 
     const auth = getAuth(app);
 
+    const db = getFirestore(app);
 
-    // Check login
 
-    onAuthStateChanged(auth, (user) => {
+    // Currency formatter
+
+    function formatMoney(amount) {
+
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }).format(amount || 0);
+
+    }
+
+
+    // Load Sponsors
+
+    async function loadSponsors() {
+
+      const loading =
+        document.getElementById("sponsorLoading");
+
+      const container =
+        document.getElementById("sponsorTableContainer");
+
+      try {
+
+        const snapshot =
+          await getDocs(collection(db, "sponsors"));
+
+
+        let totalSponsors = 0;
+        let totalSponsorship = 0;
+        let totalReceived = 0;
+        let totalPending = 0;
+
+
+        let html = `
+          <table class="sponsor-table">
+
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+
+            <tbody>
+        `;
+
+
+        snapshot.forEach((doc) => {
+
+          const sponsor = doc.data();
+
+          const name =
+            sponsor.name || "-";
+
+          const phone =
+            sponsor.phone || "-";
+
+          const total =
+            Number(sponsor.totalAmount || 0);
+
+          const paid =
+            Number(sponsor.paidAmount || 0);
+
+          const balance =
+            Number(sponsor.balanceAmount || 0);
+
+
+          totalSponsors++;
+
+          totalSponsorship += total;
+
+          totalReceived += paid;
+
+          totalPending += balance;
+
+
+          html += `
+            <tr>
+
+              <td>
+                <strong>${escapeHtml(name)}</strong>
+              </td>
+
+              <td>
+                ${escapeHtml(phone)}
+              </td>
+
+              <td>
+                ${formatMoney(total)}
+              </td>
+
+              <td class="paid">
+                ${formatMoney(paid)}
+              </td>
+
+              <td class="${balance > 0 ? "pending" : "paid"}">
+                ${formatMoney(balance)}
+              </td>
+
+            </tr>
+          `;
+
+        });
+
+
+        html += `
+            </tbody>
+          </table>
+        `;
+
+
+        loading.style.display = "none";
+
+
+        if (totalSponsors === 0) {
+
+          container.innerHTML = `
+            <div class="empty">
+              No sponsors found.
+            </div>
+          `;
+
+        } else {
+
+          container.innerHTML = html;
+
+        }
+
+
+        // Update dashboard cards
+
+        document.getElementById("totalSponsors").textContent =
+          totalSponsors;
+
+        document.getElementById("totalSponsorship").textContent =
+          formatMoney(totalSponsorship);
+
+        document.getElementById("totalReceived").textContent =
+          formatMoney(totalReceived);
+
+        document.getElementById("totalPending").textContent =
+          formatMoney(totalPending);
+
+
+        document.getElementById("systemStatus").textContent =
+          "Firebase Authentication + Firestore connected ✓";
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        loading.style.display = "none";
+
+        container.innerHTML = `
+          <div class="empty">
+            Unable to load sponsor data.
+            <br><br>
+            Please check Firestore Security Rules.
+          </div>
+        `;
+
+        document.getElementById("systemStatus").textContent =
+          "Firebase connected, but Firestore access was denied.";
+
+      }
+
+    }
+
+
+    // Prevent HTML injection
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    // Check Login
+
+    onAuthStateChanged(auth, async (user) => {
 
       if (!user) {
 
         window.location.href = "index.html";
 
         return;
+
       }
+
 
       document.getElementById("adminEmail").textContent =
         "Logged in as: " + user.email;
 
-      document.getElementById("systemStatus").textContent =
-        "Firebase Authentication connected ✓";
+
+      await loadSponsors();
 
     });
 
@@ -331,13 +612,26 @@
       });
 
 
-    // Temporary buttons
+    // Scroll to Sponsors
 
-    window.showMessage = function(section) {
+    window.scrollToSponsors = function() {
+
+      document
+        .getElementById("sponsorsSection")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    };
+
+
+    // Temporary sections
+
+    window.comingSoon = function(section) {
 
       alert(
         section +
-        " section will be connected to Firebase in the next step."
+        " will be added in the next step."
       );
 
     };
