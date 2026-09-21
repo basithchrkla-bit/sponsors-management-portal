@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sponsor Management | Safa Qur'an College</title>
+<title>Safa Sponsor Management Portal</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -22,6 +23,9 @@ body{
     background:#f3f7f6;
     color:#17252b;
 }
+
+
+/* ================= HEADER ================= */
 
 .header{
     position:relative;
@@ -107,6 +111,9 @@ body{
     opacity:.9;
 }
 
+
+/* ================= SEARCH BAR ================= */
+
 .topbar{
     max-width:1200px;
     margin:-35px auto 25px;
@@ -161,36 +168,27 @@ body{
     cursor:pointer;
 }
 
+.logout:hover{
+    background:#8f3030;
+}
+
+
+/* ================= MAIN ================= */
+
 .container{
     max-width:1200px;
     margin:auto;
     padding:0 18px 50px;
 }
 
-.welcome{
-    background:linear-gradient(135deg,#08796e,#135b52);
-    color:white;
-    padding:25px;
-    border-radius:18px;
-    margin-bottom:22px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-}
 
-.welcome h2{
-    margin-bottom:7px;
-    font-size:23px;
-}
-
-.welcome p{
-    opacity:.9;
-    font-size:14px;
-}
+/* ================= STATISTICS ================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
 .stat{
@@ -212,6 +210,9 @@ body{
     font-weight:800;
     color:#17252b;
 }
+
+
+/* ================= ISLAMIC HELPING CARDS ================= */
 
 .help-grid{
     display:grid;
@@ -248,6 +249,9 @@ body{
     line-height:1.5;
 }
 
+
+/* ================= CARD ================= */
+
 .card{
     background:white;
     border-radius:20px;
@@ -261,6 +265,9 @@ body{
     margin-bottom:20px;
 }
 
+
+/* ================= NOTICE ================= */
+
 .notice{
     background:#ecfaf5;
     border:1px solid #bde8d8;
@@ -271,6 +278,9 @@ body{
     font-size:14px;
     line-height:1.5;
 }
+
+
+/* ================= FORM ================= */
 
 .form-grid{
     display:grid;
@@ -325,6 +335,9 @@ body{
     font-weight:600;
     font-size:14px;
 }
+
+
+/* ================= TABLE ================= */
 
 .table-wrapper{
     overflow-x:auto;
@@ -397,6 +410,9 @@ td{
     color:#8b979c;
 }
 
+
+/* ================= FOOTER ================= */
+
 .footer{
     text-align:center;
     color:#77858a;
@@ -412,7 +428,11 @@ td{
     margin-bottom:8px;
 }
 
+
+/* ================= MOBILE ================= */
+
 @media(max-width:850px){
+
     .stats{
         grid-template-columns:repeat(2,1fr);
     }
@@ -432,9 +452,12 @@ td{
     .quote{
         font-size:23px;
     }
+
 }
 
+
 @media(max-width:600px){
+
     .header{
         min-height:370px;
     }
@@ -484,20 +507,21 @@ td{
         padding:20px;
     }
 
-    .welcome{
-        padding:20px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
 <header class="header">
 
-    <!-- YOUR UPLOADED COLLEGE PHOTO -->
+    <!-- COLLEGE PHOTO -->
+
     <img
         src="1000892841.jpg"
         class="header-image"
@@ -506,28 +530,36 @@ td{
 
     <div class="header-overlay"></div>
 
+
     <div class="header-content">
 
-        <div class="logo-circle">☪</div>
+        <div class="logo-circle">
+            ☪
+        </div>
+
 
         <div class="greeting">
             السلام عليكم ورحمة الله وبركاته
         </div>
 
+
         <h1>
             SAFA HIFZUL QUR'AN COLLEGE
         </h1>
+
 
         <div class="header-sub">
             SPONSOR MANAGEMENT PORTAL
         </div>
 
+
         <div class="quote">
             خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
         </div>
 
+
         <div class="quote-meaning">
-            “The best among you are those who learn the Qur'an and teach it.”
+            The best among you are those who learn the Qur'an and teach it.
         </div>
 
     </div>
@@ -535,22 +567,32 @@ td{
 </header>
 
 
-<!-- ================= SEARCH / TOP BAR ================= -->
+
+<!-- ================= SEARCH ================= -->
 
 <div class="topbar">
 
     <div class="topbar-inner">
 
         <div class="search">
-            <span class="search-icon">🔍</span>
+
+            <span class="search-icon">
+                🔍
+            </span>
+
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search sponsor by ID, name or phone..."
             >
+
         </div>
 
-        <button class="logout" id="logoutBtn">
+
+        <button
+            class="logout"
+            id="logoutBtn"
+        >
             Logout
         </button>
 
@@ -559,144 +601,198 @@ td{
 </div>
 
 
+
 <!-- ================= MAIN ================= -->
 
 <main class="container">
-
-    <section class="welcome">
-
-        <h2>Assalamu Alaikum 👋</h2>
-
-        <p>
-            Welcome to the Safa Sponsor Management Dashboard.
-            Manage sponsors, sponsorship amounts and payment information
-            from one place.
-        </p>
-
-    </section>
 
 
     <!-- ================= STATISTICS ================= -->
 
     <section class="stats">
 
+
         <div class="stat">
+
             <div class="stat-title">
                 TOTAL SPONSORS
             </div>
 
-            <div class="stat-value" id="totalSponsors">
+            <div
+                class="stat-value"
+                id="totalSponsors"
+            >
                 0
             </div>
+
         </div>
 
 
+
         <div class="stat">
+
             <div class="stat-title">
                 TOTAL SPONSORSHIP
             </div>
 
-            <div class="stat-value" id="totalAmount">
+            <div
+                class="stat-value"
+                id="totalAmount"
+            >
                 ₹0
             </div>
+
         </div>
 
 
+
         <div class="stat">
+
             <div class="stat-title">
                 TOTAL PAID
             </div>
 
-            <div class="stat-value" id="paidAmount">
+            <div
+                class="stat-value"
+                id="paidAmount"
+            >
                 ₹0
             </div>
+
         </div>
 
 
+
         <div class="stat">
+
             <div class="stat-title">
                 TOTAL PENDING
             </div>
 
-            <div class="stat-value" id="pendingAmount">
+            <div
+                class="stat-value"
+                id="pendingAmount"
+            >
                 ₹0
             </div>
+
         </div>
 
     </section>
+
 
 
     <!-- ================= ISLAMIC HELPING CARDS ================= -->
 
     <section class="help-grid">
 
-        <div class="help-card">
-            <div class="help-icon">📖</div>
 
-            <h3>Qur'an Education</h3>
+        <div class="help-card">
+
+            <div class="help-icon">
+                📖
+            </div>
+
+            <h3>
+                Qur'an Education
+            </h3>
 
             <p>
                 Supporting Qur'an memorization and Islamic education.
             </p>
+
         </div>
 
 
-        <div class="help-card">
-            <div class="help-icon">🤝</div>
 
-            <h3>Sponsor Support</h3>
+        <div class="help-card">
+
+            <div class="help-icon">
+                🤝
+            </div>
+
+            <h3>
+                Sponsor Support
+            </h3>
 
             <p>
                 Manage sponsorship commitments and supporter information.
             </p>
+
         </div>
 
 
-        <div class="help-card">
-            <div class="help-icon">💳</div>
 
-            <h3>Payments</h3>
+        <div class="help-card">
+
+            <div class="help-icon">
+                💳
+            </div>
+
+            <h3>
+                Payments
+            </h3>
 
             <p>
                 Track received amounts and remaining sponsorship balances.
             </p>
+
         </div>
 
 
-        <div class="help-card">
-            <div class="help-icon">🌙</div>
 
-            <h3>Islamic Service</h3>
+        <div class="help-card">
+
+            <div class="help-icon">
+                🌙
+            </div>
+
+            <h3>
+                Islamic Service
+            </h3>
 
             <p>
                 Together supporting a meaningful Qur'anic mission.
             </p>
+
         </div>
 
     </section>
+
 
 
     <!-- ================= ADD SPONSOR ================= -->
 
     <section class="card">
 
-        <h2>➕ Add New Sponsor</h2>
+
+        <h2>
+            ➕ Add New Sponsor
+        </h2>
+
 
         <div class="notice">
 
-            <strong>Sponsor ID will be generated automatically.</strong>
+            <strong>
+                Sponsor ID will be generated automatically.
+            </strong>
 
             <br>
 
             Example:
-            <strong>SP-1001, SP-1002, SP-1003...</strong>
+            <strong>
+                SP-1001, SP-1002, SP-1003...
+            </strong>
 
         </div>
 
 
+
         <form id="sponsorForm">
 
+
             <div class="form-grid">
+
 
                 <div class="field">
 
@@ -712,6 +808,7 @@ td{
                     >
 
                 </div>
+
 
 
                 <div class="field">
@@ -730,6 +827,7 @@ td{
                 </div>
 
 
+
                 <div class="field">
 
                     <label>
@@ -743,6 +841,7 @@ td{
                     >
 
                 </div>
+
 
 
                 <div class="field">
@@ -762,6 +861,7 @@ td{
                 </div>
 
 
+
                 <div class="field">
 
                     <label>
@@ -778,6 +878,7 @@ td{
                 </div>
 
 
+
                 <div class="field full">
 
                     <button
@@ -789,6 +890,7 @@ td{
 
                 </div>
 
+
             </div>
 
         </form>
@@ -799,18 +901,26 @@ td{
             class="message"
         ></div>
 
+
     </section>
+
 
 
     <!-- ================= SPONSOR LIST ================= -->
 
     <section class="card">
 
-        <h2>👥 Sponsors</h2>
+
+        <h2>
+            👥 Sponsors
+        </h2>
+
 
         <div class="table-wrapper">
 
+
             <table>
+
 
                 <thead>
 
@@ -852,6 +962,8 @@ td{
 
                 </thead>
 
+
+
                 <tbody id="sponsorTable">
 
                     <tr>
@@ -867,11 +979,14 @@ td{
 
                 </tbody>
 
+
             </table>
 
         </div>
 
+
     </section>
+
 
 
     <!-- ================= FOOTER ================= -->
@@ -892,23 +1007,28 @@ td{
 
     </footer>
 
+
 </main>
+
 
 
 <!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
+
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
 import {
     getAuth,
     onAuthStateChanged,
     signOut
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
 import {
@@ -919,12 +1039,16 @@ import {
     getDocs,
     addDoc,
     deleteDoc,
+    updateDoc,
     onSnapshot,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
 
 
 /* ================= FIREBASE CONFIG ================= */
+
 
 const firebaseConfig = {
 
@@ -949,323 +1073,453 @@ const firebaseConfig = {
 };
 
 
+
 /* ================= INITIALIZE ================= */
 
-const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const app =
+    initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
 
 
 /* ================= ELEMENTS ================= */
 
+
 const form =
-    document.getElementById("sponsorForm");
+    document.getElementById(
+        "sponsorForm"
+    );
+
 
 const table =
-    document.getElementById("sponsorTable");
+    document.getElementById(
+        "sponsorTable"
+    );
+
 
 const message =
-    document.getElementById("message");
+    document.getElementById(
+        "message"
+    );
+
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
+
 
 const logoutBtn =
-    document.getElementById("logoutBtn");
+    document.getElementById(
+        "logoutBtn"
+    );
 
 
 let allSponsors = [];
 
 
-/* ================= ADMIN LOGIN CHECK ================= */
 
-onAuthStateChanged(auth, async (user) => {
-
-    if (!user) {
-
-        window.location.href = "index.html";
-
-        return;
-
-    }
+/* ================= ADMIN CHECK ================= */
 
 
-    try {
-
-        const userRef =
-            doc(db, "users", user.uid);
-
-        const userSnap =
-            await getDoc(userRef);
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
 
-        if (
-            !userSnap.exists() ||
-            userSnap.data().role !== "admin"
-        ) {
+        if (!user) {
 
-            await signOut(auth);
-
-            window.location.href = "index.html";
+            window.location.href =
+                "index.html";
 
             return;
 
         }
 
 
-        startSponsorListener();
+        try {
 
-    } catch (error) {
 
-        console.error(error);
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
 
-        table.innerHTML = `
-            <tr>
-                <td colspan="8" class="empty">
-                    Unable to verify admin account.
-                </td>
-            </tr>
-        `;
+
+            const userSnap =
+                await getDoc(
+                    userRef
+                );
+
+
+            if (
+                !userSnap.exists() ||
+                userSnap.data().role !== "admin"
+            ) {
+
+
+                await signOut(auth);
+
+
+                window.location.href =
+                    "index.html";
+
+
+                return;
+
+            }
+
+
+            startSponsorListener();
+
+
+        }
+        catch(error) {
+
+
+            console.error(error);
+
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="8"
+                        class="empty"
+                    >
+                        Unable to verify admin account.
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
 
     }
+);
 
-});
 
 
 /* ================= GENERATE SPONSOR ID ================= */
 
-async function generateSponsorId() {
+
+async function generateSponsorId(){
+
 
     const snapshot =
         await getDocs(
-            collection(db, "Sponsors")
+            collection(
+                db,
+                "Sponsors"
+            )
         );
 
 
     let maxNumber = 1000;
 
 
-    snapshot.forEach((item) => {
-
-        const data = item.data();
-
-        const id =
-            String(data.sponsorId || "");
+    snapshot.forEach(
+        (item) => {
 
 
-        if (id.startsWith("SP-")) {
+            const data =
+                item.data();
 
-            const number =
-                parseInt(
-                    id.replace("SP-", ""),
-                    10
+
+            const id =
+                String(
+                    data.sponsorId || ""
                 );
 
 
             if (
-                !isNaN(number) &&
-                number > maxNumber
-            ) {
+                id.startsWith("SP-")
+            ){
 
-                maxNumber = number;
+
+                const number =
+                    parseInt(
+                        id.replace(
+                            "SP-",
+                            ""
+                        ),
+                        10
+                    );
+
+
+                if(
+                    !isNaN(number) &&
+                    number > maxNumber
+                ){
+
+                    maxNumber =
+                        number;
+
+                }
 
             }
 
         }
+    );
 
-    });
 
-
-    return "SP-" + (maxNumber + 1);
+    return (
+        "SP-" +
+        (maxNumber + 1)
+    );
 
 }
 
 
+
 /* ================= ADD SPONSOR ================= */
 
-form.addEventListener("submit", async (event) => {
 
-    event.preventDefault();
-
-
-    message.textContent = "";
-    message.style.color = "#08796e";
+form.addEventListener(
+    "submit",
+    async (event) => {
 
 
-    const name =
-        document.getElementById("name")
-        .value.trim();
+        event.preventDefault();
 
 
-    const phone =
-        document.getElementById("phone")
-        .value.trim();
+        message.textContent = "";
 
 
-    const email =
-        document.getElementById("email")
-        .value.trim();
-
-
-    const total =
-        Number(
+        const name =
             document.getElementById(
-                "totalAmountInput"
-            ).value
-        );
+                "name"
+            ).value.trim();
 
 
-    const paid =
-        Number(
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+
+        const total =
+            Number(
+                document.getElementById(
+                    "totalAmountInput"
+                ).value
+            );
+
+
+        const paid =
+            Number(
+                document.getElementById(
+                    "paidAmountInput"
+                ).value || 0
+            );
+
+
+        if(total <= 0){
+
+            message.textContent =
+                "Please enter a valid total amount.";
+
+            message.style.color =
+                "#a83232";
+
+            return;
+
+        }
+
+
+        if(
+            paid < 0 ||
+            paid > total
+        ){
+
+            message.textContent =
+                "Paid amount cannot be greater than total amount.";
+
+            message.style.color =
+                "#a83232";
+
+            return;
+
+        }
+
+
+        try{
+
+
+            const sponsorId =
+                await generateSponsorId();
+
+
+            const balance =
+                total - paid;
+
+
+            const status =
+                balance <= 0
+                    ? "paid"
+                    : "pending";
+
+
+            await addDoc(
+                collection(
+                    db,
+                    "Sponsors"
+                ),
+                {
+
+                    sponsorId:
+                        sponsorId,
+
+                    name:
+                        name,
+
+                    phone:
+                        phone,
+
+                    email:
+                        email,
+
+                    totalAmount:
+                        total,
+
+                    paidAmount:
+                        paid,
+
+                    balanceAmount:
+                        balance,
+
+                    status:
+                        status,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+
+            message.textContent =
+                "Sponsor added successfully. Sponsor ID: " +
+                sponsorId;
+
+
+            message.style.color =
+                "#08796e";
+
+
+            form.reset();
+
+
             document.getElementById(
                 "paidAmountInput"
-            ).value || 0
-        );
+            ).value = "0";
 
 
-    if (total <= 0) {
-
-        message.textContent =
-            "Please enter a valid total sponsorship amount.";
-
-        message.style.color = "#a83232";
-
-        return;
-
-    }
+        }
+        catch(error){
 
 
-    if (paid < 0 || paid > total) {
+            console.error(error);
 
-        message.textContent =
-            "Paid amount cannot be greater than total amount.";
 
-        message.style.color = "#a83232";
+            message.textContent =
+                "Unable to add sponsor: " +
+                error.message;
 
-        return;
+
+            message.style.color =
+                "#a83232";
+
+        }
 
     }
+);
 
 
-    try {
 
-        const sponsorId =
-            await generateSponsorId();
+/* ================= REAL TIME LISTENER ================= */
 
 
-        const balance =
-            total - paid;
+function startSponsorListener(){
 
-
-        const status =
-            balance <= 0
-                ? "paid"
-                : "pending";
-
-
-        await addDoc(
-            collection(db, "Sponsors"),
-            {
-
-                sponsorId: sponsorId,
-
-                name: name,
-
-                phone: phone,
-
-                email: email,
-
-                totalAmount: total,
-
-                paidAmount: paid,
-
-                balanceAmount: balance,
-
-                status: status,
-
-                createdAt: serverTimestamp()
-
-            }
-        );
-
-
-        message.textContent =
-            `Sponsor added successfully. Sponsor ID: ${sponsorId}`;
-
-        message.style.color = "#08796e";
-
-
-        form.reset();
-
-
-        document.getElementById(
-            "paidAmountInput"
-        ).value = "0";
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.textContent =
-            "Unable to add sponsor: " +
-            error.message;
-
-        message.style.color = "#a83232";
-
-    }
-
-});
-
-
-/* ================= REAL TIME SPONSOR LIST ================= */
-
-function startSponsorListener() {
 
     const sponsorsRef =
-        collection(db, "Sponsors");
+        collection(
+            db,
+            "Sponsors"
+        );
 
 
     onSnapshot(
         sponsorsRef,
         (snapshot) => {
 
+
             allSponsors = [];
 
 
-            snapshot.forEach((item) => {
+            snapshot.forEach(
+                (item) => {
 
-                allSponsors.push({
 
-                    id: item.id,
+                    allSponsors.push({
 
-                    ...item.data()
+                        id:
+                            item.id,
 
-                });
+                        ...item.data()
 
-            });
+                    });
+
+                }
+            );
 
 
             updateStatistics();
+
 
             renderSponsors(
                 allSponsors
             );
 
         },
-
         (error) => {
+
 
             console.error(error);
 
+
             table.innerHTML = `
+
                 <tr>
-                    <td colspan="8" class="empty">
+
+                    <td
+                        colspan="8"
+                        class="empty"
+                    >
                         Unable to load sponsors.
                     </td>
+
                 </tr>
+
             `;
 
         }
@@ -1274,9 +1528,12 @@ function startSponsorListener() {
 }
 
 
+
 /* ================= STATISTICS ================= */
 
-function updateStatistics() {
+
+function updateStatistics(){
+
 
     let total = 0;
 
@@ -1285,26 +1542,38 @@ function updateStatistics() {
     let pending = 0;
 
 
-    allSponsors.forEach((sponsor) => {
-
-        total +=
-            Number(
-                sponsor.totalAmount || 0
-            );
+    allSponsors.forEach(
+        (sponsor) => {
 
 
-        paid +=
-            Number(
-                sponsor.paidAmount || 0
-            );
+            total +=
+                Number(
+                    sponsor.totalAmount || 0
+                );
 
 
-        pending +=
-            Number(
-                sponsor.balanceAmount || 0
-            );
+            paid +=
+                Number(
+                    sponsor.paidAmount || 0
+                );
 
-    });
+
+            pending +=
+                Number(
+                    sponsor.balanceAmount ??
+                    (
+                        Number(
+                            sponsor.totalAmount || 0
+                        )
+                        -
+                        Number(
+                            sponsor.paidAmount || 0
+                        )
+                    )
+                );
+
+        }
+    );
 
 
     document.getElementById(
@@ -1333,43 +1602,79 @@ function updateStatistics() {
 }
 
 
+
 /* ================= MONEY ================= */
 
-function formatMoney(amount) {
 
-    return "₹" +
-        Number(amount || 0)
-        .toLocaleString("en-IN");
+function formatMoney(amount){
+
+    return (
+        "₹" +
+        Number(
+            amount || 0
+        ).toLocaleString(
+            "en-IN"
+        )
+    );
 
 }
+
 
 
 /* ================= ESCAPE HTML ================= */
 
-function escapeHTML(value) {
 
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
-/* ================= RENDER TABLE ================= */
 
-function renderSponsors(list) {
+/* ================= RENDER ================= */
 
-    if (!list.length) {
+
+function renderSponsors(list){
+
+
+    if(!list.length){
 
         table.innerHTML = `
+
             <tr>
-                <td colspan="8" class="empty">
+
+                <td
+                    colspan="8"
+                    class="empty"
+                >
                     No sponsors found.
                 </td>
+
             </tr>
+
         `;
 
         return;
@@ -1378,131 +1683,147 @@ function renderSponsors(list) {
 
 
     table.innerHTML =
-        list.map((sponsor) => {
-
-            const total =
-                Number(
-                    sponsor.totalAmount || 0
-                );
+        list.map(
+            (sponsor) => {
 
 
-            const paid =
-                Number(
-                    sponsor.paidAmount || 0
-                );
+                const total =
+                    Number(
+                        sponsor.totalAmount || 0
+                    );
 
 
-            const balance =
-                Number(
-                    sponsor.balanceAmount ??
-                    (total - paid)
-                );
+                const paid =
+                    Number(
+                        sponsor.paidAmount || 0
+                    );
 
 
-            const status =
-                balance <= 0
-                    ? "paid"
-                    : "pending";
+                const balance =
+                    Number(
+                        sponsor.balanceAmount ??
+                        (total - paid)
+                    );
 
 
-            return `
+                const status =
+                    balance <= 0
+                        ? "paid"
+                        : "pending";
 
-                <tr>
 
-                    <td>
-                        <span class="sponsor-id">
+                return `
+
+                    <tr>
+
+                        <td>
+
+                            <span
+                                class="sponsor-id"
+                            >
+                                ${escapeHTML(
+                                    sponsor.sponsorId || "-"
+                                )}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ${escapeHTML(
+                                    sponsor.name || "-"
+                                )}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${escapeHTML(
+                                    sponsor.email || ""
+                                )}
+                            </small>
+
+                        </td>
+
+
+                        <td>
                             ${escapeHTML(
-                                sponsor.sponsorId || "-"
+                                sponsor.phone || "-"
                             )}
-                        </span>
-                    </td>
+                        </td>
 
 
-                    <td>
-                        <strong>
-                            ${escapeHTML(
-                                sponsor.name || "-"
-                            )}
-                        </strong>
-
-                        <br>
-
-                        <small>
-                            ${escapeHTML(
-                                sponsor.email || ""
-                            )}
-                        </small>
-                    </td>
+                        <td>
+                            ${formatMoney(total)}
+                        </td>
 
 
-                    <td>
-                        ${escapeHTML(
-                            sponsor.phone || "-"
-                        )}
-                    </td>
+                        <td>
+                            ${formatMoney(paid)}
+                        </td>
 
 
-                    <td>
-                        ${formatMoney(total)}
-                    </td>
+                        <td>
+                            ${formatMoney(balance)}
+                        </td>
 
 
-                    <td>
-                        ${formatMoney(paid)}
-                    </td>
+                        <td>
+
+                            <span
+                                class="status ${status}"
+                            >
+
+                                ${
+                                    status === "paid"
+                                    ? "PAID"
+                                    : "PENDING"
+                                }
+
+                            </span>
+
+                        </td>
 
 
-                    <td>
-                        ${formatMoney(balance)}
-                    </td>
+                        <td>
+
+                            <button
+                                class="action-btn edit"
+                                onclick="editSponsor('${sponsor.id}')"
+                            >
+                                Edit
+                            </button>
 
 
-                    <td>
+                            <button
+                                class="action-btn delete"
+                                onclick="deleteSponsor('${sponsor.id}')"
+                            >
+                                Delete
+                            </button>
 
-                        <span class="status ${status}">
-                            ${
-                                status === "paid"
-                                ? "PAID"
-                                : "PENDING"
-                            }
-                        </span>
+                        </td>
 
-                    </td>
+                    </tr>
 
+                `;
 
-                    <td>
-
-                        <button
-                            class="action-btn edit"
-                            onclick="editSponsor('${sponsor.id}')"
-                        >
-                            Edit
-                        </button>
-
-
-                        <button
-                            class="action-btn delete"
-                            onclick="deleteSponsor('${sponsor.id}')"
-                        >
-                            Delete
-                        </button>
-
-                    </td>
-
-                </tr>
-
-            `;
-
-        }).join("");
+            }
+        ).join("");
 
 }
 
 
+
 /* ================= SEARCH ================= */
+
 
 searchInput.addEventListener(
     "input",
     () => {
+
 
         const query =
             searchInput.value
@@ -1510,7 +1831,7 @@ searchInput.addEventListener(
             .toLowerCase();
 
 
-        if (!query) {
+        if(!query){
 
             renderSponsors(
                 allSponsors
@@ -1525,6 +1846,7 @@ searchInput.addEventListener(
             allSponsors.filter(
                 (sponsor) => {
 
+
                     return (
 
                         String(
@@ -1533,7 +1855,9 @@ searchInput.addEventListener(
                         .toLowerCase()
                         .includes(query)
 
+
                         ||
+
 
                         String(
                             sponsor.name || ""
@@ -1541,7 +1865,9 @@ searchInput.addEventListener(
                         .toLowerCase()
                         .includes(query)
 
+
                         ||
+
 
                         String(
                             sponsor.phone || ""
@@ -1549,7 +1875,9 @@ searchInput.addEventListener(
                         .toLowerCase()
                         .includes(query)
 
+
                         ||
+
 
                         String(
                             sponsor.email || ""
@@ -1563,36 +1891,53 @@ searchInput.addEventListener(
             );
 
 
-        renderSponsors(filtered);
+        renderSponsors(
+            filtered
+        );
 
     }
 );
 
 
+
 /* ================= DELETE ================= */
 
+
 window.deleteSponsor =
-    async function(id) {
+    async function(id){
+
 
         const sponsor =
             allSponsors.find(
-                item => item.id === id
+                item =>
+                    item.id === id
             );
 
 
-        if (!sponsor) return;
+        if(!sponsor)
+            return;
 
 
         const confirmDelete =
             confirm(
-                `Delete sponsor ${sponsor.name || ""} (${sponsor.sponsorId || ""})?`
+                "Delete sponsor " +
+                (
+                    sponsor.name || ""
+                ) +
+                " (" +
+                (
+                    sponsor.sponsorId || ""
+                ) +
+                ")?"
             );
 
 
-        if (!confirmDelete) return;
+        if(!confirmDelete)
+            return;
 
 
-        try {
+        try{
+
 
             await deleteDoc(
                 doc(
@@ -1603,7 +1948,9 @@ window.deleteSponsor =
             );
 
 
-        } catch (error) {
+        }
+        catch(error){
+
 
             alert(
                 "Unable to delete sponsor: " +
@@ -1615,18 +1962,23 @@ window.deleteSponsor =
     };
 
 
+
 /* ================= EDIT ================= */
 
+
 window.editSponsor =
-    async function(id) {
+    async function(id){
+
 
         const sponsor =
             allSponsors.find(
-                item => item.id === id
+                item =>
+                    item.id === id
             );
 
 
-        if (!sponsor) return;
+        if(!sponsor)
+            return;
 
 
         const newName =
@@ -1636,7 +1988,8 @@ window.editSponsor =
             );
 
 
-        if (newName === null) return;
+        if(newName === null)
+            return;
 
 
         const newPhone =
@@ -1646,7 +1999,8 @@ window.editSponsor =
             );
 
 
-        if (newPhone === null) return;
+        if(newPhone === null)
+            return;
 
 
         const newTotal =
@@ -1656,7 +2010,8 @@ window.editSponsor =
             );
 
 
-        if (newTotal === null) return;
+        if(newTotal === null)
+            return;
 
 
         const newPaid =
@@ -1666,7 +2021,8 @@ window.editSponsor =
             );
 
 
-        if (newPaid === null) return;
+        if(newPaid === null)
+            return;
 
 
         const total =
@@ -1677,11 +2033,11 @@ window.editSponsor =
             Number(newPaid);
 
 
-        if (
+        if(
             total < 0 ||
             paid < 0 ||
             paid > total
-        ) {
+        ){
 
             alert(
                 "Invalid amount. Paid amount cannot exceed total amount."
@@ -1692,53 +2048,40 @@ window.editSponsor =
         }
 
 
-        try {
-
-            const sponsorRef =
-                doc(
-                    db,
-                    "Sponsors",
-                    id
-                );
+        try{
 
 
             const balance =
                 total - paid;
 
 
-            /*
-             NOTE:
-             For the first version we use
-             direct Firestore update fields
-             after importing updateDoc below.
-            */
+            await updateDoc(
+                doc(
+                    db,
+                    "Sponsors",
+                    id
+                ),
+                {
 
-            await import(
-                "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js"
-            ).then(
-                async (module) => {
+                    name:
+                        newName.trim(),
 
-                    await module.updateDoc(
-                        sponsorRef,
-                        {
+                    phone:
+                        newPhone.trim(),
 
-                            name: newName.trim(),
+                    totalAmount:
+                        total,
 
-                            phone: newPhone.trim(),
+                    paidAmount:
+                        paid,
 
-                            totalAmount: total,
+                    balanceAmount:
+                        balance,
 
-                            paidAmount: paid,
-
-                            balanceAmount: balance,
-
-                            status:
-                                balance <= 0
-                                    ? "paid"
-                                    : "pending"
-
-                        }
-                    );
+                    status:
+                        balance <= 0
+                            ? "paid"
+                            : "pending"
 
                 }
             );
@@ -1749,9 +2092,12 @@ window.editSponsor =
             );
 
 
-        } catch (error) {
+        }
+        catch(error){
+
 
             console.error(error);
+
 
             alert(
                 "Unable to update sponsor: " +
@@ -1763,20 +2109,30 @@ window.editSponsor =
     };
 
 
+
 /* ================= LOGOUT ================= */
+
 
 logoutBtn.addEventListener(
     "click",
     async () => {
 
-        try {
 
-            await signOut(auth);
+        try{
+
+
+            await signOut(
+                auth
+            );
+
 
             window.location.href =
                 "index.html";
 
-        } catch (error) {
+
+        }
+        catch(error){
+
 
             alert(
                 "Logout failed."
@@ -1786,6 +2142,7 @@ logoutBtn.addEventListener(
 
     }
 );
+
 
 </script>
 
