@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Admin Dashboard - Sponsor Portal</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -42,7 +40,7 @@
       background: white;
       color: #0d6efd;
       padding: 10px 16px;
-      border-radius: 9px;
+      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
     }
@@ -65,8 +63,6 @@
     .welcome p {
       color: #777;
     }
-
-    /* DASHBOARD CARDS */
 
     .cards {
       display: grid;
@@ -93,8 +89,6 @@
       font-weight: bold;
     }
 
-    /* SECTION */
-
     .section {
       background: white;
       border-radius: 14px;
@@ -105,10 +99,8 @@
 
     .section h2 {
       margin-bottom: 15px;
-      font-size: 20px;
+      font-size: 19px;
     }
-
-    /* MENU */
 
     .menu {
       display: grid;
@@ -131,8 +123,6 @@
       background: #dce9ff;
     }
 
-    /* TABLE */
-
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
@@ -141,13 +131,12 @@
     .sponsor-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
       min-width: 650px;
     }
 
     .sponsor-table th,
     .sponsor-table td {
-      padding: 13px 10px;
+      padding: 12px 10px;
       border-bottom: 1px solid #eee;
       text-align: left;
       font-size: 14px;
@@ -168,32 +157,28 @@
       font-weight: bold;
     }
 
-    /* STATUS */
-
     .status {
-      padding: 13px;
+      padding: 12px;
       border-radius: 8px;
       background: #f8f9fa;
       color: #777;
       text-align: center;
     }
 
-    .loading {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-    }
-
+    .loading,
     .empty {
       text-align: center;
       padding: 25px;
       color: #777;
     }
 
-    /* MOBILE */
+    .error {
+      color: #dc3545;
+      text-align: center;
+      padding: 20px;
+    }
 
     @media (max-width: 850px) {
-
       .cards {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -201,11 +186,9 @@
       .menu {
         grid-template-columns: repeat(2, 1fr);
       }
-
     }
 
     @media (max-width: 600px) {
-
       .container {
         padding: 12px;
       }
@@ -220,7 +203,7 @@
       }
 
       .card-value {
-        font-size: 20px;
+        font-size: 19px;
       }
 
       .menu {
@@ -230,51 +213,30 @@
       .topbar h2 {
         font-size: 16px;
       }
-
-      .welcome h1 {
-        font-size: 21px;
-      }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-
-  <!-- TOP BAR -->
-
   <div class="topbar">
 
-    <h2>
-      SPONSOR PORTAL
-    </h2>
+    <h2>SPONSOR PORTAL</h2>
 
     <button
       class="logout"
       id="logoutBtn">
-
       Logout
-
     </button>
 
   </div>
 
 
-
   <main class="container">
-
-
-    <!-- WELCOME -->
 
     <div class="welcome">
 
-      <h1>
-        Admin Dashboard
-      </h1>
+      <h1>Admin Dashboard</h1>
 
       <p id="adminEmail">
         Loading...
@@ -283,14 +245,11 @@
     </div>
 
 
-
-    <!-- DASHBOARD SUMMARY -->
+    <!-- SUMMARY -->
 
     <div class="cards">
 
-
       <div class="card">
-
         <div class="card-title">
           TOTAL SPONSORS
         </div>
@@ -298,17 +257,12 @@
         <div
           class="card-value"
           id="totalSponsors">
-
           0
-
         </div>
-
       </div>
 
 
-
       <div class="card">
-
         <div class="card-title">
           TOTAL SPONSORSHIP
         </div>
@@ -316,17 +270,12 @@
         <div
           class="card-value"
           id="totalSponsorship">
-
           ₹0
-
         </div>
-
       </div>
 
 
-
       <div class="card">
-
         <div class="card-title">
           TOTAL RECEIVED
         </div>
@@ -334,17 +283,12 @@
         <div
           class="card-value"
           id="totalReceived">
-
           ₹0
-
         </div>
-
       </div>
 
 
-
       <div class="card">
-
         <div class="card-title">
           TOTAL PENDING
         </div>
@@ -352,90 +296,56 @@
         <div
           class="card-value"
           id="totalPending">
-
           ₹0
-
         </div>
-
       </div>
 
-
     </div>
-
 
 
     <!-- MANAGEMENT -->
 
     <div class="section">
 
-      <h2>
-        Management
-      </h2>
-
+      <h2>Management</h2>
 
       <div class="menu">
 
-
-        <button onclick="scrollToSponsors()">
-
+        <button onclick="goSponsors()">
           👥 Sponsors
-
         </button>
-
 
         <button onclick="comingSoon('Payments')">
-
           💰 Payments
-
         </button>
-
 
         <button onclick="comingSoon('Pending Payments')">
-
           ⏳ Pending
-
         </button>
-
 
         <button onclick="comingSoon('Messages')">
-
           💬 Messages
-
         </button>
-
 
         <button onclick="comingSoon('Reminders')">
-
           🔔 Reminders
-
         </button>
-
 
         <button onclick="comingSoon('Reports')">
-
           📊 Reports
-
         </button>
-
 
         <button onclick="comingSoon('Notifications')">
-
           🔔 Notifications
-
         </button>
-
 
         <button onclick="comingSoon('Settings')">
-
           ⚙️ Settings
-
         </button>
-
 
       </div>
 
     </div>
-
 
 
     <!-- SPONSORS -->
@@ -444,40 +354,28 @@
       class="section"
       id="sponsorsSection">
 
-
-      <h2>
-        👥 Sponsors
-      </h2>
-
+      <h2>👥 Sponsors</h2>
 
       <div
-        id="sponsorLoading"
+        id="loading"
         class="loading">
 
         Loading sponsors...
 
       </div>
 
-
       <div
-        id="sponsorTableContainer">
-
+        id="sponsorContainer">
       </div>
-
 
     </div>
 
 
-
-    <!-- SYSTEM STATUS -->
+    <!-- STATUS -->
 
     <div class="section">
 
-
-      <h2>
-        System Status
-      </h2>
-
+      <h2>System Status</h2>
 
       <div
         class="status"
@@ -487,18 +385,12 @@
 
       </div>
 
-
     </div>
-
 
   </main>
 
 
-
-  <!-- FIREBASE -->
-
   <script type="module">
-
 
     import {
       initializeApp
@@ -522,8 +414,7 @@
       "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-
-    /* FIREBASE CONFIG */
+    /* FIREBASE */
 
     const firebaseConfig = {
 
@@ -544,12 +435,8 @@
 
       appId:
         "1:302644033627:web:bfb03201ee44bcf616677e"
-
     };
 
-
-
-    /* INITIALIZE FIREBASE */
 
     const app =
       initializeApp(firebaseConfig);
@@ -563,10 +450,9 @@
       getFirestore(app);
 
 
+    /* MONEY */
 
-    /* MONEY FORMAT */
-
-    function formatMoney(amount) {
+    function money(value) {
 
       return new Intl.NumberFormat(
         "en-IN",
@@ -575,228 +461,165 @@
           currency: "INR",
           maximumFractionDigits: 0
         }
-      ).format(Number(amount) || 0);
+      ).format(
+        Number(value) || 0
+      );
 
     }
 
 
+    /* HTML SAFE */
 
-    /* HTML SECURITY */
+    function safe(value) {
 
-    function escapeHtml(value) {
-
-      return String(value)
-
+      return String(value ?? "-")
         .replaceAll("&", "&amp;")
-
         .replaceAll("<", "&lt;")
-
         .replaceAll(">", "&gt;")
-
         .replaceAll('"', "&quot;")
-
         .replaceAll("'", "&#039;");
 
     }
-
 
 
     /* LOAD SPONSORS */
 
     async function loadSponsors() {
 
-
       const loading =
-        document.getElementById(
-          "sponsorLoading"
-        );
-
+        document.getElementById("loading");
 
       const container =
         document.getElementById(
-          "sponsorTableContainer"
+          "sponsorContainer"
         );
 
 
       try {
 
-
         /*
-          IMPORTANT
-
-          Firebase collection name is:
+          EXACT FIRESTORE COLLECTION
 
           Sponsors
-
-          Capital S
         */
+
+        const ref =
+          collection(db, "Sponsors");
 
 
         const snapshot =
-          await getDocs(
-            collection(db, "Sponsors")
-          );
+          await getDocs(ref);
 
 
-
-        let totalSponsors = 0;
-
-        let totalSponsorship = 0;
-
-        let totalReceived = 0;
-
-        let totalPending = 0;
+        console.log(
+          "Sponsors found:",
+          snapshot.size
+        );
 
 
+        let count = 0;
 
-        let html = `
+        let total = 0;
 
-          <div class="table-wrapper">
+        let received = 0;
 
-          <table class="sponsor-table">
+        let pending = 0;
 
-            <thead>
 
-              <tr>
-
-                <th>
-                  Name
-                </th>
-
-                <th>
-                  Phone
-                </th>
-
-                <th>
-                  Total
-                </th>
-
-                <th>
-                  Paid
-                </th>
-
-                <th>
-                  Balance
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-        `;
-
+        let rows = "";
 
 
         snapshot.forEach(
           (doc) => {
 
-
-            const sponsor =
+            const data =
               doc.data();
 
 
             const name =
-              sponsor.name || "-";
+              data.name || "-";
 
 
             const phone =
-              sponsor.phone || "-";
+              data.phone || "-";
 
 
-            const total =
+            const totalAmount =
               Number(
-                sponsor.totalAmount || 0
+                data.totalAmount || 0
               );
 
 
-            const paid =
+            const paidAmount =
               Number(
-                sponsor.paidAmount || 0
+                data.paidAmount || 0
               );
 
 
-            /*
-              If balanceAmount exists,
-              use it.
-
-              Otherwise calculate it.
-            */
-
-            const balance =
-              sponsor.balanceAmount !== undefined
-
-                ? Number(
-                    sponsor.balanceAmount
-                  )
-
-                : Math.max(
-                    total - paid,
-                    0
-                  );
+            let balanceAmount;
 
 
+            if (
+              data.balanceAmount !== undefined
+            ) {
 
-            totalSponsors++;
+              balanceAmount =
+                Number(
+                  data.balanceAmount
+                );
+
+            } else {
+
+              balanceAmount =
+                Math.max(
+                  totalAmount -
+                  paidAmount,
+                  0
+                );
+
+            }
 
 
-            totalSponsorship +=
-              total;
+            count++;
+
+            total +=
+              totalAmount;
+
+            received +=
+              paidAmount;
+
+            pending +=
+              balanceAmount;
 
 
-            totalReceived +=
-              paid;
-
-
-            totalPending +=
-              balance;
-
-
-
-            html += `
+            rows += `
 
               <tr>
 
                 <td>
-
                   <strong>
-                    ${escapeHtml(name)}
+                    ${safe(name)}
                   </strong>
-
                 </td>
-
 
                 <td>
-
-                  ${escapeHtml(phone)}
-
+                  ${safe(phone)}
                 </td>
-
 
                 <td>
-
-                  ${formatMoney(total)}
-
+                  ${money(totalAmount)}
                 </td>
-
 
                 <td class="paid">
-
-                  ${formatMoney(paid)}
-
+                  ${money(paidAmount)}
                 </td>
 
-
-                <td
-                  class="${
-                    balance > 0
-                      ? "pending"
-                      : "paid"
-                  }">
-
-                  ${formatMoney(balance)}
-
+                <td class="${
+                  balanceAmount > 0
+                    ? "pending"
+                    : "paid"
+                }">
+                  ${money(balanceAmount)}
                 </td>
 
               </tr>
@@ -807,29 +630,11 @@
         );
 
 
-
-        html += `
-
-            </tbody>
-
-          </table>
-
-          </div>
-
-        `;
-
-
-
         loading.style.display =
           "none";
 
 
-
-        /* NO SPONSORS */
-
-        if (
-          totalSponsors === 0
-        ) {
+        if (count === 0) {
 
           container.innerHTML = `
 
@@ -837,55 +642,80 @@
 
               No sponsors found.
 
+              <br><br>
+
+              Firestore collection:
+              <strong>Sponsors</strong>
+
+            </div>
+
+          `;
+
+        } else {
+
+          container.innerHTML = `
+
+            <div class="table-wrapper">
+
+              <table class="sponsor-table">
+
+                <thead>
+
+                  <tr>
+
+                    <th>Name</th>
+
+                    <th>Phone</th>
+
+                    <th>Total</th>
+
+                    <th>Paid</th>
+
+                    <th>Balance</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  ${rows}
+
+                </tbody>
+
+              </table>
+
             </div>
 
           `;
 
         }
 
-        else {
 
-          container.innerHTML =
-            html;
-
-        }
-
-
-
-        /* UPDATE DASHBOARD */
+        /* SUMMARY */
 
         document.getElementById(
           "totalSponsors"
         ).textContent =
-          totalSponsors;
-
+          count;
 
 
         document.getElementById(
           "totalSponsorship"
         ).textContent =
-          formatMoney(
-            totalSponsorship
-          );
-
+          money(total);
 
 
         document.getElementById(
           "totalReceived"
         ).textContent =
-          formatMoney(
-            totalReceived
-          );
-
+          money(received);
 
 
         document.getElementById(
           "totalPending"
         ).textContent =
-          formatMoney(
-            totalPending
-          );
-
+          money(pending);
 
 
         document.getElementById(
@@ -898,9 +728,8 @@
 
       catch (error) {
 
-
         console.error(
-          "Firestore Error:",
+          "Firestore error:",
           error
         );
 
@@ -911,13 +740,13 @@
 
         container.innerHTML = `
 
-          <div class="empty">
+          <div class="error">
 
-            Unable to load sponsor data.
+            Firestore data load failed.
 
             <br><br>
 
-            Please check Firestore Security Rules.
+            ${safe(error.message)}
 
           </div>
 
@@ -927,20 +756,18 @@
         document.getElementById(
           "systemStatus"
         ).textContent =
-          "Firebase connected, but Firestore access was denied.";
+          "Firestore error. Check Rules and collection name.";
 
       }
 
     }
 
 
-
-    /* LOGIN CHECK */
+    /* LOGIN */
 
     onAuthStateChanged(
       auth,
       async (user) => {
-
 
         if (!user) {
 
@@ -952,7 +779,6 @@
         }
 
 
-
         document.getElementById(
           "adminEmail"
         ).textContent =
@@ -960,13 +786,10 @@
           user.email;
 
 
-
         await loadSponsors();
-
 
       }
     );
-
 
 
     /* LOGOUT */
@@ -977,74 +800,45 @@
         "click",
         async () => {
 
+          await signOut(auth);
 
-          try {
-
-
-            await signOut(auth);
-
-
-            window.location.href =
-              "index.html";
-
-
-          }
-
-          catch (error) {
-
-
-            console.error(error);
-
-
-            alert(
-              "Logout failed."
-            );
-
-
-          }
+          window.location.href =
+            "index.html";
 
         }
       );
 
 
+    /* SPONSOR BUTTON */
 
-    /* SCROLL TO SPONSORS */
-
-    window.scrollToSponsors =
+    window.goSponsors =
       function() {
-
 
         document
           .getElementById(
             "sponsorsSection"
           )
           .scrollIntoView({
-
-            behavior:
-              "smooth"
-
+            behavior: "smooth"
           });
 
       };
 
 
-
-    /* TEMPORARY BUTTONS */
+    /* TEMP BUTTONS */
 
     window.comingSoon =
       function(section) {
 
-
         alert(
           section +
-          " will be added in the next step."
+          " will be added next."
         );
 
       };
 
 
   </script>
-
 
 </body>
 </html>
