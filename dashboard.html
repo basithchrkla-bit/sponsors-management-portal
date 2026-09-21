@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Safa Qur'an College | Sponsor Management</title>
+<title>Sponsor Management | Safa Qur'an College</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -15,953 +18,687 @@
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at 10% 20%,rgba(13,148,136,.08),transparent 25%),
-        radial-gradient(circle at 90% 10%,rgba(212,175,55,.08),transparent 25%),
-        linear-gradient(135deg,#f4fbfa,#eef7f6,#f8faf9);
-    color:#173b3a;
-    min-height:100vh;
+    font-family:Inter,Arial,sans-serif;
+    background:#f3f7f6;
+    color:#17252b;
 }
 
-/* Islamic Pattern */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
-    background-image:
-        linear-gradient(45deg,#087f75 25%,transparent 25%),
-        linear-gradient(-45deg,#087f75 25%,transparent 25%),
-        linear-gradient(45deg,transparent 75%,#087f75 75%),
-        linear-gradient(-45deg,transparent 75%,#087f75 75%);
-    background-size:40px 40px;
-    background-position:0 0,0 20px,20px -20px,-20px 0;
-}
-
-/* HERO */
-
-.hero{
-    min-height:300px;
+.header{
     position:relative;
+    min-height:430px;
     overflow:hidden;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.header-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+}
+
+.header-overlay{
+    position:absolute;
+    inset:0;
     background:
         linear-gradient(
-            rgba(3,65,61,.75),
-            rgba(1,51,48,.82)
-        ),
-        radial-gradient(circle at 20% 20%,#5bb8a8,transparent 30%),
-        radial-gradient(circle at 80% 30%,#d4af37,transparent 25%),
-        linear-gradient(135deg,#063f3b,#087f75);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:45px 20px;
+            135deg,
+            rgba(2,45,38,.88),
+            rgba(0,0,0,.42)
+        );
 }
 
-.hero::after{
-    content:"☾  ✦  ۞  ✦  ☽";
-    position:absolute;
-    bottom:18px;
-    left:0;
-    right:0;
-    text-align:center;
-    font-size:25px;
-    opacity:.45;
-    letter-spacing:12px;
-}
-
-.hero-content{
+.header-content{
     position:relative;
     z-index:2;
+    width:100%;
+    max-width:1000px;
+    padding:40px 20px;
 }
 
-.hero h1{
-    font-family:Georgia,serif;
-    font-size:48px;
-    margin-bottom:18px;
+.greeting{
+    font-size:18px;
+    font-weight:600;
     letter-spacing:.5px;
-}
-
-.hero .arabic{
-    font-family:"Times New Roman",serif;
-    direction:rtl;
-    font-size:32px;
     margin-bottom:14px;
-    line-height:1.7;
 }
 
-.hero .translation{
-    font-family:Georgia,serif;
-    font-size:17px;
-    opacity:.9;
-    font-style:italic;
-}
-
-/* NAVBAR */
-
-.navbar{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:#064e49;
-    color:white;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
-}
-
-.nav-inner{
-    max-width:1200px;
-    margin:auto;
-    min-height:72px;
-    display:flex;
-    align-items:center;
-    gap:25px;
-    padding:10px 20px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-width:250px;
-}
-
-.brand-icon{
-    width:45px;
-    height:45px;
+.logo-circle{
+    width:70px;
+    height:70px;
     border-radius:50%;
-    background:#d4af37;
-    color:#064e49;
+    margin:0 auto 15px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:23px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.5);
+    font-size:32px;
 }
 
-.brand h2{
-    font-size:17px;
+.header h1{
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:8px;
 }
 
-.brand small{
-    opacity:.75;
+.header-sub{
+    font-size:14px;
+    opacity:.9;
+    margin-bottom:18px;
 }
 
-/* SEARCH */
+.quote{
+    font-family:Amiri,serif;
+    font-size:28px;
+    font-weight:700;
+    direction:rtl;
+    margin:10px auto 8px;
+}
 
-.search-box{
+.quote-meaning{
+    font-size:13px;
+    opacity:.9;
+}
+
+.topbar{
+    max-width:1200px;
+    margin:-35px auto 25px;
+    position:relative;
+    z-index:5;
+    padding:0 18px;
+}
+
+.topbar-inner{
+    background:white;
+    border-radius:18px;
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+    padding:15px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.search{
     flex:1;
     position:relative;
 }
 
-.search-box input{
+.search input{
     width:100%;
-    height:45px;
-    border:none;
-    outline:none;
-    border-radius:25px;
-    padding:0 20px 0 48px;
+    border:1px solid #d8e1df;
+    border-radius:12px;
+    padding:14px 16px 14px 45px;
     font-size:15px;
-    background:white;
-    color:#173b3a;
+    outline:none;
+}
+
+.search input:focus{
+    border-color:#168275;
 }
 
 .search-icon{
     position:absolute;
-    left:18px;
-    top:12px;
-    color:#087f75;
-    font-size:18px;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:19px;
 }
 
-.admin-area{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.admin-circle{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:#ffffff22;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.logout-btn{
-    border:1px solid #ffffff77;
-    background:transparent;
+.logout{
+    border:0;
+    background:#a33b3b;
     color:white;
-    padding:10px 15px;
-    border-radius:8px;
+    padding:13px 18px;
+    border-radius:11px;
+    font-weight:700;
     cursor:pointer;
 }
-
-.logout-btn:hover{
-    background:#ffffff15;
-}
-
-/* MAIN */
 
 .container{
     max-width:1200px;
     margin:auto;
-    padding:35px 20px 60px;
+    padding:0 18px 50px;
 }
 
-/* WELCOME */
-
 .welcome{
-    background:white;
+    background:linear-gradient(135deg,#08796e,#135b52);
+    color:white;
+    padding:25px;
     border-radius:18px;
-    padding:22px 25px;
-    margin-bottom:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
-    border-left:5px solid #d4af37;
+    margin-bottom:22px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .welcome h2{
-    color:#075e58;
     margin-bottom:7px;
+    font-size:23px;
 }
 
 .welcome p{
-    color:#687b7a;
+    opacity:.9;
+    font-size:14px;
 }
-
-/* STATS */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
-    margin-bottom:30px;
+    gap:15px;
+    margin-bottom:25px;
 }
 
-.stat-card{
+.stat{
     background:white;
-    border-radius:18px;
-    padding:23px;
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
-    position:relative;
-    overflow:hidden;
+    padding:22px;
+    border-radius:17px;
+    box-shadow:0 6px 22px rgba(0,0,0,.06);
+    border-left:5px solid #08796e;
 }
 
-.stat-card::after{
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:#087f7510;
-    right:-25px;
-    top:-25px;
-}
-
-.stat-icon{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:23px;
-    margin-bottom:14px;
-    background:#e4f5f2;
-}
-
-.stat-card h4{
-    color:#6d7f7e;
-    font-size:14px;
-    margin-bottom:8px;
-}
-
-.stat-card h3{
-    font-size:27px;
-    color:#064e49;
-}
-
-/* QUOTES */
-
-.quotes{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:30px;
-}
-
-.quote-card{
-    background:linear-gradient(135deg,#064e49,#087f75);
-    color:white;
-    border-radius:18px;
-    padding:25px;
-    min-height:150px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-}
-
-.quote-card:nth-child(2){
-    background:linear-gradient(135deg,#806719,#b08b24);
-}
-
-.quote-card:nth-child(3){
-    background:linear-gradient(135deg,#155b55,#388f83);
-}
-
-.quote-card .arabic{
-    direction:rtl;
-    font-family:"Times New Roman",serif;
-    font-size:23px;
+.stat-title{
+    font-size:13px;
+    color:#718087;
     margin-bottom:10px;
-    line-height:1.6;
 }
 
-.quote-card p{
+.stat-value{
+    font-size:25px;
+    font-weight:800;
+    color:#17252b;
+}
+
+.help-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:28px;
+}
+
+.help-card{
+    background:white;
+    border-radius:17px;
+    padding:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+    transition:.2s;
+}
+
+.help-card:hover{
+    transform:translateY(-3px);
+}
+
+.help-icon{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.help-card h3{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.help-card p{
+    color:#718087;
+    font-size:12px;
     line-height:1.5;
-    font-size:14px;
 }
 
-/* SECTION */
-
-.section{
+.card{
     background:white;
     border-radius:20px;
-    padding:28px;
-    margin-bottom:30px;
-    box-shadow:0 8px 28px rgba(0,0,0,.06);
-}
-
-.section-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
+    padding:26px;
+    box-shadow:0 6px 25px rgba(0,0,0,.06);
     margin-bottom:25px;
 }
 
-.section-title h2{
-    color:#064e49;
+.card h2{
+    font-size:21px;
+    margin-bottom:20px;
 }
 
-.title-icon{
-    font-size:27px;
-}
-
-/* FORM */
-
-.form-info{
-    background:#ecfaf6;
-    border:1px solid #b9e9db;
-    color:#17665e;
+.notice{
+    background:#ecfaf5;
+    border:1px solid #bde8d8;
+    color:#176b5c;
+    border-radius:13px;
     padding:15px;
-    border-radius:12px;
-    margin-bottom:25px;
-    line-height:1.6;
+    margin-bottom:20px;
+    font-size:14px;
+    line-height:1.5;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:repeat(2,1fr);
+    gap:17px;
 }
 
-.form-group{
+.field{
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:7px;
 }
 
-.form-group.full{
-    grid-column:1 / -1;
+.field label{
+    font-weight:700;
+    font-size:14px;
 }
 
-.form-group label{
-    font-weight:bold;
-    color:#293f3e;
-}
-
-.form-group input{
-    height:50px;
-    border:1px solid #d4dddd;
-    border-radius:10px;
-    padding:0 15px;
-    font-size:15px;
+.field input{
+    padding:14px;
+    border:1px solid #d5dddb;
+    border-radius:11px;
     outline:none;
-    transition:.2s;
-}
-
-.form-group input:focus{
-    border-color:#087f75;
-    box-shadow:0 0 0 3px #087f7515;
-}
-
-.add-btn{
-    margin-top:22px;
-    border:none;
-    background:#087f75;
-    color:white;
-    padding:14px 25px;
-    border-radius:10px;
-    font-weight:bold;
     font-size:15px;
+}
+
+.field input:focus{
+    border-color:#08796e;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.primary{
+    border:0;
+    background:#08796e;
+    color:white;
+    padding:14px 23px;
+    border-radius:11px;
+    font-size:15px;
+    font-weight:700;
     cursor:pointer;
 }
 
-.add-btn:hover{
-    background:#05645d;
+.primary:hover{
+    background:#06675e;
 }
 
 .message{
     margin-top:15px;
-    padding:12px;
-    border-radius:8px;
-    display:none;
-}
-
-.success{
-    display:block;
-    background:#e9f9ef;
-    color:#18733c;
-}
-
-.error{
-    display:block;
-    background:#fff0f0;
-    color:#b42318;
-}
-
-/* TABLE HEADER */
-
-.table-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.table-search{
-    width:330px;
-    max-width:100%;
-    height:44px;
-    border:1px solid #d4dddd;
-    border-radius:22px;
-    padding:0 18px;
-    outline:none;
+    font-weight:600;
+    font-size:14px;
 }
 
 .table-wrapper{
-    width:100%;
     overflow-x:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:950px;
-}
-
-thead{
-    background:#f2f8f7;
+    min-width:850px;
 }
 
 th{
-    padding:15px;
+    background:#f5f8f7;
     text-align:left;
-    color:#344e4c;
-    font-size:14px;
+    padding:15px;
+    font-size:13px;
+    color:#4c5b61;
 }
 
 td{
-    padding:16px 15px;
-    border-bottom:1px solid #edf1f1;
-    color:#394d4b;
-}
-
-tbody tr:hover{
-    background:#f9fcfb;
+    padding:15px;
+    border-bottom:1px solid #e8eeee;
+    font-size:14px;
 }
 
 .sponsor-id{
-    color:#087f75;
-    font-weight:bold;
-}
-
-.amount{
-    font-weight:bold;
-}
-
-.pending{
-    color:#d88900;
-}
-
-.paid{
-    color:#168344;
+    color:#08796e;
+    font-weight:800;
 }
 
 .status{
-    display:inline-block;
-    padding:6px 11px;
+    padding:6px 10px;
     border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
+    font-size:11px;
+    font-weight:700;
 }
 
-.status.paid-status{
-    background:#e8f8ed;
-    color:#18813e;
+.status.paid{
+    background:#e4f7ed;
+    color:#147047;
 }
 
-.status.pending-status{
-    background:#fff5dc;
-    color:#a56a00;
-}
-
-/* ACTIONS */
-
-.actions{
-    display:flex;
-    gap:7px;
+.status.pending{
+    background:#fff4df;
+    color:#9b6815;
 }
 
 .action-btn{
-    border:none;
+    border:0;
     padding:7px 10px;
-    border-radius:7px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:12px;
-    font-weight:bold;
+    font-weight:600;
+    margin-right:4px;
 }
 
-.view-btn{
-    background:#e9f4ff;
-    color:#1769aa;
+.edit{
+    background:#e7f1ff;
+    color:#1763a5;
 }
 
-.edit-btn{
-    background:#fff6df;
-    color:#9b6800;
-}
-
-.delete-btn{
-    background:#fff0f0;
-    color:#c62828;
+.delete{
+    background:#fde9e9;
+    color:#a83232;
 }
 
 .empty{
     text-align:center;
     padding:35px;
-    color:#8a9998;
+    color:#8b979c;
 }
-
-/* FOOTER */
 
 .footer{
-    background:#064e49;
-    color:white;
     text-align:center;
-    padding:30px 20px;
+    color:#77858a;
+    font-size:12px;
+    padding:25px 10px;
 }
 
-.footer-arabic{
+.arabic-footer{
+    font-family:Amiri,serif;
+    font-size:20px;
     direction:rtl;
-    font-family:"Times New Roman",serif;
-    font-size:22px;
-    margin-bottom:10px;
+    color:#08796e;
+    margin-bottom:8px;
 }
 
-.footer p{
-    opacity:.8;
-    font-size:14px;
-}
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:100;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal-box{
-    background:white;
-    width:100%;
-    max-width:600px;
-    border-radius:18px;
-    padding:28px;
-    max-height:90vh;
-    overflow:auto;
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:22px;
-}
-
-.close-btn{
-    border:none;
-    background:#f0f2f2;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:18px;
-}
-
-/* LOADING */
-
-.loading{
-    text-align:center;
-    padding:30px;
-    color:#6b7c7b;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-
+@media(max-width:850px){
     .stats{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .quotes{
-        grid-template-columns:1fr;
+    .help-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .brand{
-        min-width:auto;
+    .header{
+        min-height:390px;
     }
 
-    .brand-text{
-        display:none;
+    .header h1{
+        font-size:25px;
     }
 
+    .quote{
+        font-size:23px;
+    }
 }
 
-@media(max-width:650px){
-
-    .hero{
-        min-height:240px;
+@media(max-width:600px){
+    .header{
+        min-height:370px;
     }
 
-    .hero h1{
-        font-size:34px;
+    .header-content{
+        padding:30px 15px;
     }
 
-    .hero .arabic{
-        font-size:24px;
+    .header h1{
+        font-size:22px;
     }
 
-    .hero .translation{
-        font-size:14px;
+    .greeting{
+        font-size:16px;
     }
 
-    .nav-inner{
-        flex-wrap:wrap;
-        gap:10px;
-    }
-
-    .search-box{
-        order:3;
-        flex-basis:100%;
-    }
-
-    .admin-area{
-        margin-left:auto;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .stat-card{
-        padding:16px;
-    }
-
-    .stat-card h3{
+    .quote{
         font-size:21px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .help-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .topbar-inner{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .logout{
+        width:100%;
     }
 
     .form-grid{
         grid-template-columns:1fr;
     }
 
-    .form-group.full{
+    .full{
         grid-column:auto;
     }
 
-    .section{
+    .card{
         padding:20px;
     }
 
-    .table-top{
-        flex-direction:column;
-        align-items:stretch;
+    .welcome{
+        padding:20px;
     }
-
-    .table-search{
-        width:100%;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<!-- ================= HEADER ================= -->
 
-<section class="hero">
+<header class="header">
 
-    <div class="hero-content">
+    <!-- YOUR UPLOADED COLLEGE PHOTO -->
+    <img
+        src="1000892841.jpg"
+        class="header-image"
+        alt="Safa Hifzul Qur'an College"
+    >
 
-        <h1>Assalamu Alaikum</h1>
+    <div class="header-overlay"></div>
 
-        <div class="arabic">
+    <div class="header-content">
+
+        <div class="logo-circle">☪</div>
+
+        <div class="greeting">
+            السلام عليكم ورحمة الله وبركاته
+        </div>
+
+        <h1>
+            SAFA HIFZUL QUR'AN COLLEGE
+        </h1>
+
+        <div class="header-sub">
+            SPONSOR MANAGEMENT PORTAL
+        </div>
+
+        <div class="quote">
             خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
         </div>
 
-        <div class="translation">
-            “The best among you are those who learn the Qur’an and teach it.”
+        <div class="quote-meaning">
+            “The best among you are those who learn the Qur'an and teach it.”
         </div>
 
     </div>
 
-</section>
+</header>
 
 
-<!-- NAVIGATION -->
+<!-- ================= SEARCH / TOP BAR ================= -->
 
-<nav class="navbar">
+<div class="topbar">
 
-    <div class="nav-inner">
+    <div class="topbar-inner">
 
-        <div class="brand">
-
-            <div class="brand-icon">
-                🕌
-            </div>
-
-            <div class="brand-text">
-                <h2>Safa Qur'an College</h2>
-                <small>Sponsor Management System</small>
-            </div>
-
-        </div>
-
-
-        <div class="search-box">
-
-            <span class="search-icon">🔎</span>
-
+        <div class="search">
+            <span class="search-icon">🔍</span>
             <input
                 type="text"
-                id="globalSearch"
-                placeholder="Search by name, phone, or sponsor ID..."
+                id="searchInput"
+                placeholder="Search sponsor by ID, name or phone..."
             >
-
         </div>
 
-
-        <div class="admin-area">
-
-            <div class="admin-circle">
-                👤
-            </div>
-
-            <span>Admin</span>
-
-            <button
-                class="logout-btn"
-                id="logoutBtn"
-            >
-                Logout
-            </button>
-
-        </div>
+        <button class="logout" id="logoutBtn">
+            Logout
+        </button>
 
     </div>
 
-</nav>
+</div>
 
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="container">
 
-
-    <!-- WELCOME -->
-
-    <div class="welcome">
+    <section class="welcome">
 
         <h2>Assalamu Alaikum 👋</h2>
 
         <p>
-            Welcome to the Safa Qur'an College Sponsor Management Dashboard.
-            Manage sponsors, sponsorship amounts and payment information from one place.
+            Welcome to the Safa Sponsor Management Dashboard.
+            Manage sponsors, sponsorship amounts and payment information
+            from one place.
         </p>
 
-    </div>
+    </section>
 
 
-    <!-- STATISTICS -->
+    <!-- ================= STATISTICS ================= -->
 
-    <div class="stats">
+    <section class="stats">
 
+        <div class="stat">
+            <div class="stat-title">
+                TOTAL SPONSORS
+            </div>
 
-        <div class="stat-card">
-
-            <div class="stat-icon">👥</div>
-
-            <h4>Total Sponsors</h4>
-
-            <h3 id="totalSponsors">
+            <div class="stat-value" id="totalSponsors">
                 0
-            </h3>
-
+            </div>
         </div>
 
 
-        <div class="stat-card">
-
-            <div class="stat-icon">₹</div>
-
-            <h4>Total Sponsorship</h4>
-
-            <h3 id="totalAmount">
-                ₹0
-            </h3>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">✅</div>
-
-            <h4>Paid Amount</h4>
-
-            <h3 id="paidAmount">
-                ₹0
-            </h3>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">⏳</div>
-
-            <h4>Pending Amount</h4>
-
-            <h3 id="pendingAmount">
-                ₹0
-            </h3>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- ISLAMIC QUOTES -->
-
-    <div class="quotes">
-
-
-        <div class="quote-card">
-
-            <div class="arabic">
-                وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى
+        <div class="stat">
+            <div class="stat-title">
+                TOTAL SPONSORSHIP
             </div>
 
-            <p>
-                “Help one another in goodness and righteousness.”
-            </p>
-
+            <div class="stat-value" id="totalAmount">
+                ₹0
+            </div>
         </div>
 
 
-        <div class="quote-card">
-
-            <div class="arabic">
-                مَنْ أَنْفَقَ فِي سَبِيلِ اللَّهِ
+        <div class="stat">
+            <div class="stat-title">
+                TOTAL PAID
             </div>
 
-            <p>
-                Every sincere contribution towards good is an opportunity for reward.
-            </p>
-
+            <div class="stat-value" id="paidAmount">
+                ₹0
+            </div>
         </div>
 
 
-        <div class="quote-card">
-
-            <div class="arabic">
-                إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ
+        <div class="stat">
+            <div class="stat-title">
+                TOTAL PENDING
             </div>
 
+            <div class="stat-value" id="pendingAmount">
+                ₹0
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= ISLAMIC HELPING CARDS ================= -->
+
+    <section class="help-grid">
+
+        <div class="help-card">
+            <div class="help-icon">📖</div>
+
+            <h3>Qur'an Education</h3>
+
             <p>
-                “Indeed, Allah loves those who do good.”
+                Supporting Qur'an memorization and Islamic education.
             </p>
-
         </div>
 
 
-    </div>
+        <div class="help-card">
+            <div class="help-icon">🤝</div>
 
+            <h3>Sponsor Support</h3>
 
-    <!-- ADD SPONSOR -->
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <span class="title-icon">
-                🤝
-            </span>
-
-            <h2>Add Sponsor</h2>
-
+            <p>
+                Manage sponsorship commitments and supporter information.
+            </p>
         </div>
 
 
-        <div class="form-info">
+        <div class="help-card">
+            <div class="help-icon">💳</div>
 
-            🆔 Sponsor ID will be generated automatically.
+            <h3>Payments</h3>
+
+            <p>
+                Track received amounts and remaining sponsorship balances.
+            </p>
+        </div>
+
+
+        <div class="help-card">
+            <div class="help-icon">🌙</div>
+
+            <h3>Islamic Service</h3>
+
+            <p>
+                Together supporting a meaningful Qur'anic mission.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ================= ADD SPONSOR ================= -->
+
+    <section class="card">
+
+        <h2>➕ Add New Sponsor</h2>
+
+        <div class="notice">
+
+            <strong>Sponsor ID will be generated automatically.</strong>
 
             <br>
 
             Example:
-            <strong>SP-1001</strong>,
-            <strong>SP-1002</strong>,
-            <strong>SP-1003</strong>
+            <strong>SP-1001, SP-1002, SP-1003...</strong>
 
         </div>
 
 
         <form id="sponsorForm">
 
-
             <div class="form-grid">
 
-
-                <div class="form-group">
+                <div class="field">
 
                     <label>
                         Sponsor Name
@@ -977,7 +714,7 @@ tbody tr:hover{
                 </div>
 
 
-                <div class="form-group">
+                <div class="field">
 
                     <label>
                         Phone
@@ -993,7 +730,7 @@ tbody tr:hover{
                 </div>
 
 
-                <div class="form-group">
+                <div class="field">
 
                     <label>
                         Email
@@ -1008,7 +745,7 @@ tbody tr:hover{
                 </div>
 
 
-                <div class="form-group">
+                <div class="field">
 
                     <label>
                         Total Sponsorship Amount
@@ -1016,7 +753,7 @@ tbody tr:hover{
 
                     <input
                         type="number"
-                        id="total"
+                        id="totalAmountInput"
                         placeholder="Enter amount"
                         min="0"
                         required
@@ -1025,7 +762,7 @@ tbody tr:hover{
                 </div>
 
 
-                <div class="form-group full">
+                <div class="field">
 
                     <label>
                         Initial Paid Amount
@@ -1033,8 +770,7 @@ tbody tr:hover{
 
                     <input
                         type="number"
-                        id="paid"
-                        placeholder="Enter paid amount"
+                        id="paidAmountInput"
                         value="0"
                         min="0"
                     >
@@ -1042,52 +778,35 @@ tbody tr:hover{
                 </div>
 
 
+                <div class="field full">
+
+                    <button
+                        type="submit"
+                        class="primary"
+                    >
+                        Add Sponsor
+                    </button>
+
+                </div>
+
             </div>
-
-
-            <button
-                type="submit"
-                class="add-btn"
-            >
-                ➕ Add Sponsor
-            </button>
-
 
         </form>
 
 
-        <div id="message" class="message"></div>
-
+        <div
+            id="message"
+            class="message"
+        ></div>
 
     </section>
 
 
-    <!-- SPONSOR TABLE -->
+    <!-- ================= SPONSOR LIST ================= -->
 
-    <section class="section">
+    <section class="card">
 
-        <div class="table-top">
-
-            <div class="section-title" style="margin-bottom:0;">
-
-                <span class="title-icon">
-                    👥
-                </span>
-
-                <h2>Sponsors</h2>
-
-            </div>
-
-
-            <input
-                type="text"
-                id="tableSearch"
-                class="table-search"
-                placeholder="🔎 Search sponsors..."
-            >
-
-        </div>
-
+        <h2>👥 Sponsors</h2>
 
         <div class="table-wrapper">
 
@@ -1097,26 +816,41 @@ tbody tr:hover{
 
                     <tr>
 
-                        <th>Sponsor ID</th>
+                        <th>
+                            Sponsor ID
+                        </th>
 
-                        <th>Sponsor</th>
+                        <th>
+                            Sponsor
+                        </th>
 
-                        <th>Phone</th>
+                        <th>
+                            Phone
+                        </th>
 
-                        <th>Total</th>
+                        <th>
+                            Total
+                        </th>
 
-                        <th>Paid</th>
+                        <th>
+                            Paid
+                        </th>
 
-                        <th>Pending</th>
+                        <th>
+                            Pending
+                        </th>
 
-                        <th>Status</th>
+                        <th>
+                            Status
+                        </th>
 
-                        <th>Action</th>
+                        <th>
+                            Action
+                        </th>
 
                     </tr>
 
                 </thead>
-
 
                 <tbody id="sponsorTable">
 
@@ -1124,7 +858,7 @@ tbody tr:hover{
 
                         <td
                             colspan="8"
-                            class="loading"
+                            class="empty"
                         >
                             Loading sponsors...
                         </td>
@@ -1140,65 +874,30 @@ tbody tr:hover{
     </section>
 
 
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="arabic-footer">
+            وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ
+        </div>
+
+        <div>
+            Safa Hifzul Qur'an College
+        </div>
+
+        <div>
+            Sponsor Management Portal
+        </div>
+
+    </footer>
+
 </main>
 
 
-<!-- FOOTER -->
-
-<footer class="footer">
-
-    <div class="footer-arabic">
-        رَبِّ زِدْنِي عِلْمًا
-    </div>
-
-    <p>
-        May Allah accept our efforts and bless this noble work.
-    </p>
-
-    <p style="margin-top:8px;">
-        © Safa Qur'an College — Sponsor Management System
-    </p>
-
-</footer>
-
-
-<!-- VIEW / EDIT MODAL -->
-
-<div
-    class="modal"
-    id="modal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <h2 id="modalTitle">
-                Sponsor Details
-            </h2>
-
-            <button
-                class="close-btn"
-                onclick="closeModal()"
-            >
-                ✕
-            </button>
-
-        </div>
-
-
-        <div id="modalContent"></div>
-
-    </div>
-
-</div>
-
-
+<!-- ================= FIREBASE ================= -->
 
 <script type="module">
-
-
-/* FIREBASE */
 
 import {
     initializeApp
@@ -1219,15 +918,13 @@ import {
     getDoc,
     getDocs,
     addDoc,
-    updateDoc,
     deleteDoc,
     onSnapshot,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-
-/* FIREBASE CONFIG */
+/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
 
@@ -1252,6 +949,7 @@ const firebaseConfig = {
 };
 
 
+/* ================= INITIALIZE ================= */
 
 const app = initializeApp(firebaseConfig);
 
@@ -1260,38 +958,34 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
+/* ================= ELEMENTS ================= */
 
-/* ELEMENTS */
-
-const sponsorForm =
+const form =
     document.getElementById("sponsorForm");
 
-const sponsorTable =
+const table =
     document.getElementById("sponsorTable");
 
 const message =
     document.getElementById("message");
 
-const globalSearch =
-    document.getElementById("globalSearch");
+const searchInput =
+    document.getElementById("searchInput");
 
-const tableSearch =
-    document.getElementById("tableSearch");
-
+const logoutBtn =
+    document.getElementById("logoutBtn");
 
 
 let allSponsors = [];
 
 
-
-/* ADMIN AUTH CHECK */
+/* ================= ADMIN LOGIN CHECK ================= */
 
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) {
 
-        window.location.href =
-            "index.html";
+        window.location.href = "index.html";
 
         return;
 
@@ -1314,8 +1008,7 @@ onAuthStateChanged(auth, async (user) => {
 
             await signOut(auth);
 
-            window.location.href =
-                "index.html";
+            window.location.href = "index.html";
 
             return;
 
@@ -1328,19 +1021,208 @@ onAuthStateChanged(auth, async (user) => {
 
         console.error(error);
 
-        alert(
-            "Unable to verify admin account."
-        );
+        table.innerHTML = `
+            <tr>
+                <td colspan="8" class="empty">
+                    Unable to verify admin account.
+                </td>
+            </tr>
+        `;
 
     }
 
 });
 
 
+/* ================= GENERATE SPONSOR ID ================= */
 
-/* REAL TIME SPONSOR LISTENER */
+async function generateSponsorId() {
 
-function startSponsorListener(){
+    const snapshot =
+        await getDocs(
+            collection(db, "Sponsors")
+        );
+
+
+    let maxNumber = 1000;
+
+
+    snapshot.forEach((item) => {
+
+        const data = item.data();
+
+        const id =
+            String(data.sponsorId || "");
+
+
+        if (id.startsWith("SP-")) {
+
+            const number =
+                parseInt(
+                    id.replace("SP-", ""),
+                    10
+                );
+
+
+            if (
+                !isNaN(number) &&
+                number > maxNumber
+            ) {
+
+                maxNumber = number;
+
+            }
+
+        }
+
+    });
+
+
+    return "SP-" + (maxNumber + 1);
+
+}
+
+
+/* ================= ADD SPONSOR ================= */
+
+form.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+
+    message.textContent = "";
+    message.style.color = "#08796e";
+
+
+    const name =
+        document.getElementById("name")
+        .value.trim();
+
+
+    const phone =
+        document.getElementById("phone")
+        .value.trim();
+
+
+    const email =
+        document.getElementById("email")
+        .value.trim();
+
+
+    const total =
+        Number(
+            document.getElementById(
+                "totalAmountInput"
+            ).value
+        );
+
+
+    const paid =
+        Number(
+            document.getElementById(
+                "paidAmountInput"
+            ).value || 0
+        );
+
+
+    if (total <= 0) {
+
+        message.textContent =
+            "Please enter a valid total sponsorship amount.";
+
+        message.style.color = "#a83232";
+
+        return;
+
+    }
+
+
+    if (paid < 0 || paid > total) {
+
+        message.textContent =
+            "Paid amount cannot be greater than total amount.";
+
+        message.style.color = "#a83232";
+
+        return;
+
+    }
+
+
+    try {
+
+        const sponsorId =
+            await generateSponsorId();
+
+
+        const balance =
+            total - paid;
+
+
+        const status =
+            balance <= 0
+                ? "paid"
+                : "pending";
+
+
+        await addDoc(
+            collection(db, "Sponsors"),
+            {
+
+                sponsorId: sponsorId,
+
+                name: name,
+
+                phone: phone,
+
+                email: email,
+
+                totalAmount: total,
+
+                paidAmount: paid,
+
+                balanceAmount: balance,
+
+                status: status,
+
+                createdAt: serverTimestamp()
+
+            }
+        );
+
+
+        message.textContent =
+            `Sponsor added successfully. Sponsor ID: ${sponsorId}`;
+
+        message.style.color = "#08796e";
+
+
+        form.reset();
+
+
+        document.getElementById(
+            "paidAmountInput"
+        ).value = "0";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Unable to add sponsor: " +
+            error.message;
+
+        message.style.color = "#a83232";
+
+    }
+
+});
+
+
+/* ================= REAL TIME SPONSOR LIST ================= */
+
+function startSponsorListener() {
 
     const sponsorsRef =
         collection(db, "Sponsors");
@@ -1348,18 +1230,18 @@ function startSponsorListener(){
 
     onSnapshot(
         sponsorsRef,
-
         (snapshot) => {
 
             allSponsors = [];
 
-            snapshot.forEach((docSnap) => {
+
+            snapshot.forEach((item) => {
 
                 allSponsors.push({
 
-                    id: docSnap.id,
+                    id: item.id,
 
-                    ...docSnap.data()
+                    ...item.data()
 
                 });
 
@@ -1368,7 +1250,9 @@ function startSponsorListener(){
 
             updateStatistics();
 
-            renderSponsors(allSponsors);
+            renderSponsors(
+                allSponsors
+            );
 
         },
 
@@ -1376,51 +1260,51 @@ function startSponsorListener(){
 
             console.error(error);
 
-            sponsorTable.innerHTML = `
-
+            table.innerHTML = `
                 <tr>
-
-                    <td
-                        colspan="8"
-                        class="empty"
-                    >
+                    <td colspan="8" class="empty">
                         Unable to load sponsors.
                     </td>
-
                 </tr>
-
             `;
 
         }
-
     );
 
 }
 
 
+/* ================= STATISTICS ================= */
 
-/* STATISTICS */
-
-function updateStatistics(){
+function updateStatistics() {
 
     let total = 0;
 
     let paid = 0;
 
+    let pending = 0;
+
 
     allSponsors.forEach((sponsor) => {
 
         total +=
-            Number(sponsor.totalAmount || 0);
+            Number(
+                sponsor.totalAmount || 0
+            );
+
 
         paid +=
-            Number(sponsor.paidAmount || 0);
+            Number(
+                sponsor.paidAmount || 0
+            );
+
+
+        pending +=
+            Number(
+                sponsor.balanceAmount || 0
+            );
 
     });
-
-
-    const pending =
-        Math.max(total - paid, 0);
 
 
     document.getElementById(
@@ -1449,10 +1333,9 @@ function updateStatistics(){
 }
 
 
+/* ================= MONEY ================= */
 
-/* MONEY */
-
-function formatMoney(amount){
+function formatMoney(amount) {
 
     return "₹" +
         Number(amount || 0)
@@ -1461,263 +1344,32 @@ function formatMoney(amount){
 }
 
 
+/* ================= ESCAPE HTML ================= */
 
-/* SPONSOR ID */
+function escapeHTML(value) {
 
-async function generateSponsorId(){
-
-    const snapshot =
-        await getDocs(
-            collection(db, "Sponsors")
-        );
-
-
-    let maxNumber = 1000;
-
-
-    snapshot.forEach((docSnap) => {
-
-        const data =
-            docSnap.data();
-
-
-        if (!data.sponsorId)
-            return;
-
-
-        const number =
-            parseInt(
-                String(data.sponsorId)
-                .replace("SP-", ""),
-                10
-            );
-
-
-        if (
-            !isNaN(number) &&
-            number > maxNumber
-        ){
-
-            maxNumber = number;
-
-        }
-
-    });
-
-
-    return "SP-" + (maxNumber + 1);
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
+/* ================= RENDER TABLE ================= */
 
-/* ADD SPONSOR */
+function renderSponsors(list) {
 
-sponsorForm.addEventListener(
-    "submit",
-    async (event) => {
+    if (!list.length) {
 
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "phone"
-            ).value.trim();
-
-
-        const email =
-            document.getElementById(
-                "email"
-            ).value.trim();
-
-
-        const total =
-            Number(
-                document.getElementById(
-                    "total"
-                ).value
-            );
-
-
-        const paid =
-            Number(
-                document.getElementById(
-                    "paid"
-                ).value || 0
-            );
-
-
-        if (!name) {
-
-            showMessage(
-                "Please enter sponsor name.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        if (total < 0 || paid < 0) {
-
-            showMessage(
-                "Amount cannot be negative.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        if (paid > total) {
-
-            showMessage(
-                "Paid amount cannot be greater than total sponsorship.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        try {
-
-            const sponsorId =
-                await generateSponsorId();
-
-
-            const balance =
-                total - paid;
-
-
-            const status =
-                balance <= 0
-                    ? "paid"
-                    : "pending";
-
-
-            await addDoc(
-                collection(db, "Sponsors"),
-                {
-
-                    sponsorId:
-                        sponsorId,
-
-                    name:
-                        name,
-
-                    phone:
-                        phone,
-
-                    email:
-                        email,
-
-                    totalAmount:
-                        total,
-
-                    paidAmount:
-                        paid,
-
-                    balanceAmount:
-                        balance,
-
-                    status:
-                        status,
-
-                    createdAt:
-                        serverTimestamp()
-
-                }
-            );
-
-
-            sponsorForm.reset();
-
-
-            document.getElementById(
-                "paid"
-            ).value = "0";
-
-
-            showMessage(
-                "Sponsor added successfully. Sponsor ID: " +
-                sponsorId,
-                "success"
-            );
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            showMessage(
-                "Error adding sponsor: " +
-                error.message,
-                "error"
-            );
-
-        }
-
-    }
-);
-
-
-
-/* MESSAGE */
-
-function showMessage(
-    text,
-    type
-){
-
-    message.textContent = text;
-
-    message.className =
-        "message " + type;
-
-
-    setTimeout(() => {
-
-        message.className =
-            "message";
-
-    }, 5000);
-
-}
-
-
-
-/* RENDER TABLE */
-
-function renderSponsors(
-    sponsors
-){
-
-    if (!sponsors.length) {
-
-        sponsorTable.innerHTML = `
-
+        table.innerHTML = `
             <tr>
-
-                <td
-                    colspan="8"
-                    class="empty"
-                >
+                <td colspan="8" class="empty">
                     No sponsors found.
                 </td>
-
             </tr>
-
         `;
 
         return;
@@ -1725,8 +1377,8 @@ function renderSponsors(
     }
 
 
-    sponsorTable.innerHTML =
-        sponsors.map((sponsor) => {
+    table.innerHTML =
+        list.map((sponsor) => {
 
             const total =
                 Number(
@@ -1740,15 +1392,15 @@ function renderSponsors(
                 );
 
 
-            const pending =
-                Math.max(
-                    total - paid,
-                    0
+            const balance =
+                Number(
+                    sponsor.balanceAmount ??
+                    (total - paid)
                 );
 
 
             const status =
-                pending <= 0
+                balance <= 0
                     ? "paid"
                     : "pending";
 
@@ -1767,9 +1419,19 @@ function renderSponsors(
 
 
                     <td>
-                        ${escapeHTML(
-                            sponsor.name || "-"
-                        )}
+                        <strong>
+                            ${escapeHTML(
+                                sponsor.name || "-"
+                            )}
+                        </strong>
+
+                        <br>
+
+                        <small>
+                            ${escapeHTML(
+                                sponsor.email || ""
+                            )}
+                        </small>
                     </td>
 
 
@@ -1780,38 +1442,29 @@ function renderSponsors(
                     </td>
 
 
-                    <td class="amount">
+                    <td>
                         ${formatMoney(total)}
                     </td>
 
 
-                    <td class="amount paid">
+                    <td>
                         ${formatMoney(paid)}
                     </td>
 
 
-                    <td class="amount pending">
-                        ${formatMoney(pending)}
+                    <td>
+                        ${formatMoney(balance)}
                     </td>
 
 
                     <td>
 
-                        <span class="
-                            status
+                        <span class="status ${status}">
                             ${
                                 status === "paid"
-                                    ? "paid-status"
-                                    : "pending-status"
+                                ? "PAID"
+                                : "PENDING"
                             }
-                        ">
-
-                            ${
-                                status === "paid"
-                                    ? "Paid"
-                                    : "Pending"
-                            }
-
                         </span>
 
                     </td>
@@ -1819,32 +1472,20 @@ function renderSponsors(
 
                     <td>
 
-                        <div class="actions">
-
-                            <button
-                                class="action-btn view-btn"
-                                onclick="viewSponsor('${sponsor.id}')"
-                            >
-                                👁 View
-                            </button>
+                        <button
+                            class="action-btn edit"
+                            onclick="editSponsor('${sponsor.id}')"
+                        >
+                            Edit
+                        </button>
 
 
-                            <button
-                                class="action-btn edit-btn"
-                                onclick="editSponsor('${sponsor.id}')"
-                            >
-                                ✏ Edit
-                            </button>
-
-
-                            <button
-                                class="action-btn delete-btn"
-                                onclick="deleteSponsor('${sponsor.id}')"
-                            >
-                                🗑 Delete
-                            </button>
-
-                        </div>
+                        <button
+                            class="action-btn delete"
+                            onclick="deleteSponsor('${sponsor.id}')"
+                        >
+                            Delete
+                        </button>
 
                     </td>
 
@@ -1857,492 +1498,81 @@ function renderSponsors(
 }
 
 
+/* ================= SEARCH ================= */
 
-/* SEARCH */
+searchInput.addEventListener(
+    "input",
+    () => {
 
-function performSearch(){
-
-    const keyword =
-        (
-            globalSearch.value ||
-            tableSearch.value ||
-            ""
-        )
-        .trim()
-        .toLowerCase();
+        const query =
+            searchInput.value
+            .trim()
+            .toLowerCase();
 
 
-    if (!keyword) {
+        if (!query) {
 
-        renderSponsors(allSponsors);
+            renderSponsors(
+                allSponsors
+            );
 
-        return;
+            return;
+
+        }
+
+
+        const filtered =
+            allSponsors.filter(
+                (sponsor) => {
+
+                    return (
+
+                        String(
+                            sponsor.sponsorId || ""
+                        )
+                        .toLowerCase()
+                        .includes(query)
+
+                        ||
+
+                        String(
+                            sponsor.name || ""
+                        )
+                        .toLowerCase()
+                        .includes(query)
+
+                        ||
+
+                        String(
+                            sponsor.phone || ""
+                        )
+                        .toLowerCase()
+                        .includes(query)
+
+                        ||
+
+                        String(
+                            sponsor.email || ""
+                        )
+                        .toLowerCase()
+                        .includes(query)
+
+                    );
+
+                }
+            );
+
+
+        renderSponsors(filtered);
 
     }
-
-
-    const filtered =
-        allSponsors.filter(
-            (sponsor) => {
-
-                return (
-
-                    String(
-                        sponsor.name || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
-
-                    ||
-
-                    String(
-                        sponsor.phone || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
-
-                    ||
-
-                    String(
-                        sponsor.sponsorId || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
-
-                    ||
-
-                    String(
-                        sponsor.email || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
-
-                );
-
-            }
-        );
-
-
-    renderSponsors(filtered);
-
-}
-
-
-globalSearch.addEventListener(
-    "input",
-    performSearch
 );
 
 
-tableSearch.addEventListener(
-    "input",
-    performSearch
-);
-
-
-
-/* VIEW SPONSOR */
-
-window.viewSponsor =
-    function(id){
-
-        const sponsor =
-            allSponsors.find(
-                item => item.id === id
-            );
-
-
-        if (!sponsor)
-            return;
-
-
-        const total =
-            Number(
-                sponsor.totalAmount || 0
-            );
-
-
-        const paid =
-            Number(
-                sponsor.paidAmount || 0
-            );
-
-
-        const pending =
-            Math.max(
-                total - paid,
-                0
-            );
-
-
-        document.getElementById(
-            "modalTitle"
-        ).textContent =
-            "Sponsor Details";
-
-
-        document.getElementById(
-            "modalContent"
-        ).innerHTML = `
-
-            <div style="
-                line-height:2;
-                color:#425453;
-            ">
-
-                <p>
-                    <strong>Sponsor ID:</strong>
-                    ${escapeHTML(
-                        sponsor.sponsorId || "-"
-                    )}
-                </p>
-
-                <p>
-                    <strong>Name:</strong>
-                    ${escapeHTML(
-                        sponsor.name || "-"
-                    )}
-                </p>
-
-                <p>
-                    <strong>Phone:</strong>
-                    ${escapeHTML(
-                        sponsor.phone || "-"
-                    )}
-                </p>
-
-                <p>
-                    <strong>Email:</strong>
-                    ${escapeHTML(
-                        sponsor.email || "-"
-                    )}
-                </p>
-
-                <hr style="
-                    margin:15px 0;
-                    border:none;
-                    border-top:1px solid #ddd;
-                ">
-
-                <p>
-                    <strong>Total Sponsorship:</strong>
-                    ${formatMoney(total)}
-                </p>
-
-                <p style="color:#18813e">
-                    <strong>Paid:</strong>
-                    ${formatMoney(paid)}
-                </p>
-
-                <p style="color:#a56a00">
-                    <strong>Pending:</strong>
-                    ${formatMoney(pending)}
-                </p>
-
-            </div>
-
-        `;
-
-
-        document.getElementById(
-            "modal"
-        ).style.display =
-            "flex";
-
-    };
-
-
-
-/* EDIT SPONSOR */
-
-window.editSponsor =
-    function(id){
-
-        const sponsor =
-            allSponsors.find(
-                item => item.id === id
-            );
-
-
-        if (!sponsor)
-            return;
-
-
-        document.getElementById(
-            "modalTitle"
-        ).textContent =
-            "Edit Sponsor";
-
-
-        document.getElementById(
-            "modalContent"
-        ).innerHTML = `
-
-            <form id="editForm">
-
-                <div class="form-group">
-
-                    <label>
-                        Sponsor ID
-                    </label>
-
-                    <input
-                        type="text"
-                        value="${escapeHTML(
-                            sponsor.sponsorId || ""
-                        )}"
-                        disabled
-                    >
-
-                </div>
-
-
-                <br>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Sponsor Name
-                    </label>
-
-                    <input
-                        id="editName"
-                        type="text"
-                        value="${escapeAttribute(
-                            sponsor.name || ""
-                        )}"
-                        required
-                    >
-
-                </div>
-
-
-                <br>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone
-                    </label>
-
-                    <input
-                        id="editPhone"
-                        type="text"
-                        value="${escapeAttribute(
-                            sponsor.phone || ""
-                        )}"
-                    >
-
-                </div>
-
-
-                <br>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        id="editEmail"
-                        type="email"
-                        value="${escapeAttribute(
-                            sponsor.email || ""
-                        )}"
-                    >
-
-                </div>
-
-
-                <br>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Total Sponsorship
-                    </label>
-
-                    <input
-                        id="editTotal"
-                        type="number"
-                        min="0"
-                        value="${Number(
-                            sponsor.totalAmount || 0
-                        )}"
-                        required
-                    >
-
-                </div>
-
-
-                <br>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Paid Amount
-                    </label>
-
-                    <input
-                        id="editPaid"
-                        type="number"
-                        min="0"
-                        value="${Number(
-                            sponsor.paidAmount || 0
-                        )}"
-                        required
-                    >
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="add-btn"
-                >
-                    💾 Save Changes
-                </button>
-
-            </form>
-
-        `;
-
-
-        document.getElementById(
-            "modal"
-        ).style.display =
-            "flex";
-
-
-        document.getElementById(
-            "editForm"
-        ).addEventListener(
-            "submit",
-            async (event) => {
-
-                event.preventDefault();
-
-
-                const name =
-                    document.getElementById(
-                        "editName"
-                    ).value.trim();
-
-
-                const phone =
-                    document.getElementById(
-                        "editPhone"
-                    ).value.trim();
-
-
-                const email =
-                    document.getElementById(
-                        "editEmail"
-                    ).value.trim();
-
-
-                const total =
-                    Number(
-                        document.getElementById(
-                            "editTotal"
-                        ).value
-                    );
-
-
-                const paid =
-                    Number(
-                        document.getElementById(
-                            "editPaid"
-                        ).value
-                    );
-
-
-                if (paid > total) {
-
-                    alert(
-                        "Paid amount cannot be greater than total amount."
-                    );
-
-                    return;
-
-                }
-
-
-                const balance =
-                    total - paid;
-
-
-                const status =
-                    balance <= 0
-                        ? "paid"
-                        : "pending";
-
-
-                try {
-
-                    await updateDoc(
-                        doc(
-                            db,
-                            "Sponsors",
-                            id
-                        ),
-                        {
-
-                            name:
-                                name,
-
-                            phone:
-                                phone,
-
-                            email:
-                                email,
-
-                            totalAmount:
-                                total,
-
-                            paidAmount:
-                                paid,
-
-                            balanceAmount:
-                                balance,
-
-                            status:
-                                status
-
-                        }
-                    );
-
-
-                    closeModal();
-
-
-                } catch (error) {
-
-                    console.error(error);
-
-                    alert(
-                        "Unable to update sponsor."
-                    );
-
-                }
-
-            }
-        );
-
-    };
-
-
-
-/* DELETE SPONSOR */
+/* ================= DELETE ================= */
 
 window.deleteSponsor =
-    async function(id){
+    async function(id) {
 
         const sponsor =
             allSponsors.find(
@@ -2350,22 +1580,16 @@ window.deleteSponsor =
             );
 
 
-        if (!sponsor)
-            return;
+        if (!sponsor) return;
 
 
         const confirmDelete =
             confirm(
-                "Delete sponsor " +
-                (sponsor.sponsorId || "") +
-                " - " +
-                (sponsor.name || "") +
-                "?"
+                `Delete sponsor ${sponsor.name || ""} (${sponsor.sponsorId || ""})?`
             );
 
 
-        if (!confirmDelete)
-            return;
+        if (!confirmDelete) return;
 
 
         try {
@@ -2379,8 +1603,149 @@ window.deleteSponsor =
             );
 
 
+        } catch (error) {
+
             alert(
-                "Sponsor deleted successfully."
+                "Unable to delete sponsor: " +
+                error.message
+            );
+
+        }
+
+    };
+
+
+/* ================= EDIT ================= */
+
+window.editSponsor =
+    async function(id) {
+
+        const sponsor =
+            allSponsors.find(
+                item => item.id === id
+            );
+
+
+        if (!sponsor) return;
+
+
+        const newName =
+            prompt(
+                "Sponsor Name:",
+                sponsor.name || ""
+            );
+
+
+        if (newName === null) return;
+
+
+        const newPhone =
+            prompt(
+                "Phone:",
+                sponsor.phone || ""
+            );
+
+
+        if (newPhone === null) return;
+
+
+        const newTotal =
+            prompt(
+                "Total Sponsorship Amount:",
+                sponsor.totalAmount || 0
+            );
+
+
+        if (newTotal === null) return;
+
+
+        const newPaid =
+            prompt(
+                "Paid Amount:",
+                sponsor.paidAmount || 0
+            );
+
+
+        if (newPaid === null) return;
+
+
+        const total =
+            Number(newTotal);
+
+
+        const paid =
+            Number(newPaid);
+
+
+        if (
+            total < 0 ||
+            paid < 0 ||
+            paid > total
+        ) {
+
+            alert(
+                "Invalid amount. Paid amount cannot exceed total amount."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            const sponsorRef =
+                doc(
+                    db,
+                    "Sponsors",
+                    id
+                );
+
+
+            const balance =
+                total - paid;
+
+
+            /*
+             NOTE:
+             For the first version we use
+             direct Firestore update fields
+             after importing updateDoc below.
+            */
+
+            await import(
+                "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js"
+            ).then(
+                async (module) => {
+
+                    await module.updateDoc(
+                        sponsorRef,
+                        {
+
+                            name: newName.trim(),
+
+                            phone: newPhone.trim(),
+
+                            totalAmount: total,
+
+                            paidAmount: paid,
+
+                            balanceAmount: balance,
+
+                            status:
+                                balance <= 0
+                                    ? "paid"
+                                    : "pending"
+
+                        }
+                    );
+
+                }
+            );
+
+
+            alert(
+                "Sponsor updated successfully."
             );
 
 
@@ -2389,7 +1754,8 @@ window.deleteSponsor =
             console.error(error);
 
             alert(
-                "Unable to delete sponsor."
+                "Unable to update sponsor: " +
+                error.message
             );
 
         }
@@ -2397,95 +1763,29 @@ window.deleteSponsor =
     };
 
 
+/* ================= LOGOUT ================= */
 
-/* CLOSE MODAL */
-
-window.closeModal =
-    function(){
-
-        document.getElementById(
-            "modal"
-        ).style.display =
-            "none";
-
-    };
-
-
-
-/* ESCAPE HTML */
-
-function escapeHTML(value){
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-function escapeAttribute(value){
-
-    return escapeHTML(value);
-
-}
-
-
-
-/* LOGOUT */
-
-document.getElementById(
-    "logoutBtn"
-).addEventListener(
+logoutBtn.addEventListener(
     "click",
     async () => {
 
-        await signOut(auth);
+        try {
 
-        window.location.href =
-            "index.html";
+            await signOut(auth);
 
-    }
-);
+            window.location.href =
+                "index.html";
 
+        } catch (error) {
 
-
-/* CLOSE MODAL WHEN CLICKING OUTSIDE */
-
-document.getElementById(
-    "modal"
-).addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target.id === "modal"
-        ){
-
-            closeModal();
+            alert(
+                "Logout failed."
+            );
 
         }
 
     }
 );
-
 
 </script>
 
