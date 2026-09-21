@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Sponsor Portal</title>
 
@@ -21,17 +25,17 @@ body{
 }
 
 .topbar{
-  height:65px;
+  min-height:65px;
   background:#1473f9;
   color:white;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 32px;
+  padding:0 25px;
 }
 
 .topbar h2{
-  font-size:22px;
+  font-size:21px;
 }
 
 .logout{
@@ -39,35 +43,23 @@ body{
   color:#1473f9;
   border:0;
   border-radius:10px;
-  padding:12px 20px;
-  font-size:16px;
+  padding:11px 18px;
+  font-size:15px;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .container{
   max-width:1100px;
   margin:auto;
-  padding:25px 20px;
-}
-
-.section{
-  background:white;
-  border-radius:18px;
-  padding:25px;
-  margin-bottom:22px;
-  box-shadow:0 3px 15px rgba(0,0,0,.06);
-}
-
-.section h2{
-  font-size:25px;
-  margin-bottom:25px;
+  padding:20px;
 }
 
 .cards{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 .card{
@@ -79,13 +71,26 @@ body{
 
 .card-title{
   color:#777;
-  font-size:14px;
-  margin-bottom:10px;
+  font-size:13px;
+  margin-bottom:9px;
 }
 
 .card-value{
-  font-size:25px;
+  font-size:24px;
   font-weight:bold;
+}
+
+.section{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.section h2{
+  font-size:23px;
+  margin-bottom:20px;
 }
 
 .menu{
@@ -98,55 +103,128 @@ body{
   border:0;
   background:#edf4ff;
   color:#1473f9;
-  padding:18px;
+  padding:17px;
   border-radius:12px;
   font-size:15px;
   font-weight:bold;
+  cursor:pointer;
 }
 
-.status{
-  background:#f5f6f8;
-  padding:20px;
+.menu button:hover{
+  background:#dceaff;
+}
+
+.add-box{
+  background:#f8f9fa;
+  padding:18px;
   border-radius:12px;
-  text-align:center;
-  line-height:2;
+  margin-bottom:20px;
 }
 
-.loading{
-  text-align:center;
-  padding:30px;
-  color:#777;
+.add-box h3{
+  margin-bottom:15px;
 }
 
-.error{
-  color:#d6334c;
-  background:#fff0f2;
-  padding:20px;
-  border-radius:12px;
-  line-height:1.8;
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
-.success{
-  color:#198754;
-  background:#eaf8f0;
-  padding:20px;
-  border-radius:12px;
-  line-height:1.8;
+input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.add-btn{
+  margin-top:12px;
+  background:#1473f9;
+  color:white;
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
 }
 
 table{
   width:100%;
+  min-width:750px;
   border-collapse:collapse;
 }
 
 th,td{
-  padding:13px;
+  padding:12px;
   border-bottom:1px solid #eee;
   text-align:left;
 }
 
 th{
   background:#f8f9fa;
+}
+
+.paid{
+  color:#198754;
+  font-weight:bold;
+}
+
+.pending{
+  color:#dc3545;
+  font-weight:bold;
+}
+
+.delete-btn{
+  border:0;
+  background:#ffe9ed;
+  color:#dc3545;
+  padding:8px 11px;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.loading{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#777;
+  background:#f8f9fa;
+  border-radius:12px;
+}
+
+.error{
+  color:#dc3545;
+  background:#fff0f2;
+  padding:18px;
+  border-radius:12px;
+  line-height:1.7;
+}
+
+.status{
+  background:#f5f6f8;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+  line-height:2;
+}
+
+.success{
+  color:#198754;
+  font-weight:bold;
 }
 
 @media(max-width:800px){
@@ -159,28 +237,28 @@ th{
     grid-template-columns:repeat(2,1fr);
   }
 
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 
 @media(max-width:500px){
 
+  .container{
+    padding:12px;
+  }
+
   .topbar{
-    padding:0 20px;
+    padding:0 18px;
   }
 
   .topbar h2{
-    font-size:18px;
+    font-size:17px;
   }
 
-  .container{
-    padding:15px;
-  }
-
-  .section{
-    padding:20px;
-  }
-
-  .cards{
-    grid-template-columns:repeat(2,1fr);
+  .logout{
+    padding:10px 14px;
   }
 
   .card{
@@ -191,19 +269,30 @@ th{
     font-size:19px;
   }
 
+  .section{
+    padding:18px;
+  }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <div class="topbar">
 
   <h2>SPONSOR PORTAL</h2>
 
-  <button class="logout" id="logoutBtn">
+  <button
+    class="logout"
+    id="logoutBtn">
+
     Logout
+
   </button>
 
 </div>
@@ -212,98 +301,244 @@ th{
 <div class="container">
 
 
-  <!-- DASHBOARD -->
+<!-- DASHBOARD -->
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card">
-      <div class="card-title">TOTAL SPONSORS</div>
-      <div class="card-value" id="totalSponsors">
-        0
-      </div>
+  <div class="card">
+
+    <div class="card-title">
+      TOTAL SPONSORS
     </div>
 
-    <div class="card">
-      <div class="card-title">TOTAL SPONSORSHIP</div>
-      <div class="card-value" id="totalAmount">
-        ₹0
-      </div>
-    </div>
+    <div
+      class="card-value"
+      id="totalSponsors">
 
-    <div class="card">
-      <div class="card-title">TOTAL RECEIVED</div>
-      <div class="card-value" id="totalPaid">
-        ₹0
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">TOTAL PENDING</div>
-      <div class="card-value" id="totalPending">
-        ₹0
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- MANAGEMENT -->
-
-  <div class="section">
-
-    <h2>Management</h2>
-
-    <div class="menu">
-
-      <button>👥 Sponsors</button>
-
-      <button>💰 Payments</button>
-
-      <button>⏳ Pending</button>
-
-      <button>💬 Messages</button>
-
-      <button>🔔 Reminders</button>
-
-      <button>📊 Reports</button>
-
-      <button>🔔 Notifications</button>
-
-      <button>⚙️ Settings</button>
+      0
 
     </div>
 
   </div>
 
 
-  <!-- SPONSORS -->
+  <div class="card">
 
-  <div class="section">
+    <div class="card-title">
+      TOTAL SPONSORSHIP
+    </div>
 
-    <h2>👥 Sponsors</h2>
+    <div
+      class="card-value"
+      id="totalAmount">
 
-    <div id="result" class="loading">
-
-      Checking Firebase...
+      ₹0
 
     </div>
 
   </div>
 
 
-  <!-- SYSTEM -->
+  <div class="card">
 
-  <div class="section">
+    <div class="card-title">
+      TOTAL RECEIVED
+    </div>
 
-    <h2>System Status</h2>
+    <div
+      class="card-value"
+      id="totalPaid">
 
-    <div id="systemStatus" class="status">
-
-      Connecting...
+      ₹0
 
     </div>
 
   </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      TOTAL PENDING
+    </div>
+
+    <div
+      class="card-value"
+      id="totalPending">
+
+      ₹0
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MANAGEMENT -->
+
+<div class="section">
+
+  <h2>Management</h2>
+
+  <div class="menu">
+
+    <button
+      onclick="scrollToSponsors()">
+
+      👥 Sponsors
+
+    </button>
+
+    <button
+      onclick="comingSoon('Payments')">
+
+      💰 Payments
+
+    </button>
+
+    <button
+      onclick="comingSoon('Pending')">
+
+      ⏳ Pending
+
+    </button>
+
+    <button
+      onclick="comingSoon('Messages')">
+
+      💬 Messages
+
+    </button>
+
+    <button
+      onclick="comingSoon('Reminders')">
+
+      🔔 Reminders
+
+    </button>
+
+    <button
+      onclick="comingSoon('Reports')">
+
+      📊 Reports
+
+    </button>
+
+    <button
+      onclick="comingSoon('Notifications')">
+
+      🔔 Notifications
+
+    </button>
+
+    <button
+      onclick="comingSoon('Settings')">
+
+      ⚙️ Settings
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SPONSORS -->
+
+<div
+  class="section"
+  id="sponsorsSection">
+
+  <h2>
+    👥 Sponsors
+  </h2>
+
+
+  <!-- ADD SPONSOR -->
+
+  <div class="add-box">
+
+    <h3>
+      ➕ Add New Sponsor
+    </h3>
+
+
+    <div class="form-grid">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Sponsor Name">
+
+
+      <input
+        type="text"
+        id="phone"
+        placeholder="Phone Number">
+
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Email">
+
+
+      <input
+        type="number"
+        id="totalAmountInput"
+        placeholder="Total Sponsorship Amount">
+
+
+      <input
+        type="number"
+        id="paidAmountInput"
+        placeholder="Paid Amount">
+
+    </div>
+
+
+    <button
+      class="add-btn"
+      id="addSponsorBtn">
+
+      Add Sponsor
+
+    </button>
+
+  </div>
+
+
+  <!-- SPONSOR LIST -->
+
+  <div
+    id="result"
+    class="loading">
+
+    Loading sponsors...
+
+  </div>
+
+</div>
+
+
+<!-- SYSTEM STATUS -->
+
+<div class="section">
+
+  <h2>
+    System Status
+  </h2>
+
+  <div
+    id="systemStatus"
+    class="status">
+
+    Connecting to Firebase...
+
+  </div>
+
+</div>
 
 
 </div>
@@ -312,9 +547,9 @@ th{
 <script type="module">
 
 
-/* ================================
+/* =================================
    FIREBASE IMPORTS
-================================ */
+================================= */
 
 import {
   initializeApp
@@ -336,16 +571,17 @@ import {
   getFirestore,
   collection,
   getDocs,
-  doc,
-  getDoc
+  addDoc,
+  deleteDoc,
+  doc
 }
 from
 "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-/* ================================
+/* =================================
    FIREBASE CONFIG
-================================ */
+================================= */
 
 const firebaseConfig = {
 
@@ -370,9 +606,9 @@ const firebaseConfig = {
 };
 
 
-/* ================================
-   INITIALIZE
-================================ */
+/* =================================
+   INITIALIZE FIREBASE
+================================= */
 
 const app =
 initializeApp(firebaseConfig);
@@ -384,20 +620,17 @@ const db =
 getFirestore(app);
 
 
-/* ================================
-   IMPORTANT VALUES
-================================ */
+/* =================================
+   COLLECTION
+================================= */
 
 const COLLECTION_NAME =
 "Sponsors";
 
-const DOCUMENT_ID =
-"OjBhUgDNyY5ry63Ajxd8";
 
-
-/* ================================
-   MONEY
-================================ */
+/* =================================
+   MONEY FORMAT
+================================= */
 
 function money(value){
 
@@ -415,363 +648,399 @@ function money(value){
 }
 
 
-/* ================================
-   LOAD DATA
-================================ */
+/* =================================
+   LOAD SPONSORS
+================================= */
 
-async function loadData(){
+async function loadSponsors(){
 
   const result =
   document.getElementById("result");
 
-  const status =
-  document.getElementById("systemStatus");
-
 
   try{
 
-    /* -----------------------------
-       TEST 1
-       DIRECT DOCUMENT
-    ----------------------------- */
-
-    const documentReference =
-    doc(
-      db,
-      COLLECTION_NAME,
-      DOCUMENT_ID
-    );
-
-
-    const documentSnapshot =
-    await getDoc(
-      documentReference
-    );
-
-
-    /* -----------------------------
-       TEST 2
-       COLLECTION
-    ----------------------------- */
-
-    const collectionReference =
+    const reference =
     collection(
       db,
       COLLECTION_NAME
     );
 
 
-    const collectionSnapshot =
-    await getDocs(
-      collectionReference
-    );
+    const snapshot =
+    await getDocs(reference);
 
-
-    /* -----------------------------
-       SHOW RESULT
-    ----------------------------- */
 
     console.log(
-      "Project:",
-      "sponsors-management-port-2300e"
-    );
-
-    console.log(
-      "Collection:",
-      COLLECTION_NAME
-    );
-
-    console.log(
-      "Document:",
-      DOCUMENT_ID
-    );
-
-    console.log(
-      "Direct document exists:",
-      documentSnapshot.exists()
-    );
-
-    console.log(
-      "Collection documents:",
-      collectionSnapshot.size
+      "Sponsors:",
+      snapshot.size
     );
 
 
-    /* -----------------------------
-       IF DOCUMENT FOUND
-    ----------------------------- */
+    let totalSponsors = 0;
 
-    if(documentSnapshot.exists()){
+    let totalAmount = 0;
 
-      const data =
-      documentSnapshot.data();
+    let totalPaid = 0;
 
+    let totalPending = 0;
 
-      const name =
-      data.name || "-";
-
-      const phone =
-      data.phone || "-";
-
-      const total =
-      Number(
-        data.totalAmount || 0
-      );
-
-      const paid =
-      Number(
-        data.paidAmount || 0
-      );
-
-      const balance =
-      data.balanceAmount !== undefined
-      ?
-      Number(data.balanceAmount)
-      :
-      Math.max(
-        total-paid,
-        0
-      );
+    let rows = "";
 
 
-      document.getElementById(
-        "totalSponsors"
-      ).textContent =
-      collectionSnapshot.size;
+    snapshot.forEach(
+      (item)=>{
+
+        const data =
+        item.data();
 
 
-      document.getElementById(
-        "totalAmount"
-      ).textContent =
-      money(total);
+        const name =
+        data.name || "-";
 
 
-      document.getElementById(
-        "totalPaid"
-      ).textContent =
-      money(paid);
+        const phone =
+        data.phone || "-";
 
 
-      document.getElementById(
-        "totalPending"
-      ).textContent =
-      money(balance);
+        const email =
+        data.email || "-";
 
 
-      result.className =
-      "success";
+        const total =
+        Number(
+          data.totalAmount || 0
+        );
 
+
+        const paid =
+        Number(
+          data.paidAmount || 0
+        );
+
+
+        const balance =
+        Math.max(
+          total - paid,
+          0
+        );
+
+
+        totalSponsors++;
+
+        totalAmount += total;
+
+        totalPaid += paid;
+
+        totalPending += balance;
+
+
+        rows += `
+
+          <tr>
+
+            <td>
+              <strong>
+                ${escapeHtml(name)}
+              </strong>
+            </td>
+
+            <td>
+              ${escapeHtml(phone)}
+            </td>
+
+            <td>
+              ${escapeHtml(email)}
+            </td>
+
+            <td>
+              ${money(total)}
+            </td>
+
+            <td class="paid">
+              ${money(paid)}
+            </td>
+
+            <td class="${
+              balance > 0
+              ? "pending"
+              : "paid"
+            }">
+
+              ${money(balance)}
+
+            </td>
+
+            <td>
+
+              <button
+                class="delete-btn"
+                data-id="${item.id}">
+
+                Delete
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    );
+
+
+    /* UPDATE DASHBOARD */
+
+    document.getElementById(
+      "totalSponsors"
+    ).textContent =
+    totalSponsors;
+
+
+    document.getElementById(
+      "totalAmount"
+    ).textContent =
+    money(totalAmount);
+
+
+    document.getElementById(
+      "totalPaid"
+    ).textContent =
+    money(totalPaid);
+
+
+    document.getElementById(
+      "totalPending"
+    ).textContent =
+    money(totalPending);
+
+
+    /* NO DATA */
+
+    if(snapshot.empty){
 
       result.innerHTML = `
 
-        <h3>✅ DOCUMENT FOUND</h3>
+        <div class="empty">
 
-        <br>
+          <h3>
+            No sponsors found
+          </h3>
 
-        <strong>Name:</strong>
-        ${name}
+          <br>
 
-        <br>
+          Add your first sponsor
+          using the form above.
 
-        <strong>Phone:</strong>
-        ${phone}
+          <br><br>
 
-        <br>
+          Firestore Collection:
 
-        <strong>Total:</strong>
-        ${money(total)}
+          <strong>
+            Sponsors
+          </strong>
 
-        <br>
-
-        <strong>Paid:</strong>
-        ${money(paid)}
-
-        <br>
-
-        <strong>Balance:</strong>
-        ${money(balance)}
-
-        <br><br>
-
-        <strong>Document ID:</strong>
-        ${DOCUMENT_ID}
-
-        <br>
-
-        <strong>Collection documents:</strong>
-        ${collectionSnapshot.size}
+        </div>
 
       `;
-
-
-      status.innerHTML = `
-
-        <strong style="color:#198754">
-        Firebase connected ✓
-        </strong>
-
-        <br>
-
-        Project:
-        <strong>
-        sponsors-management-port-2300e
-        </strong>
-
-        <br>
-
-        Collection:
-        <strong>
-        Sponsors
-        </strong>
-
-        <br>
-
-        Document:
-        <strong>
-        FOUND ✓
-        </strong>
-
-      `;
-
-      return;
 
     }
 
 
-    /* -----------------------------
-       DOCUMENT NOT FOUND
-    ----------------------------- */
+    /* DATA FOUND */
 
-    result.className =
-    "error";
+    else{
+
+      result.innerHTML = `
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Name</th>
+
+                <th>Phone</th>
+
+                <th>Email</th>
+
+                <th>Total</th>
+
+                <th>Paid</th>
+
+                <th>Pending</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
 
 
-    result.innerHTML = `
+            <tbody>
 
-      <strong>
-      ❌ DIRECT DOCUMENT NOT FOUND
-      </strong>
+              ${rows}
 
-      <br><br>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* DELETE BUTTONS */
+
+    document
+    .querySelectorAll(".delete-btn")
+    .forEach(
+      (button)=>{
+
+        button.addEventListener(
+          "click",
+          async()=>{
+
+            const id =
+            button.dataset.id;
+
+
+            const confirmDelete =
+            confirm(
+              "Are you sure you want to delete this sponsor?"
+            );
+
+
+            if(!confirmDelete){
+
+              return;
+
+            }
+
+
+            try{
+
+              await deleteDoc(
+                doc(
+                  db,
+                  COLLECTION_NAME,
+                  id
+                )
+              );
+
+
+              alert(
+                "Sponsor deleted successfully."
+              );
+
+
+              loadSponsors();
+
+            }
+
+            catch(error){
+
+              alert(
+                "Delete failed: " +
+                error.message
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    document.getElementById(
+      "systemStatus"
+    ).innerHTML = `
+
+      <span class="success">
+
+        Firebase connected ✓
+
+      </span>
+
+      <br>
 
       Project:
-      sponsors-management-port-2300e
-
-      <br><br>
-
-      Collection:
-      Sponsors
-
-      <br><br>
-
-      Document ID:
-
-      <br>
 
       <strong>
-      ${DOCUMENT_ID}
-      </strong>
-
-      <br><br>
-
-      Collection documents:
-
-      <strong>
-      ${collectionSnapshot.size}
-      </strong>
-
-      <br><br>
-
-      This means Firebase is connected,
-      but this exact path is not being
-      returned by Firestore.
-
-    `;
-
-
-    status.innerHTML = `
-
-      Firebase connected ✓
-
-      <br>
-
-      Project:
-      <strong>
-      sponsors-management-port-2300e
+        sponsors-management-port-2300e
       </strong>
 
       <br>
 
       Collection:
+
       <strong>
-      Sponsors
+        Sponsors
       </strong>
 
       <br>
 
-      Collection documents:
-      <strong>
-      ${collectionSnapshot.size}
-      </strong>
+      Documents:
 
-      <br>
-
-      Direct document:
       <strong>
-      NOT FOUND
+        ${snapshot.size}
       </strong>
 
     `;
-
 
   }
+
 
   catch(error){
 
     console.error(
-      "FIREBASE ERROR:",
       error
     );
 
 
-    result.className =
-    "error";
-
-
     result.innerHTML = `
 
-      <strong>
-      ❌ FIREBASE ERROR
-      </strong>
+      <div class="error">
 
-      <br><br>
+        <strong>
+          ❌ Firestore Error
+        </strong>
 
-      Error code:
+        <br><br>
 
-      <strong>
-      ${error.code || "unknown"}
-      </strong>
+        ${escapeHtml(
+          error.message
+        )}
 
-      <br><br>
-
-      Error message:
-
-      <strong>
-      ${error.message}
-      </strong>
+      </div>
 
     `;
 
 
-    status.innerHTML = `
+    document.getElementById(
+      "systemStatus"
+    ).innerHTML = `
 
       <strong style="color:#dc3545">
-      Firebase Error ✕
+
+        Firebase Error ✕
+
       </strong>
 
-      <br>
+      <br><br>
 
-      ${error.code || ""}
+      ${escapeHtml(
+        error.message
+      )}
 
     `;
 
@@ -780,9 +1049,191 @@ async function loadData(){
 }
 
 
-/* ================================
+/* =================================
+   ADD SPONSOR
+================================= */
+
+document
+.getElementById("addSponsorBtn")
+.addEventListener(
+  "click",
+  async()=>{
+
+
+    const name =
+    document.getElementById(
+      "name"
+    ).value.trim();
+
+
+    const phone =
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+
+    const email =
+    document.getElementById(
+      "email"
+    ).value.trim();
+
+
+    const totalAmount =
+    Number(
+      document.getElementById(
+        "totalAmountInput"
+      ).value
+    ) || 0;
+
+
+    const paidAmount =
+    Number(
+      document.getElementById(
+        "paidAmountInput"
+      ).value
+    ) || 0;
+
+
+    if(!name){
+
+      alert(
+        "Please enter sponsor name."
+      );
+
+      return;
+
+    }
+
+
+    if(totalAmount <= 0){
+
+      alert(
+        "Please enter total sponsorship amount."
+      );
+
+      return;
+
+    }
+
+
+    if(paidAmount > totalAmount){
+
+      alert(
+        "Paid amount cannot be greater than total amount."
+      );
+
+      return;
+
+    }
+
+
+    const balanceAmount =
+    totalAmount - paidAmount;
+
+
+    try{
+
+      await addDoc(
+        collection(
+          db,
+          COLLECTION_NAME
+        ),
+        {
+
+          name:name,
+
+          phone:phone,
+
+          email:email,
+
+          totalAmount:totalAmount,
+
+          paidAmount:paidAmount,
+
+          balanceAmount:balanceAmount,
+
+          createdAt:
+          new Date()
+
+        }
+      );
+
+
+      alert(
+        "Sponsor added successfully! ✓"
+      );
+
+
+      /* CLEAR FORM */
+
+      document.getElementById(
+        "name"
+      ).value = "";
+
+
+      document.getElementById(
+        "phone"
+      ).value = "";
+
+
+      document.getElementById(
+        "email"
+      ).value = "";
+
+
+      document.getElementById(
+        "totalAmountInput"
+      ).value = "";
+
+
+      document.getElementById(
+        "paidAmountInput"
+      ).value = "";
+
+
+      /* RELOAD */
+
+      loadSponsors();
+
+    }
+
+    catch(error){
+
+      console.error(
+        error
+      );
+
+
+      alert(
+        "Sponsor save failed:\n" +
+        error.message
+      );
+
+    }
+
+  }
+);
+
+
+/* =================================
+   ESCAPE HTML
+================================= */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =================================
    LOGIN CHECK
-================================ */
+================================= */
 
 onAuthStateChanged(
   auth,
@@ -804,15 +1255,15 @@ onAuthStateChanged(
     );
 
 
-    await loadData();
+    await loadSponsors();
 
   }
 );
 
 
-/* ================================
+/* =================================
    LOGOUT
-================================ */
+================================= */
 
 document
 .getElementById("logoutBtn")
@@ -828,6 +1279,34 @@ document
   }
 );
 
+
+/* =================================
+   MENU
+================================= */
+
+window.scrollToSponsors =
+function(){
+
+  document
+  .getElementById(
+    "sponsorsSection"
+  )
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+};
+
+
+window.comingSoon =
+function(section){
+
+  alert(
+    section +
+    " will be added next."
+  );
+
+};
 
 </script>
 
