@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sponsor Dashboard | Safa Hifzul Qur'an College</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(240,248,244,.95), rgba(240,248,244,.95)),
+        radial-gradient(circle at top, #dff4e8, #f5faf7);
+      color: #183b2a;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #075b3b, #0b7a50);
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,.15);
+    }
+
+    .header .arabic {
+      font-size: 24px;
+      margin-bottom: 12px;
+      direction: rtl;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      letter-spacing: .5px;
+    }
+
+    .header p {
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 1100px;
+      margin: 25px auto;
+    }
+
+    .profile {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      margin-bottom: 22px;
+    }
+
+    .profile-title {
+      color: #087348;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .profile-item {
+      background: #f4faf6;
+      padding: 13px;
+      border-radius: 10px;
+    }
+
+    .profile-item small {
+      color: #777;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .profile-item strong {
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: #087348;
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .amount {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 7px;
+      color: #075b3b;
+    }
+
+    .pending .amount {
+      color: #c77700;
+    }
+
+    .paid .amount {
+      color: #087348;
+    }
+
+    .payment-box {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      margin-bottom: 22px;
+    }
+
+    .payment-box h2 {
+      color: #075b3b;
+      margin-bottom: 8px;
+    }
+
+    .payment-box p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .payment-info {
+      background: #f2faf5;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 18px 0;
+    }
+
+    .pay-btn {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 15px;
+      background: #087348;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .pay-btn:hover {
+      background: #075b3b;
+    }
+
+    .pay-btn:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    .history {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    }
+
+    .history h2 {
+      color: #075b3b;
+      margin-bottom: 18px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th {
+      background: #075b3b;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .success {
+      color: #087348;
+      font-weight: bold;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+
+    .logout {
+      margin-top: 20px;
+      background: #b3261e;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #5f7569;
+      font-size: 13px;
+    }
+
+    footer .arabic {
+      font-size: 21px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #777;
+    }
+
+    @media(max-width: 750px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 19px;
+      }
+
+      .header .arabic {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+
+    <div class="arabic">
+      السلام عليكم ورحمة الله وبركاته
+    </div>
+
+    <h1>SAFA HIFZUL QUR'AN COLLEGE</h1>
+
+    <p>SPONSOR DASHBOARD</p>
+
+  </div>
+
+
+  <div class="container">
+
+    <div id="loading" class="loading">
+      Loading your sponsor information...
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div id="content" style="display:none;">
+
+      <div class="profile">
+
+        <div class="profile-title">
+          👤 Sponsor Information
+        </div>
+
+        <div class="profile-grid">
+
+          <div class="profile-item">
+            <small>Sponsor ID</small>
+            <strong id="sponsorId">-</strong>
+          </div>
+
+          <div class="profile-item">
+            <small>Name</small>
+            <strong id="sponsorName">-</strong>
+          </div>
+
+          <div class="profile-item">
+            <small>Phone</small>
+            <strong id="sponsorPhone">-</strong>
+          </div>
+
+          <div class="profile-item">
+            <small>Email</small>
+            <strong id="sponsorEmail">-</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AMOUNT CARDS -->
+
+      <div class="cards">
+
+        <div class="card">
+
+          <div class="card-icon">🤝</div>
+
+          <div class="card-title">
+            Total Sponsorship
+          </div>
+
+          <div class="amount" id="totalAmount">
+            ₹0
+          </div>
+
+        </div>
+
+
+        <div class="card paid">
+
+          <div class="card-icon">✅</div>
+
+          <div class="card-title">
+            Amount Paid
+          </div>
+
+          <div class="amount" id="paidAmount">
+            ₹0
+          </div>
+
+        </div>
+
+
+        <div class="card pending">
+
+          <div class="card-icon">⏳</div>
+
+          <div class="card-title">
+            Remaining Amount
+          </div>
+
+          <div class="amount" id="balanceAmount">
+            ₹0
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PAYMENT -->
+
+      <div class="payment-box">
+
+        <h2>💳 Sponsorship Payment</h2>
+
+        <p>
+          Your sponsorship helps support Qur'an education
+          and the educational activities of Safa Hifzul Qur'an College.
+        </p>
+
+        <div class="payment-info">
+
+          <strong>Amount Remaining:</strong>
+
+          <span id="paymentBalance">
+            ₹0
+          </span>
+
+        </div>
+
+        <button
+          class="pay-btn"
+          id="payButton"
+          disabled
+        >
+          Pay Remaining Amount
+        </button>
+
+      </div>
+
+
+      <!-- PAYMENT HISTORY -->
+
+      <div class="history">
+
+        <h2>📜 Payment History</h2>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Payment ID</th>
+                <th>Status</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="paymentTable">
+
+              <tr>
+                <td colspan="4" class="empty">
+                  No payment records found.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <div style="text-align:center;">
+
+        <button
+          class="logout"
+          id="logoutBtn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <div class="arabic">
+      وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ
+    </div>
+
+    <div>
+      Safa Hifzul Qur'an College
+    </div>
+
+    <div>
+      Sponsor Management Portal
+    </div>
+
+  </footer>
+
+
+  <!-- FIREBASE -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      collection,
+      query,
+      where,
+      onSnapshot
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyA4GwvJ1W12dB61MknzffCAazBVN60gCOc",
+
+      authDomain:
+        "sponsors-management-port-2300e.firebaseapp.com",
+
+      projectId:
+        "sponsors-management-port-2300e",
+
+      storageBucket:
+        "sponsors-management-port-2300e.firebasestorage.app",
+
+      messagingSenderId:
+        "302644033627",
+
+      appId:
+        "1:302644033627:web:bfb03201ee44bcf616677e"
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const db = getFirestore(app);
+
+
+    const loading =
+      document.getElementById("loading");
+
+    const content =
+      document.getElementById("content");
+
+
+    function money(value) {
+
+      return "₹" + Number(value || 0)
+        .toLocaleString("en-IN");
+
+    }
+
+
+    function showError(message) {
+
+      loading.innerHTML = `
+        <div style="
+          background:#fff;
+          padding:25px;
+          border-radius:15px;
+          color:#b3261e;
+        ">
+          ${message}
+        </div>
+      `;
+
+    }
+
+
+    onAuthStateChanged(auth, async (user) => {
+
+      if (!user) {
+
+        window.location.href = "index.html";
+
+        return;
+
+      }
+
+
+      try {
+
+        /*
+          Check user role
+        */
+
+        const userRef =
+          doc(db, "users", user.uid);
+
+        const userSnap =
+          await getDoc(userRef);
+
+
+        if (!userSnap.exists()) {
+
+          await signOut(auth);
+
+          showError(
+            "User profile not found."
+          );
+
+          return;
+
+        }
+
+
+        const userData =
+          userSnap.data();
+
+
+        if (userData.role !== "sponsor") {
+
+          await signOut(auth);
+
+          showError(
+            "This account does not have sponsor access."
+          );
+
+          return;
+
+        }
+
+
+        const sponsorId =
+          userData.sponsorId;
+
+
+        if (!sponsorId) {
+
+          showError(
+            "Sponsor ID is not linked to this account."
+          );
+
+          return;
+
+        }
+
+
+        /*
+          Find Sponsor document
+        */
+
+        const sponsorQuery =
+          query(
+            collection(db, "Sponsors"),
+            where("sponsorId", "==", sponsorId)
+          );
+
+
+        onSnapshot(
+          sponsorQuery,
+          (snapshot) => {
+
+            if (snapshot.empty) {
+
+              showError(
+                "Sponsor information not found."
+              );
+
+              return;
+
+            }
+
+
+            const sponsor =
+              snapshot.docs[0].data();
+
+
+            /*
+              Profile
+            */
+
+            document.getElementById(
+              "sponsorId"
+            ).textContent =
+              sponsor.sponsorId || sponsorId;
+
+
+            document.getElementById(
+              "sponsorName"
+            ).textContent =
+              sponsor.name || "-";
+
+
+            document.getElementById(
+              "sponsorPhone"
+            ).textContent =
+              sponsor.phone || "-";
+
+
+            document.getElementById(
+              "sponsorEmail"
+            ).textContent =
+              sponsor.email || "-";
+
+
+            /*
+              Amounts
+            */
+
+            const total =
+              Number(sponsor.totalAmount || 0);
+
+            const paid =
+              Number(sponsor.paidAmount || 0);
+
+            const balance =
+              Math.max(
+                0,
+                total - paid
+              );
+
+
+            document.getElementById(
+              "totalAmount"
+            ).textContent =
+              money(total);
+
+
+            document.getElementById(
+              "paidAmount"
+            ).textContent =
+              money(paid);
+
+
+            document.getElementById(
+              "balanceAmount"
+            ).textContent =
+              money(balance);
+
+
+            document.getElementById(
+              "paymentBalance"
+            ).textContent =
+              money(balance);
+
+
+            /*
+              Payment button
+            */
+
+            const payButton =
+              document.getElementById(
+                "payButton"
+              );
+
+
+            if (balance > 0) {
+
+              payButton.disabled = false;
+
+              payButton.textContent =
+                "Pay ₹" +
+                balance.toLocaleString("en-IN");
+
+            } else {
+
+              payButton.disabled = true;
+
+              payButton.textContent =
+                "✓ Sponsorship Fully Paid";
+
+            }
+
+
+            loading.style.display =
+              "none";
+
+            content.style.display =
+              "block";
+
+          },
+
+          (error) => {
+
+            console.error(error);
+
+            showError(
+              "Unable to load sponsor information."
+            );
+
+          }
+        );
+
+
+        /*
+          Payment history
+        */
+
+        const paymentsQuery =
+          query(
+            collection(db, "Payments"),
+            where("sponsorId", "==", sponsorId)
+          );
+
+
+        onSnapshot(
+          paymentsQuery,
+          (snapshot) => {
+
+            const table =
+              document.getElementById(
+                "paymentTable"
+              );
+
+
+            table.innerHTML = "";
+
+
+            if (snapshot.empty) {
+
+              table.innerHTML = `
+                <tr>
+                  <td colspan="4" class="empty">
+                    No payment records found.
+                  </td>
+                </tr>
+              `;
+
+              return;
+
+            }
+
+
+            snapshot.forEach((paymentDoc) => {
+
+              const payment =
+                paymentDoc.data();
+
+
+              let date = "-";
+
+
+              if (payment.createdAt) {
+
+                try {
+
+                  const d =
+                    payment.createdAt.toDate();
+
+                  date =
+                    d.toLocaleDateString(
+                      "en-IN"
+                    );
+
+                } catch {
+
+                  date = "-";
+
+                }
+
+              }
+
+
+              const row =
+                document.createElement("tr");
+
+
+              row.innerHTML = `
+
+                <td>${date}</td>
+
+                <td>
+                  ${money(payment.amount)}
+                </td>
+
+                <td>
+                  ${payment.razorpayPaymentId || "-"}
+                </td>
+
+                <td class="success">
+                  ${payment.status || "Paid"}
+                </td>
+
+              `;
+
+
+              table.appendChild(row);
+
+            });
+
+          },
+
+          (error) => {
+
+            console.error(
+              "Payment history error:",
+              error
+            );
+
+          }
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showError(
+          "Something went wrong while loading your dashboard."
+        );
+
+      }
+
+    });
+
+
+    /*
+      Logout
+    */
+
+    document.getElementById(
+      "logoutBtn"
+    ).addEventListener(
+      "click",
+      async () => {
+
+        await signOut(auth);
+
+        window.location.href =
+          "index.html";
+
+      }
+    );
+
+
+    /*
+      Payment button
+      Razorpay will be connected later.
+    */
+
+    document.getElementById(
+      "payButton"
+    ).addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "Online payment will be available soon."
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
